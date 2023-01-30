@@ -37,10 +37,10 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="md:flex hidden gap-8 text-sm font-semibold items-center">
-          <Link href="/">LOG IN</Link>
+          <Link href="/" className="hover:text-[#5340ff]">LOG IN</Link>
           <Link
             href="/"
-            className="bg-[#5340ff]  border-none px-4 text-white py-3"
+            className="bg-[#5340ff] hover:bg-white border hover:text-[#5340ff] transition-all duration-500 border-[#5340ff]  px-4 text-white py-3"
           >
             SIGN UP
           </Link>
