@@ -3,6 +3,7 @@ import Link from "next/link";
 import { RiMenu3Line } from "react-icons/ri";
 import { RxCross2 } from "react-icons/rx";
 import { useRef } from "react";
+import Head from "next/head";
 export default function Navbar() {
   // -------------------------------------------------------
 
@@ -23,14 +24,17 @@ export default function Navbar() {
   // ---------------------------------------------------------
   return (
     <>
+      <Head>
+        <title>Css Generators</title>
+      </Head>
       <div className="fixed top-0 left-0 px-4 shadow w-full h-16 border bg-white flex items-center justify-between">
         <Logo />
         <div className="gap-8 font-semibold text-sm hidden md:flex">
           <Link href="/" className="hover:text-[#5340ff] p-1">
             HOME
           </Link>
-          <Link href="/" className="hover:text-[#5340ff] p-1">
-            CONTACT
+          <Link href="/css-generators" className="hover:text-[#5340ff] p-1">
+            CSS GENERATORS
           </Link>
           <Link href="/" className="hover:text-[#5340ff] p-1">
             ABOUT US
@@ -66,9 +70,9 @@ export default function Navbar() {
         <Link href="/" className="p-2 hover:text-[#5340ff] mt-4">
           HOME
         </Link>
-        <Link href="/" className="p-2 hover:text-[#5340ff]">
-          CONTACT
-        </Link>
+        <Link href="/css-generators" className="hover:text-[#5340ff] p-1">
+            CSS GENERATORS
+          </Link>
         <Link href="/" className="p-2 hover:text-[#5340ff]">
           ABOUT US
         </Link>
