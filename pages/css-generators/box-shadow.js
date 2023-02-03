@@ -1,6 +1,11 @@
 import Head from "next/head";
 import styles from "styles/style.module.css";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import CopyToClipboard from "react-copy-to-clipboard";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+
 export default function Boxshadow() {
   const [horizontalOffset, setHorizontalOffset] = useState(7);
   const [verticalOffset, setVerticalOffset] = useState(10);
@@ -22,26 +27,37 @@ export default function Boxshadow() {
       return "rgb(" + r + ", " + g + ", " + b + ")";
     }
   }
+
+  const codeCopyNotification = () => {
+    toast.success("Code copied successfully !", {
+      position: "top-center",
+      autoClose: 3000,
+      theme: "light",
+    });
+  };
+
   return (
     <>
       <Head>
         <title>Box Shadow Generator</title>
       </Head>
       <div className="border-4">
-
         {/* center div ------------------------------------------------------------------- */}
-        <div className="lg:w-[64rem] mx-auto w-full mt-2 border-2">
-          <h1 className="text-3xl font-semibold py-2 w-[95vw] md:w-96 border mx-auto text-center mb-5" style={{
-                  boxShadow: `${horizontalOffset}px ${verticalOffset}px ${blurRadius}px ${spreadRadius}px ${shadowColor} ${inset}`,
-                  backgroundColor: `${boxColor}`,
-                }}>
+        <div className="lg:w-[64rem] mx-auto w-full pt-3 border-2">
+          <h1
+            className="text-3xl font-semibold py-2 w-[95vw] md:w-96 border mx-auto text-center mb-5"
+            style={{
+              boxShadow: `${horizontalOffset}px ${verticalOffset}px ${blurRadius}px ${spreadRadius}px ${shadowColor} ${inset}`,
+              backgroundColor: `${boxColor}`,
+            }}
+          >
             Box Shadow Generator
           </h1>
-          
+
           <div className="w-full grid grid-cols-1 items-center md:grid-cols-2">
             <div className=" flex justify-center items-center h-[40vh] md:h-full">
               <div
-                className="shadow-xl w-[80%] h-[80%] border flex justify-center items-center"
+                className=" w-[80%] h-[80%]  flex justify-center items-center"
                 style={{
                   boxShadow: `${horizontalOffset}px ${verticalOffset}px ${blurRadius}px ${spreadRadius}px ${shadowColor} ${inset}`,
                   backgroundColor: `${boxColor}`,
@@ -203,6 +219,125 @@ export default function Boxshadow() {
               </div>
             </div>
           </div>
+          <div className="w-full border-2 mt-4 p-4">
+            <SyntaxHighlighter language="css" style={docco}>
+              {/* pass in code here */}
+              {`box-shadow:${horizontalOffset}px ${verticalOffset}px ${blurRadius}px ${spreadRadius}px ${shadowColor} ${inset}; \nbackground-color:${boxColor};`}
+            </SyntaxHighlighter>
+
+            <CopyToClipboard
+              text={`box-shadow:${horizontalOffset}px ${verticalOffset}px ${blurRadius}px ${spreadRadius}px ${shadowColor} ${inset}; \n
+              background-color:${boxColor};`}
+              className=" px-4 py-2 textinput mb-2 text-white font-semibold mt-4 hover:bg-white hover:text-[#5340ff] transition-all duration-500 border-[#5340ff] border bg-[#5340ff] "
+            >
+              <button onClick={codeCopyNotification}>Copy Code</button>
+            </CopyToClipboard>
+          </div>
+          <div className="border p-4">
+            <h2 className="text-2xl font-semibold pb-5">Box Shadows</h2>
+            <div className="grid lg:grid-cols-4 gap-10 md:grid-cols-2 grid-cols-1">
+
+              <div
+                className="h-[14rem] flex items-center justify-center"
+                style={{ boxShadow: "0px 2px 8px 0px rgba(99, 99, 99, 0.25);" }}
+              >
+                <CopyToClipboard
+                  text={`box-shadow:0px 2px 8px 0px rgba(99, 99, 99, 0.25);`}
+                  className="border p-2 text-sm font-semibold"
+                >
+                  <button onClick={codeCopyNotification}>COPY CODE</button>
+                </CopyToClipboard>
+              </div>
+
+              <div
+                className="h-[14rem] flex items-center justify-center"
+                style={{ boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.3)" }}
+              >
+                <CopyToClipboard
+                  text={`box-shadow:0px 4px 12px rgba(0, 0, 0, 0.3);`}
+                  className="border p-2 text-sm font-semibold"
+                >
+                  <button onClick={codeCopyNotification}>COPY CODE</button>
+                </CopyToClipboard>
+              </div>
+
+              <div
+                className="h-[14rem] flex items-center justify-center"
+                style={{ boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.1) ,0px 1px 2px rgba(0, 0, 0, 0.26)" }}
+              >
+                <CopyToClipboard
+                  text={`box-shadow:0px 1px 4px  rgba(0, 0, 0, 0.1) ,0px 1px 2px rgba(0, 0, 0, 0.26);`}
+                  className="border p-2 text-sm font-semibold"
+                >
+                  <button onClick={codeCopyNotification}>COPY CODE</button>
+                </CopyToClipboard>
+              </div>
+
+              <div
+                className="h-[14rem] flex items-center justify-center"
+                style={{ boxShadow: "0px 8px 25px rgba(150, 160, 160, 0.25)" }}
+              >
+                <CopyToClipboard
+                  text={`box-shadow:0px 8px 25px rgba(150, 160, 160, 0.25);`}
+                  className="border p-2 text-sm font-semibold"
+                >
+                  <button onClick={codeCopyNotification}>COPY CODE</button>
+                </CopyToClipboard>
+              </div>
+
+              <div
+                className="h-[14rem] flex items-center justify-center"
+                style={{ boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.15) , 0px 1px 2px rgba(0, 0, 0, 0.3)" }}
+              >
+                <CopyToClipboard
+                  text={`box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15) , 0px 1px 2px rgba(0, 0, 0, 0.3);`}
+                  className="border p-2 text-sm font-semibold"
+                >
+                  <button onClick={codeCopyNotification}>COPY CODE</button>
+                </CopyToClipboard>
+              </div>
+
+              <div
+                className="h-[14rem] flex items-center justify-center"
+                style={{ boxShadow: "7px 10px 164px -14px rgba(27, 23, 222, 0.78) inset",backgroundColor:'#ffffff' }}
+              >
+                <CopyToClipboard
+                  text={`box-shadow:7px 10px 164px -14px rgba(27, 23, 222, 0.78) inset;\nbackground-color:#ffffff;`}
+                  className="border p-2 text-sm font-semibold"
+                >
+                  <button onClick={codeCopyNotification}>COPY CODE</button>
+                </CopyToClipboard>
+              </div>
+
+              <div
+                className="h-[14rem] flex items-center justify-center"
+                style={{ boxShadow: "7px 10px 22px -7px rgba(103, 225, 233, 1)",backgroundColor:'#ffffff' }}
+              >
+                <CopyToClipboard
+                  text={`box-shadow:7px 10px 22px -7px rgba(103, 225, 233, 1) ;\nbackground-color:#ffffff;`}
+                  className="border p-2 text-sm font-semibold"
+                >
+                  <button onClick={codeCopyNotification}>COPY CODE</button>
+                </CopyToClipboard>
+              </div>
+
+              <div
+                className="h-[14rem] flex items-center justify-center"
+                style={{ boxShadow: "0px 3px 3px 0px rgba(0, 0, 0, 0.2)" }}
+              >
+                <CopyToClipboard
+                  text={`box-shadow:0px 3px 3px 0px rgba(0, 0, 0, 0.2) ;`}
+                  className="border p-2 text-sm font-semibold"
+                >
+                  <button onClick={codeCopyNotification}>COPY CODE</button>
+                </CopyToClipboard>
+              </div>
+
+            </div>
+          </div>
+            <div className="border p-4">
+            <h2 className="text-2xl font-semibold pb-5">Box Shadow CSS Property</h2>
+            </div>
         </div>
 
         {/* center div ends here ------------------------------------------------------------------- */}
