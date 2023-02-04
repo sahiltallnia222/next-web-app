@@ -5,7 +5,8 @@ import { toast } from "react-toastify";
 import CopyToClipboard from "react-copy-to-clipboard";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
-
+import {MdOutlineAddCircleOutline} from 'react-icons/md'
+import {RxCrossCircled} from 'react-icons/rx'
 export default function Boxshadow() {
   const [horizontalOffset, setHorizontalOffset] = useState(7);
   const [verticalOffset, setVerticalOffset] = useState(10);
@@ -16,6 +17,8 @@ export default function Boxshadow() {
   const [shadowHexColor, setShadowHexColor] = useState("#1F1E62");
   const [inset, setInset] = useState("");
   const [opacity, setOpacity] = useState(1);
+  const [shadows,setShadows]=useState([{index:1}]);
+
 
   function hexToRGB(hex, alpha = 1) {
     var r = parseInt(hex.slice(1, 3), 16),
@@ -35,6 +38,21 @@ export default function Boxshadow() {
       theme: "light",
     });
   };
+
+  const addShadow=()=>{
+    const values=[...shadows];
+
+    values.push({index:values.length+1})
+    setShadows(values);
+  }
+
+
+  const removeShadow=(index)=>{
+    let values=[...shadows];
+    values.splice(index, 1)
+    setShadows(values)
+  }
+
 
   return (
     <>
@@ -219,6 +237,18 @@ export default function Boxshadow() {
               </div>
             </div>
           </div>
+          <div className="border-2 p-4">
+            <div className="flex flex-wrap items-start gap-8">
+              <div className="flex flex-wrap items-start gap-8">
+                {
+                  shadows.map((shadow,index)=>{
+                    return <span key={shadow.index} className="w-[2em] h-[2em] flex items-center justify-center border relative" style={{boxShadow: '0px 1px 3px rgba(0, 0, 0, 0.15) , 0px 1px 2px rgba(0, 0, 0, 0.3)'}}><span className="absolute top-[-0.6rem] right-[-0.6rem] cursor-pointer"><RxCrossCircled onClick={()=>{removeShadow(index)}} size={'1.3em'}/></span>{shadow.index}</span>
+                  })
+                }
+              <span className="cursor-pointer"><MdOutlineAddCircleOutline size={'2em'} onClick={addShadow}/></span>
+              </div>
+            </div>
+          </div>
           <div className="w-full border-2 mt-4 p-4">
             <SyntaxHighlighter language="css" style={docco}>
               {/* pass in code here */}
@@ -234,12 +264,12 @@ export default function Boxshadow() {
             </CopyToClipboard>
           </div>
           <div className="border p-4">
-            <h2 className="text-2xl font-semibold pb-5">Box Shadows</h2>
+            <h2 className="text-2xl font-semibold pb-5">Box Shadow Examples</h2>
             <div className="grid lg:grid-cols-4 gap-10 md:grid-cols-2 grid-cols-1">
 
               <div
                 className="h-[14rem] flex items-center justify-center"
-                style={{ boxShadow: "0px 2px 8px 0px rgba(99, 99, 99, 0.25);" }}
+                style={{ boxShadow: "0px 2px 8px 0px rgba(99, 99, 99, 0.25)" }}
               >
                 <CopyToClipboard
                   text={`box-shadow:0px 2px 8px 0px rgba(99, 99, 99, 0.25);`}
@@ -336,7 +366,7 @@ export default function Boxshadow() {
             </div>
           </div>
             <div className="border p-4">
-            <h2 className="text-2xl font-semibold pb-5">Box Shadow CSS Property</h2>
+            <h2 className="text-2xl font-semibold pb-5">Box Shadow ( CSS Property )</h2>
             </div>
         </div>
 
