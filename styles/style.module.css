@@ -40,3 +40,4 @@
   .checkbox:active ~ .slider::before {
     transform: translate(0);
   }
+

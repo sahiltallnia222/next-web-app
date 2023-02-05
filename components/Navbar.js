@@ -27,7 +27,7 @@ export default function Navbar() {
       <Head>
         <title>Css Generators</title>
       </Head>
-      <div className="fixed top-0 left-0 px-4 shadow w-full h-16 border bg-white flex items-center justify-between">
+      <div className="fixed top-0 left-0 px-4 shadow w-full h-16 border bg-white flex items-center justify-between z-50">
         <Logo />
         <div className="gap-8 font-semibold text-sm hidden md:flex">
           <Link href="/" className="hover:text-[#5340ff] p-1">
