@@ -27,7 +27,7 @@ export default function Navbar() {
       <Head>
         <title>Css Generators</title>
       </Head>
-      <div className="fixed top-0 left-0 px-4 shadow w-full h-16 border bg-white flex items-center justify-between z-50">
+      <div className="fixed top-0 left-0 px-4 shadow w-full h-16 border bg-white flex items-center justify-between z-20">
         <Logo />
         <div className="gap-8 font-semibold text-sm hidden md:flex">
           <Link href="/" className="hover:text-[#5340ff] p-1">
@@ -60,7 +60,7 @@ export default function Navbar() {
       <div
         onClick={toggleRightBox}
         ref={rightBoxRef}
-        className="md:hidden fixed text-md font-semibold top-0 right-0 w-full border flex flex-col h-screen bg-white translate-x-full transition-transform duration-300 px-6"
+        className="md:hidden z-50 fixed text-md font-semibold top-0 right-0 w-full border flex flex-col h-screen bg-white translate-x-full transition-transform duration-300 px-6"
       >
         <div className="flex items-center justify-between w-full h-16">
           <Logo/>
