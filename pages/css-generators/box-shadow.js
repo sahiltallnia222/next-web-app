@@ -14,7 +14,7 @@ export default function Boxshadow() {
   const [shadow, setShadow] = useState({
     boxShadow: "7px 10px 8px -7px #1F1E62",
     boxColor: "#ffffff",
-    bgColor: "#EDEDED",
+    bgColor: "#F2F2F2",
   });
   const [shadows, setShadows] = useState([
     {
@@ -103,14 +103,16 @@ export default function Boxshadow() {
       <Head>
         <title>Box Shadow Generator</title>
       </Head>
-      <div className="border-4">
+      <div className="">
         {/* center div ------------------------------------------------------------------- */}
-        <div className="lg:w-[64rem] mx-auto w-full pt-3 border-2">
-          <h1 className="text-3xl font-semibold mb-3 px-3">
+        <div className="lg:w-[64rem] mx-auto w-full">
+
+          <h1 className="text-3xl font-semibold bg-[#F2F2F2] px-4 pt-3">
             Box Shadow Generator
           </h1>
 
-          <div className="w-full grid grid-cols-1 items-center md:grid-cols-2">
+          <div className="w-full grid grid-cols-1 items-center md:grid-cols-2 p-4 bg-[#F2F2F2]">
+            {/* Left side of shadow generator. */}
             <div
               className=" flex justify-center items-center h-[40vh] md:h-full"
               style={{ backgroundColor: shadow.bgColor }}
@@ -125,7 +127,11 @@ export default function Boxshadow() {
                 {/* BOX */}
               </div>
             </div>
-            <div className=" font-semibold">
+
+            {/* End of left side of shadow generator and start of right side. */}
+
+            <div className="font-semibold">
+
               <div className="px-4 py-2">
                 <div className="flex items-center justify-between text-sm p-2">
                   <div>H-offset</div>
@@ -146,6 +152,7 @@ export default function Boxshadow() {
                   />
                 </div>
               </div>
+
               <div className="px-4 py-2">
                 <div className="flex items-center justify-between text-sm p-2">
                   <div>V-offset</div>
@@ -166,6 +173,7 @@ export default function Boxshadow() {
                   />
                 </div>
               </div>
+
               <div className="px-4 py-2">
                 <div className="flex items-center justify-between text-sm p-2">
                   <div>Blur radius</div>
@@ -186,6 +194,7 @@ export default function Boxshadow() {
                   />
                 </div>
               </div>
+
               <div className="px-4 py-2">
                 <div className="flex items-center justify-between text-sm p-2">
                   <div>Spread radius</div>
@@ -206,6 +215,7 @@ export default function Boxshadow() {
                   />
                 </div>
               </div>
+
               <div className="px-4 py-2">
                 <div className="flex items-center justify-between text-sm p-2">
                   <div>Shadow opacity</div>
@@ -232,10 +242,9 @@ export default function Boxshadow() {
                 </div>
               </div>
 
-              {/* ---------------------------- */}
               <div className="px-4 py-2 flex flex-col gap-4">
-                {/* ---------------------------- */}
                 <div className="flex flex-row items-center justify-between">
+
                   <div className="flex justify-between w-1/3">
                     <span>Box Color </span>
                     <span>
@@ -257,6 +266,7 @@ export default function Boxshadow() {
                       />
                     </span>
                   </div>
+
                   <div className="flex justify-between w-1/2">
                     <span>Background Color </span>
                     <span>
@@ -278,9 +288,11 @@ export default function Boxshadow() {
                       />
                     </span>
                   </div>
+
                 </div>
-                {/* ------------------------ */}
+
                 <div className="flex flex-row items-center justify-between">
+
                   <div className="w-1/3 flex justify-between">
                     <span>Shadow Color </span>
                     <span>
@@ -308,6 +320,7 @@ export default function Boxshadow() {
                       />
                     </span>
                   </div>
+
                   <div className="w-1/2 flex justify-between">
                     <span>Inset</span>
                     <span>
@@ -328,12 +341,17 @@ export default function Boxshadow() {
                       </label>
                     </span>
                   </div>
+
                 </div>
               </div>
             </div>
+            {/* End of right side of shadow generator. */}
           </div>
-          <div className="border-2 p-4">
-            <h2 className="font-semibold text-2xl pb-3">
+
+        {/* End of 2 boxes of box shadow generator */}
+        {/* Multiple shadow box */}
+          <div className="p-4 bg-[#F2F2F2]">
+            <h2 className="font-semibold text-2xl">
               Add multiple box shadows
             </h2>
             <div className="flex flex-wrap items-start gap-4">
@@ -371,23 +389,32 @@ export default function Boxshadow() {
               </div>
             </div>
           </div>
-          <div className="w-full border-2 p-4">
+          
+          {/* End of multiple shadow section */}
+          {/* Code section */}
+          <div className="w-full p-4 bg-[#fafafa]">
+          <h2 className="font-semibold text-2xl">
+              Generated code
+            </h2>
             <SyntaxHighlighter language="css" style={docco}>
               {`box-shadow:${shadow.boxShadow}; \nbackground-color:${shadow.boxColor};  /* background color of inner box */ \nbackground-color:${shadow.bgColor};  /* background color of outer box (Paste this code in style of outer box.) */`}
             </SyntaxHighlighter>
 
             <CopyToClipboard
               text={`box-shadow:${shadow.boxShadow}; \nbackground-color:${shadow.boxColor};  /* background color of inner box */ \nbackground-color:${shadow.bgColor};  /* background color of outer box (Paste this code in style of outer box.) */`}
-              className=" px-4 py-2 textinput mb-2 text-white font-semibold mt-4 hover:bg-white hover:text-[#5340ff] transition-all duration-500 border-[#5340ff] border bg-[#5340ff] "
+              className=" px-4 py-2 ml-2 text-white font-semibold mt-4 hover:bg-white hover:text-[#5340ff] transition-all duration-500 border-[#5340ff] border bg-[#5340ff] "
             >
               <button onClick={codeCopyNotification}>Copy Code</button>
             </CopyToClipboard>
           </div>
-          <div className="border p-4">
-            <h2 className="text-2xl font-semibold pb-5">Box Shadow Examples</h2>
+          {/* End of code section */}
+
+          {/* Box shadow examples */}
+          <div className="p-4 bg-[#F2F2F2] pb-7">
+            <h2 className="text-2xl font-semibold pb-3">Box Shadow Examples</h2>
             <div className="grid lg:grid-cols-4 gap-10 md:grid-cols-2 grid-cols-1">
               <div
-                className="h-[14rem] flex items-center justify-center"
+                className="h-[14rem] flex items-center justify-center bg-white"
                 style={{ boxShadow: "0px 2px 8px 0px rgba(99, 99, 99, 0.25)" }}
               >
                 <CopyToClipboard
@@ -399,7 +426,7 @@ export default function Boxshadow() {
               </div>
 
               <div
-                className="h-[14rem] flex items-center justify-center"
+                className="h-[14rem] flex items-center justify-center bg-white"
                 style={{ boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.3)" }}
               >
                 <CopyToClipboard
@@ -411,7 +438,7 @@ export default function Boxshadow() {
               </div>
 
               <div
-                className="h-[14rem] flex items-center justify-center"
+                className="h-[14rem] flex items-center justify-center bg-white"
                 style={{
                   boxShadow:
                     "0px 1px 4px rgba(0, 0, 0, 0.1) ,0px 1px 2px rgba(0, 0, 0, 0.26)",
@@ -426,7 +453,7 @@ export default function Boxshadow() {
               </div>
 
               <div
-                className="h-[14rem] flex items-center justify-center"
+                className="h-[14rem] flex items-center justify-center bg-white"
                 style={{ boxShadow: "0px 8px 25px rgba(150, 160, 160, 0.25)" }}
               >
                 <CopyToClipboard
@@ -438,7 +465,7 @@ export default function Boxshadow() {
               </div>
 
               <div
-                className="h-[14rem] flex items-center justify-center"
+                className="h-[14rem] flex items-center justify-center bg-white"
                 style={{
                   boxShadow:
                     "0px 1px 3px rgba(0, 0, 0, 0.15) , 0px 1px 2px rgba(0, 0, 0, 0.3)",
@@ -453,7 +480,7 @@ export default function Boxshadow() {
               </div>
 
               <div
-                className="h-[14rem] flex items-center justify-center"
+                className="h-[14rem] flex items-center justify-center bg-white"
                 style={{
                   boxShadow:
                     "7px 10px 164px -14px rgba(27, 23, 222, 0.78) inset",
@@ -469,7 +496,7 @@ export default function Boxshadow() {
               </div>
 
               <div
-                className="h-[14rem] flex items-center justify-center"
+                className="h-[14rem] flex items-center justify-center bg-white"
                 style={{
                   boxShadow: "7px 10px 22px -7px rgba(103, 225, 233, 1)",
                   backgroundColor: "#ffffff",
@@ -484,7 +511,7 @@ export default function Boxshadow() {
               </div>
 
               <div
-                className="h-[14rem] flex items-center justify-center"
+                className="h-[14rem] flex items-center justify-center bg-white"
                 style={{ boxShadow: "0px 3px 3px 0px rgba(0, 0, 0, 0.2)" }}
               >
                 <CopyToClipboard
@@ -496,7 +523,7 @@ export default function Boxshadow() {
               </div>
 
               <div
-                className="h-[14rem] flex items-center justify-center"
+                className="h-[14rem] flex items-center justify-center bg-white"
                 style={{ boxShadow: "-41px 41px 0px -30px rgba(255, 255, 255, 1) , 41px -41px 0px -30px rgba(255, 255, 255, 1) , 10px 10px 0px 0px rgba(56, 104, 214, 1) , -10px -10px 0px 0px rgba(56, 104, 214, 1)" }}
               >
                 <CopyToClipboard
@@ -508,7 +535,7 @@ export default function Boxshadow() {
               </div>
 
               <div
-                className="h-[14rem] flex items-center justify-center"
+                className="h-[14rem] flex items-center justify-center bg-white"
                 style={{ boxShadow: "0px 0px 0px 7px #1F1E62 , 0px 0px 0px 14px #ec060f" }}
               >
                 <CopyToClipboard
@@ -521,7 +548,7 @@ export default function Boxshadow() {
 
 
               <div
-                className="h-[14rem] flex items-center justify-center"
+                className="h-[14rem] flex items-center justify-center bg-white"
                 style={{ boxShadow: "-85px 85px 0px -75px #1F1E62 , 85px -85px 0px -75px #de6232 , 10px 10px 0px 0px #3b8676 , -10px -10px 0px 0px rgba(0, 145, 255, 1)" }}
               >
                 <CopyToClipboard
@@ -533,7 +560,7 @@ export default function Boxshadow() {
               </div>
 
               <div
-                className="h-[14rem] flex items-center justify-center"
+                className="h-[14rem] flex items-center justify-center bg-white"
                 style={{ boxShadow: "10px 10px 23px -13px rgba(0, 0, 0, 1) , -8px -8px 15px -8px rgba(255, 255, 255, 1)",backgroundColor:'#4c4ad9' }}
               >
                 <CopyToClipboard
@@ -546,9 +573,13 @@ export default function Boxshadow() {
 
             </div>
           </div>
-          <div className="border p-4">
+
+          {/* Box shadow examples section ends here */}
+
+          {/* Explanation of box shadow starts from here */}
+          <div className="p-4 bg-[#fafafa]">
             <h2 className="text-2xl font-semibold pb-5">
-              Box Shadow ( CSS Property )
+              Box Shadow Explanation
             </h2>
             <p className="text-lg">
               Box Shadow is a CSS property to create shadow effect to any element of webpage. We can provide multiple shadow effects (to the same element of webpage) with the help of Box Shadow in CSS.
