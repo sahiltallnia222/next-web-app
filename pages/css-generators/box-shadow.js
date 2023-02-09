@@ -14,7 +14,7 @@ export default function Boxshadow() {
   const [shadow, setShadow] = useState({
     boxShadow: "7px 10px 8px -7px #1F1E62",
     boxColor: "#ffffff",
-    bgColor: "#F2F2F2",
+    bgColor: "#fafafa",
   });
   const [shadows, setShadows] = useState([
     {
@@ -103,15 +103,15 @@ export default function Boxshadow() {
       <Head>
         <title>Box Shadow Generator</title>
       </Head>
-      <div className="">
+      <div>
         {/* center div ------------------------------------------------------------------- */}
-        <div className="lg:w-[64rem] mx-auto w-full">
+        <div className="lg:w-[64rem] mx-auto w-full shadow">
 
-          <h1 className="text-3xl font-semibold bg-[#F2F2F2] px-4 pt-3">
+          <h1 className="text-3xl md:text-5xl text-center font-semibold bg-[#fafafa] pt-3">
             Box Shadow Generator
           </h1>
 
-          <div className="w-full grid grid-cols-1 items-center md:grid-cols-2 p-4 bg-[#F2F2F2]">
+          <div className="w-full grid grid-cols-1 items-center md:grid-cols-2 p-4 bg-[#fafafa] border-t-0 border border-b-0">
             {/* Left side of shadow generator. */}
             <div
               className=" flex justify-center items-center h-[40vh] md:h-full"
@@ -350,7 +350,7 @@ export default function Boxshadow() {
 
         {/* End of 2 boxes of box shadow generator */}
         {/* Multiple shadow box */}
-          <div className="p-4 bg-[#F2F2F2]">
+          <div className="p-4 bg-[#fafafa] border">
             <h2 className="font-semibold text-2xl">
               Add multiple box shadows
             </h2>
@@ -392,10 +392,10 @@ export default function Boxshadow() {
           
           {/* End of multiple shadow section */}
           {/* Code section */}
-          <div className="w-full p-4 bg-[#fafafa]">
-          <h2 className="font-semibold text-2xl">
+          <div className="w-full p-4 bg-[#fafafa] border">
+          <p className="font-semibold text-2xl">
               Generated code
-            </h2>
+            </p>
             <SyntaxHighlighter language="css" style={docco}>
               {`box-shadow:${shadow.boxShadow}; \nbackground-color:${shadow.boxColor};  /* background color of inner box */ \nbackground-color:${shadow.bgColor};  /* background color of outer box (Paste this code in style of outer box.) */`}
             </SyntaxHighlighter>
@@ -410,7 +410,7 @@ export default function Boxshadow() {
           {/* End of code section */}
 
           {/* Box shadow examples */}
-          <div className="p-4 bg-[#F2F2F2] pb-7">
+          <div className="p-4 bg-[#fafafa] border pb-7">
             <h2 className="text-2xl font-semibold pb-3">Box Shadow Examples</h2>
             <div className="grid lg:grid-cols-4 gap-10 md:grid-cols-2 grid-cols-1">
               <div
@@ -577,104 +577,111 @@ export default function Boxshadow() {
           {/* Box shadow examples section ends here */}
 
           {/* Explanation of box shadow starts from here */}
-          <div className="p-4 bg-[#fafafa]">
-            <h2 className="text-2xl font-semibold pb-5">
+          <div className="p-4 bg-[#fafafa] border">
+            <h2 className="text-3xl font-semibold pb-5 pt-3">
               Box Shadow Explanation
             </h2>
-            <p className="text-lg">
+            <p className="text-lg  space-x-2 tracking-wide leading-loose">
               Box Shadow is a CSS property to create shadow effect to any element of webpage. We can provide multiple shadow effects (to the same element of webpage) with the help of Box Shadow in CSS.
             </p>
-            <p className="text-xl font-semibold my-2">
+            <p className="text-2xl font-semibold my-4">
               Syntax of box shadow property
             </p>
             <SyntaxHighlighter language="css" style={docco}>
             box-shadow: h-offset v-offset blur-radius spread-radius color inset;
             </SyntaxHighlighter>
-            <p className="font-semibold text-xl my-3">Horizontal Offset</p>
-            <p className="text-lg">Horizontal offset put the shadow in left and right side of the element. Positive value to Horizontal offset (h-offset) will shift the shadow to right side and negative value will shift the shadow to the left side of the element.</p>
-            <p className="text-xl font-semibold my-2">Example</p>
-            <p className="text-lg font-semibold">Postive value to h-offset</p>
+
+
+            <p className="text-2xl font-semibold my-4">Horizontal Offset</p>
+            <p className="text-lg  space-x-2 tracking-wide leading-loose">Horizontal offset put the shadow in left and right side of the element. Positive value to Horizontal offset (h-offset) will shift the shadow to right side and negative value will shift the shadow to the left side of the element.</p>
+            <p className="text-xl font-semibold my-3">Example</p>
+            <p className="text-lg  space-x-2 tracking-wider py-3">Postive value to h-offset</p>
             <SyntaxHighlighter language="css" style={docco}>
             box-shadow:20px 0px 0px 0px black;
             </SyntaxHighlighter>
-            <div className="w-[45%] h-32 border-2" style={{boxShadow:'20px 0px 0px 0px black'}}></div>
-            <p className="text-lg font-semibold">Negative value to h-offset</p>
+            <div className="md:w-[45%] w-[70%] mx-auto h-32 border-2 my-8" style={{boxShadow:'20px 0px 0px 0px black'}}></div>
+            <p className="text-lg  space-x-2 tracking-wider py-3">Negative value to h-offset</p>
             <SyntaxHighlighter language="css" style={docco}>
             box-shadow:-20px 0px 0px 0px black;
             </SyntaxHighlighter>
-            <div className="w-[45%] h-32 border-2 ml-5" style={{boxShadow:'-20px 0px 0px 0px black'}}></div>
-            <p className="font-semibold text-xl my-3">Vertical Offset</p>
-            <p className="text-lg">Vertical offset put the shadow in up and down direction of the element. Positive value to Vertical offset (v-offset) will shift the shadow to down side and negative value will shift the shadow to the up side of the element.</p>
-            <p className="text-xl font-semibold my-2">Example</p>
-            <p className="text-lg font-semibold">Postive value to v-offset</p>
+            <div className="md:w-[45%] w-[70%] mx-auto h-32 border-2 my-8" style={{boxShadow:'-20px 0px 0px 0px black'}}></div>
+
+
+            <p className="text-2xl font-semibold my-4">Vertical Offset</p>
+            <p className="text-lg  space-x-2 tracking-wide leading-loose">Vertical offset put the shadow in up and down direction of the element. Positive value to Vertical offset (v-offset) will shift the shadow to down side and negative value will shift the shadow to the up side of the element.</p>
+            <p className="text-xl font-semibold my-3">Example</p>
+            <p className="text-lg  space-x-2 tracking-wider py-3">Postive value to v-offset</p>
             <SyntaxHighlighter language="css" style={docco}>
             box-shadow:0px 20px 0px 0px black;
             </SyntaxHighlighter>
-            <div className="w-[45%] h-32 border-2 mb-6" style={{boxShadow:'0px 20px 0px 0px black'}}></div>
-            <p className="text-lg font-semibold">Negative value to v-offset</p>
+            <div className="md:w-[45%] w-[70%] mx-auto h-32 border-2 my-8" style={{boxShadow:'0px 20px 0px 0px black'}}></div>
+            <p className="text-lg  space-x-2 tracking-wider py-3">Negative value to v-offset</p>
             <SyntaxHighlighter language="css" style={docco}>
             box-shadow:0px -20px 0px 0px black;
             </SyntaxHighlighter>
-            <div className="w-[45%] h-32 border-2 mt-6" style={{boxShadow:'0px -20px 0px 0px black'}}></div>
+            <div className="md:w-[45%] w-[70%] mx-auto h-32 border-2 my-8" style={{boxShadow:'0px -20px 0px 0px black'}}></div>
 
-            <p className="font-semibold text-xl my-3">Blur Radius</p>
-            <p className="text-lg">Blur radius is used to control the sharpness of shadow. In the 4 examples given above, blur radius is 0 means that shadow edges are sharp. As we increase the value of blur radius it will make the shadow more blurry.</p>
-            <p className="text-xl font-semibold my-2">Example</p>
-            <p className="text-lg font-semibold">Blur value (3rd property) along with x-offset and y-offset values.</p>
+
+            <p className="text-2xl font-semibold my-4">Blur Radius</p>
+            <p className="text-lg  space-x-2 tracking-wide leading-loose">Blur radius is used to control the sharpness of shadow. In the 4 examples given above, blur radius is 0 means that shadow edges are sharp. As we increase the value of blur radius it will make the shadow more blurry.</p>
+            <p className="text-xl font-semibold my-3">Example</p>
+            <p className="text-lg  space-x-2 tracking-wider py-3">Blur value (3rd property) along with x-offset and y-offset values.</p>
             <SyntaxHighlighter language="css" style={docco}>
             box-shadow:7px 10px 10px 0px black;
             </SyntaxHighlighter>
-            <div className="w-[45%] h-32 border-2 mb-6" style={{boxShadow:'7px 10px 10px 0px black'}}></div>
+            <div className="md:w-[45%] w-[70%] mx-auto h-32 border-2 my-8" style={{boxShadow:'7px 10px 10px 0px black'}}></div>
 
-            <p className="font-semibold text-xl my-3">Spread Radius (optional)</p>
-            <p className="text-lg">Spread radius is used to control the size of the shadow. Postive value to spread radius will increase the size of shadow of element and negative value will decrease the size of shadow.</p>
-            <p className="text-xl font-semibold my-2">Example</p>
-            <p className="text-lg font-semibold">Positive value to Spread Radius (4rd property)</p>
+
+            <p className="text-2xl font-semibold my-4">Spread Radius (optional)</p>
+            <p className="text-lg  space-x-2 tracking-wide leading-loose">Spread radius is used to control the size of the shadow. Postive value to spread radius will increase the size of shadow of element and negative value will decrease the size of shadow.</p>
+            <p className="text-xl font-semibold my-3">Example</p>
+            <p className="text-lg  space-x-2 tracking-wider py-3">Positive value to Spread Radius (4rd property)</p>
             <SyntaxHighlighter language="css" style={docco}>
             box-shadow:7px 10px 10px 20px black;
             </SyntaxHighlighter>
-            <div className="w-[45%] h-32 border-2 m-8 ml-4" style={{boxShadow:'7px 10px 10px 20px black'}}></div>
-            <p className="text-lg font-semibold">Negative value to Spread Radius (4rd property)</p>
+            <div className="md:w-[45%] w-[70%] mx-auto h-32 border-2 my-8" style={{boxShadow:'7px 10px 10px 20px black'}}></div>
+            <p className="text-lg  space-x-2 tracking-wider py-3">Negative value to Spread Radius (4rd property)</p>
             <SyntaxHighlighter language="css" style={docco}>
             box-shadow:7px 10px 10px -4px black;
             </SyntaxHighlighter>
-            <div className="w-[45%] h-32 border-2 " style={{boxShadow:'7px 10px 10px -4px black'}}></div>
+            <div className="md:w-[45%] w-[70%] mx-auto h-32 border-2 my-8" style={{boxShadow:'7px 10px 10px -4px black'}}></div>
 
-            <p className="font-semibold text-xl my-3">Color</p>
-            <p className="text-lg">Color property of box shadow is used to provide the color to the shadow of the element. We can provide color in any type like hex code, name of color, rgba or hsla. </p>
-            <p className="text-xl font-semibold my-2">Example</p>
-            <p className="text-lg font-semibold">Color value to box shadow</p>
+            <p className="text-2xl font-semibold my-4">Color</p>
+            <p className="text-lg  space-x-2 tracking-wide leading-loose">Color property of box shadow is used to provide the color to the shadow of the element. We can provide color in any type like hex code, name of color, rgba or hsla. </p>
+            <p className="text-xl font-semibold my-3">Example</p>
+            <p className="text-lg  space-x-2 tracking-wider py-3">Color value to box shadow</p>
             <SyntaxHighlighter language="css" style={docco}>
             box-shadow:7px 7px 11px 0px rgba(62, 177, 193, 1);
             </SyntaxHighlighter>
-            <div className="w-[45%] h-32 border-2 mb-6" style={{boxShadow:'7px 7px 11px 0px rgba(62, 177, 193, 1)'}}></div>
+            <div className="md:w-[45%] w-[70%] mx-auto h-32 border-2 my-8" style={{boxShadow:'7px 7px 11px 0px rgba(62, 177, 193, 1)'}}></div>
 
-            <p className="font-semibold text-xl my-3">Inset</p>
-            <p className="text-lg">Inset property is used to determine position of box shadow. By default in box-shadow property is is not defined it means shadow will be provided outside and if we add inset, shadow will be provided inner side of the box.</p>
-            <p className="text-xl font-semibold my-2">Example</p>
+            <p className="text-2xl font-semibold my-4">Inset</p>
+            <p className="text-lg  space-x-2 tracking-wide leading-loose">Inset property is used to determine position of box shadow. By default in box-shadow property is is not defined it means shadow will be provided outside and if we add inset, shadow will be provided inner side of the box.</p>
+            <p className="text-xl font-semibold my-3">Example</p>
             <SyntaxHighlighter language="css" style={docco}>
             box-shadow:7px 7px 11px 0px rgba(62, 177, 193, 1) inset;
             </SyntaxHighlighter>
-            <div className="w-[45%] h-32 border-2 mb-6" style={{boxShadow:'7px 7px 11px 0px rgba(62, 177, 193, 1) inset'}}></div>
+            <div className="md:w-[45%] w-[70%] mx-auto h-32 border-2 my-8" style={{boxShadow:'7px 7px 11px 0px rgba(62, 177, 193, 1) inset'}}></div>
 
-            <p className="font-semibold text-xl my-3">Multiple shadows</p>
-            <p className="text-lg">With box shadow property of CSS, we can put multiple shadows to single element. We can create many beautiful effects with the help of multiple box shadow property.</p>
-            <p className="text-xl font-semibold my-2">Example</p>
+            <p className="text-3xl font-semibold my-4">Multiple shadows</p>
+            <p className="text-lg  space-x-2 tracking-wide leading-loose">With box shadow property of CSS, we can put multiple shadows to single element. We can create many beautiful effects with the help of multiple box shadow property.</p>
+            <p className="text-xl font-semibold my-3">Example</p>
             <SyntaxHighlighter language="css" style={docco}>
             box-shadow:-41px 41px 0px -30px rgba(255, 255, 255, 1) , 41px -41px 0px -30px rgba(255, 255, 255, 1) , 10px 10px 0px 0px rgba(56, 104, 214, 1) , -10px -10px 0px 0px rgba(56, 104, 214, 1) ;
             </SyntaxHighlighter>
-            <div className="w-[45%] h-32 m-12 ml-4 flex items-center justify-center" style={{boxShadow:'-41px 41px 0px -30px rgba(255, 255, 255, 1) , 41px -41px 0px -30px rgba(255, 255, 255, 1) , 10px 10px 0px 0px rgba(56, 104, 214, 1) , -10px -10px 0px 0px rgba(56, 104, 214, 1)'}}><p className="text-lg">Write your text here...</p> </div>
-            <p className="text-lg">In the example given above, this effect is created with the help of 4 shadows. Two are of same color as of box color and two shadows are blue colored. Blur radius is zero as you can see edges are sharp.</p>
+            <div className="flex items-center justify-center md:w-[45%] w-[70%] mx-auto h-32 my-8" style={{boxShadow:'-41px 41px 0px -30px rgba(255, 255, 255, 1) , 41px -41px 0px -30px rgba(255, 255, 255, 1) , 10px 10px 0px 0px rgba(56, 104, 214, 1) , -10px -10px 0px 0px rgba(56, 104, 214, 1)'}}><p className="text-lg">Write your text here...</p> </div>
+            <p className="text-lg  space-x-2 tracking-wide leading-loose">In the example given above, this effect is created with the help of 4 shadows. Two are of same color as of box color and two shadows are blue colored. Blur radius is zero as you can see edges are sharp.</p>
 
-            <p className="text-xl font-semibold my-2">Example</p>
+            <p className="text-xl font-semibold my-3">Example</p>
             <SyntaxHighlighter language="css" style={docco}>
             box-shadow:0px 0px 0px 17px #1F1E62 , 0px 0px 0px 33px #ec060f;
             </SyntaxHighlighter>
-            <div className="w-[45%] h-32 m-12 flex items-center justify-center" style={{boxShadow:'0px 0px 0px 17px #1F1E62 , 0px 0px 0px 33px #ec060f'}}><p className="text-lg">Write your text here...</p> </div>
-            <p className="text-lg">In the example given above, this effect is created with the help two shadow using high value of spread radius.</p>
+            <div className="flex items-center justify-center md:w-[45%] w-[70%] mx-auto h-32 my-16" style={{boxShadow:'0px 0px 0px 17px #1F1E62 , 0px 0px 0px 33px #ec060f'}}><p className="text-lg">Write your text here...</p> </div>
+            <p className="text-lg  space-x-2 tracking-wide leading-loose">In the example given above, this effect is created with the help two shadow using high value of spread radius.</p>
 
-            <p className="text-lg">You can try out with Box shadow generator tool and make more designs.</p>
+            <p className="text-xl  space-x-2 tracking-wide leading-loose">You can try out with box shadow generator tool and make more designs.</p>
           </div>
+          {/* Explanation of box shadow end here */}
         </div>
 
         {/* center div ends here ------------------------------------------------------------------- */}

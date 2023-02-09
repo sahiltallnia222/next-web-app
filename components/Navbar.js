@@ -29,24 +29,21 @@ export default function Navbar() {
       </Head>
       <div className="fixed top-0 left-0 px-4 shadow w-full h-16 border bg-white flex items-center justify-between z-20">
         <Logo />
-        <div className="gap-8 font-semibold text-sm hidden md:flex">
+        <div className="gap-8 font-semibold text-md hidden md:flex">
           <Link href="/" className="hover:text-[#5340ff] p-1">
-            HOME
+            Home
           </Link>
           <Link href="/css-generators" className="hover:text-[#5340ff] p-1">
-            CSS GENERATORS
-          </Link>
-          <Link href="/" className="hover:text-[#5340ff] p-1">
-            ABOUT US
+            CSS Generators
           </Link>
         </div>
-        <div className="md:flex hidden gap-8 text-sm font-semibold items-center">
-          <Link href="/" className="hover:text-[#5340ff]">LOG IN</Link>
+        <div className="md:flex hidden gap-8 text-md font-semibold items-center">
+          <Link href="/" className="hover:text-[#5340ff]">Log in</Link>
           <Link
             href="/"
             className="bg-[#5340ff] hover:bg-white border hover:text-[#5340ff] transition-all duration-500 border-[#5340ff]  px-4 text-white py-3"
           >
-            SIGN UP
+            Sign up
           </Link>
         </div>
         <div className="block md:hidden">
@@ -68,23 +65,20 @@ export default function Navbar() {
         </div>
 
         <Link href="/" className="p-2 hover:text-[#5340ff] mt-4">
-          HOME
+          Home
         </Link>
         <Link href="/css-generators" className="hover:text-[#5340ff] p-1">
-            CSS GENERATORS
+            CSS Generators
           </Link>
-        <Link href="/" className="p-2 hover:text-[#5340ff]">
-          ABOUT US
-        </Link>
 
         <div className="flex flex-col items-center mt-16 gap-4">
         <Link
           href="/"
           className="bg-[#5340ff]  border-none text-white py-3 w-full text-center"
         >
-          SIGN UP
+          Sign up
         </Link>
-        <Link href="/" className="p-2 hover:text-[#5340ff] w-full text-center">LOG IN</Link>
+        <Link href="/" className="p-2 hover:text-[#5340ff] w-full text-center">Log in</Link>
         </div>
       </div>
     </>
