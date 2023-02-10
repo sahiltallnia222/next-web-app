@@ -44,11 +44,8 @@
 
   /* ----------------------------- css-generrator/index */
   .boxShadow{
-    box-shadow: -4px 3px 39px 10px rgba(31, 30, 98, 0.2) ;
+    box-shadow: 10px 10px 145px -21px rgba(31, 30, 98, 0.34); 
     transition: all;
     transition-duration: 500;
-  }
-  .boxShadow:hover{
-    box-shadow: -4px 3px 39px 10px rgba(31, 30, 98, 0.3) ;
   }
   /* ----------------end ------------ */

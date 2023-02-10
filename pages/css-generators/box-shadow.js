@@ -104,12 +104,12 @@ export default function Boxshadow() {
       </Head>
       <div>
         {/* center div ------------------------------------------------------------------- */}
-        <div className="lg:w-[64rem] mx-auto w-full shadow bg-[#0f172a] ">
+        <div className="lg:w-[64rem] mx-auto w-full">
           <h1 className="text-3xl md:text-5xl text-blue-500 text-center font-semibold pb-5  pt-3">
             Box Shadow Generators
           </h1>
 
-          <div className="w-full grid grid-cols-1 items-center md:grid-cols-2 p-4 text-white">
+          <div className="w-full grid grid-cols-1 items-center md:grid-cols-2 p-4 dark:text-white">
             {/* Left side of shadow generator. */}
             <div
               className=" flex justify-center items-center h-[40vh] md:h-full"
@@ -343,7 +343,7 @@ export default function Boxshadow() {
 
           {/* End of 2 boxes of box shadow generator */}
           {/* Multiple shadow box */}
-          <div className="p-4 text-white">
+          <div className="p-4 dark:text-white">
             <h2 className="font-semibold text-2xl py-3">
               Add multiple box shadows
             </h2>
@@ -385,7 +385,7 @@ export default function Boxshadow() {
 
           {/* End of multiple shadow section */}
           {/* Code section */}
-          <div className="w-full p-4 text-white">
+          <div className="w-full p-4 dark:text-white">
             <p className="font-semibold text-2xl py-2">Generated code</p>
             <SyntaxHighlighter language="css" style={docco}>
               {`box-shadow:${shadow.boxShadow}; \nbackground-color:${shadow.boxColor};  /* background color of inner box */ \nbackground-color:${shadow.bgColor};  /* background color of outer box (Paste this code in style of outer box.) */`}
@@ -393,7 +393,7 @@ export default function Boxshadow() {
 
             <CopyToClipboard
               text={`box-shadow:${shadow.boxShadow}; \nbackground-color:${shadow.boxColor};  /* background color of inner box */ \nbackground-color:${shadow.bgColor};  /* background color of outer box (Paste this code in style of outer box.) */`}
-              className=" px-4 py-2 ml-2 text-white font-semibold mt-4 hover:bg-white hover:text-blue-500 transition-all duration-500 border-blue-500 bg-blue-500 "
+              className=" px-4 py-2 ml-2 text-white font-semibold mt-4 dark:hover:bg-white dark:hover:text-blue-500 transition-all duration-500 border-blue-500 bg-blue-500 "
             >
               <button onClick={codeCopyNotification}>Copy Code</button>
             </CopyToClipboard>
@@ -402,7 +402,7 @@ export default function Boxshadow() {
 
           {/* Box shadow examples */}
           <div className="p-4 pb-7">
-            <h2 className="text-2xl font-semibold pb-3 text-white ">
+            <h2 className="text-2xl font-semibold pb-3 dark:text-white ">
               Box Shadow Examples
             </h2>
             <div className="grid lg:grid-cols-4 gap-10 p-4 md:grid-cols-2 grid-cols-1 bg-white">
@@ -570,7 +570,7 @@ export default function Boxshadow() {
               >
                 <CopyToClipboard
                   text={`box-shadow:10px 10px 23px -13px rgba(0, 0, 0, 1) , -8px -8px 15px -8px rgba(255, 255, 255, 1);\n background-color:#4c4ad9;`}
-                  className="border p-2 text-sm text-white font-semibold"
+                  className="border p-2 text-sm dark:text-white font-semibold"
                 >
                   <button onClick={codeCopyNotification}>COPY CODE</button>
                 </CopyToClipboard>
@@ -581,14 +581,14 @@ export default function Boxshadow() {
           {/* Box shadow examples section ends here */}
 
           {/* Explanation of box shadow starts from here */}
-          <div className="p-4 text-white">
+          <div className="p-4 dark:text-white">
             <h2 className="text-3xl font-semibold pb-5 pt-3">
               Box Shadow Explanation
             </h2>
             <p className="text-lg  space-x-2 tracking-wide leading-loose">
               Box Shadow is a CSS property to create shadow effect to any
               element of webpage. We can provide multiple shadow effects (to the
-              same element of webpage) with the help of Box Shadow in CSS.
+              same element of webpage) with the help of box shadow in CSS.
             </p>
             <p className="text-2xl font-semibold my-4">
               Syntax of box shadow property
@@ -634,7 +634,7 @@ export default function Boxshadow() {
             <p className="text-2xl font-semibold my-4">Vertical Offset</p>
             <p className="text-lg  space-x-2 tracking-wide leading-loose">
               Vertical offset put the shadow in up and down direction of the
-              element. Positive value to Vertical offset (v-offset) will shift
+              element. Positive value to vertical offset (v-offset) will shift
               the shadow to down side and negative value will shift the shadow
               to the up side of the element.
             </p>
@@ -690,7 +690,7 @@ export default function Boxshadow() {
             </p>
             <p className="text-lg  space-x-2 tracking-wide leading-loose">
               Spread radius is used to control the size of the shadow. Postive
-              value to spread radius will increase the size of shadow of element
+              value will increase the size of shadow of element
               and negative value will decrease the size of shadow.
             </p>
             <p className="text-xl font-semibold my-3">Example</p>
