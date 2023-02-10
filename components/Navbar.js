@@ -4,7 +4,9 @@ import { RiMenu3Line } from "react-icons/ri";
 import { RxCross2 } from "react-icons/rx";
 import { useRef } from "react";
 import Head from "next/head";
-export default function Navbar() {
+import {BsSun} from 'react-icons/bs'
+import {HiMoon,HiSun} from 'react-icons/hi'
+export default function Navbar({toggleDarkMode,darkMode}) {
   // -------------------------------------------------------
 
   const rightBoxRef = useRef();
@@ -27,7 +29,7 @@ export default function Navbar() {
       <Head>
         <title>Css Generators</title>
       </Head>
-      <div className="fixed top-0 left-0 px-4 text-white w-full h-20 bg-[#0f172a] flex items-center justify-between z-20" style={{boxShadow:'-1px 1px 32px -18px #1F1E62'}}>
+      <div className="fixed top-0 left-0 px-5 dark:text-white w-full h-20 dark:bg-[#0f172a] bg-white flex items-center justify-between z-20" style={{boxShadow:'-1px 1px 32px -18px #1F1E62'}}>
         <div className="flex items-center gap-16">
           <Logo />
           <div className="gap-4 font-semibold text-md hidden md:flex">
@@ -47,8 +49,8 @@ export default function Navbar() {
             CSS Generators
           </Link>
         </div> */}
-        {/* <div className="md:flex hidden gap-8 text-md font-semibold items-center">
-          <Link href="/" className="hover:text-blue-500">
+        <div className="md:flex hidden gap-8 text-md font-semibold items-center">
+          {/* <Link href="/" className="hover:text-blue-500">
             Log in
           </Link>
           <Link
@@ -56,9 +58,22 @@ export default function Navbar() {
             className="bg-blue-500 hover:bg-white border hover:text-blue-500 transition-all duration-500 border-blue-500  px-4 text-white py-3"
           >
             Sign up
-          </Link>
-        </div> */}
-        <div className="block md:hidden">
+          </Link> */}
+
+          {darkMode &&<div>
+              <HiSun size='1.4em' className="cursor-pointer" onClick={()=>{toggleDarkMode()}}/>
+          </div>}
+          {!darkMode &&<div>
+          <HiMoon size='1.4em' className="cursor-pointer" onClick={()=>{toggleDarkMode()}}/>
+          </div>}
+        </div>
+        <div className="flex gap-7 items-center  md:hidden">
+        {darkMode &&<div>
+              <HiSun size='1.4em' className="cursor-pointer" onClick={()=>{toggleDarkMode()}}/>
+          </div>}
+          {!darkMode &&<div>
+          <HiMoon size='1.4em' className="cursor-pointer" onClick={()=>{toggleDarkMode()}}/>
+          </div>}
           <RiMenu3Line
             size="1.7em"
             className="hover:cursor-pointer"
@@ -69,7 +84,7 @@ export default function Navbar() {
       <div
         onClick={toggleRightBox}
         ref={rightBoxRef}
-        className="md:hidden z-50 fixed text-md font-semibold top-0 right-0 w-full border flex flex-col h-screen bg-white translate-x-full transition-transform duration-300 px-6"
+        className="md:hidden bg-[#0f172a] z-50 fixed text-md font-semibold top-0 right-0 w-full text-white flex flex-col h-screen translate-x-full transition-transform duration-300 px-6"
       >
         <div className="flex items-center justify-between w-full h-16">
           <Logo />
