@@ -1,9 +1,9 @@
 export default function Footer() {
   return (
     <>
-      <div className="shadow-xl ">
-        <div className="bg-blue-500">
-          <p className="text-center p-4 text-sm text-white">Copyright © 2023 - All Right Reserved. Designed and Developed by SAHIL TALLNIA</p>
+      <div className="mt-5">
+        <div className="bg-[#0f172a]">
+          <p className="text-center p-4 text-sm text-white">Copyright © 2023 - All Right Reserved. Designed and Developed by  <span className="text-blue-500 font-medium">SAHIL TALLNIA</span></p>
         </div>
       </div>
     </>

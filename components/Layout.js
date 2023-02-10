@@ -4,9 +4,9 @@ import Footer from "./Footer";
 export default function Layout({children}) {
     return (
         <>
-            <div className="relative w-full">
+            <div className="relative w-full bg-[#131b2e]">
                 <Navbar/>
-                <div className="min-h-screen mt-16">{children}</div>
+                <div className="min-h-screen mt-20">{children}</div>
                 <Footer/>
             </div>
         </>

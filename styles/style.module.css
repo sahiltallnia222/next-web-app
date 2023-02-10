@@ -42,4 +42,13 @@
   }
 
 
-  
+  /* ----------------------------- css-generrator/index */
+  .boxShadow{
+    box-shadow: -4px 3px 39px 10px rgba(31, 30, 98, 0.2) ;
+    transition: all;
+    transition-duration: 500;
+  }
+  .boxShadow:hover{
+    box-shadow: -4px 3px 39px 10px rgba(31, 30, 98, 0.3) ;
+  }
+  /* ----------------end ------------ */

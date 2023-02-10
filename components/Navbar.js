@@ -27,15 +27,15 @@ export default function Navbar() {
       <Head>
         <title>Css Generators</title>
       </Head>
-      <div className="fixed top-0 left-0 px-4 shadow w-full h-16 bg-white flex items-center justify-between z-20">
+      <div className="fixed top-0 left-0 px-4 text-white w-full h-20 bg-[#0f172a] flex items-center justify-between z-20" style={{boxShadow:'-1px 1px 32px -18px #1F1E62'}}>
         <div className="flex items-center gap-16">
           <Logo />
           <div className="gap-4 font-semibold text-md hidden md:flex">
-          <Link href="/" className="hover:text-blue-500 p-1">
-            Home
+          <Link href="/" className="hover:text-blue-500 p-1  transition-all duration-200">
+            HOME
           </Link>
-          <Link href="/css-generators" className="hover:text-blue-500 p-1">
-            CSS Generators
+          <Link href="/css-generators" className="hover:text-blue-500 p-1 transition-all duration-200">
+            CSS GENERATORS
           </Link>
           </div>
         </div>
