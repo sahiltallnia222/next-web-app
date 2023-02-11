@@ -29,16 +29,15 @@ export default function Home() {
               </div>
             </Link>
           </div>
-          <div className="flex flex-col items-center justify-center w-1/2 mx-auto gap-5 mt-16">
-            <h2 className="dark:text-white text-center text-4xl font-medium">
+          <div className="flex flex-col items-center justify-center md:w-1/2 mx-auto gap-5 md:mt-16 mt-4 px-2">
+            <h2 className="dark:text-white text-center text-2xl md:text-4xl font-medium">
               BOX SHADOW GENERATOR
             </h2>
-            <p className="text-lg mx-auto text-center dark:text-white font-medium tracking-wide [word-spacing:0.1rem]">
+            <p className="md:text-lg text-md mx-auto text-center dark:text-white font-medium tracking-normal [word-spacing:0.1rem]">
               A simple tool to generate box shadow for any element of website,
               value of box shadow parameter can be adjusted using slider, live
-              preview of changes, multiple shadow functionality, complete
-              details about all parameters of box shadow, easy to use and
-              instant copy of ready-made css code.{" "}
+              preview, multiple shadow functionality, easy to use and
+              instant copy of ready-made css code.
             </p>
             <Link href="/css-generators/box-shadow" className="bg-blue-500 px-8 py-2 rounded-full hover:bg-white hover:text-black transition-all duration-500 font-medium text-white font-md tracking-wide [word-spacing:0.1rem]">
               visit it

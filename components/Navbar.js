@@ -4,7 +4,6 @@ import { RiMenu3Line } from "react-icons/ri";
 import { RxCross2 } from "react-icons/rx";
 import { useRef } from "react";
 import Head from "next/head";
-import {BsSun} from 'react-icons/bs'
 import {HiMoon,HiSun} from 'react-icons/hi'
 export default function Navbar({toggleDarkMode,darkMode}) {
   // -------------------------------------------------------
@@ -32,7 +31,7 @@ export default function Navbar({toggleDarkMode,darkMode}) {
       <div className="fixed top-0 left-0 px-5 dark:text-white w-full h-20 dark:bg-[#0f172a] bg-white flex items-center justify-between z-20" style={{boxShadow:'-1px 1px 32px -18px #1F1E62'}}>
         <div className="flex items-center gap-16">
           <Logo />
-          <div className="gap-4 font-semibold text-md hidden md:flex">
+          <div className="gap-4 font-medium text-md hidden md:flex">
           <Link href="/" className="hover:text-blue-500 p-1  transition-all duration-200">
             HOME
           </Link>
