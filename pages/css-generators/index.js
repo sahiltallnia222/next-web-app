@@ -17,15 +17,36 @@ export default function CSSGENS() {
           <div className="p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
             <Link href='/css-generators/box-shadow' className={styles.boxShadow}>
               <div className="dark:text-white hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#0f172a] py-10 shadow-md">
-                <p className="text-2xl font-semibold text-center">
+                <p className="text-xl font-medium text-center">
                   Box Shadow Generator
                 </p>
               </div>
             </Link>
             <Link href='/css-generators/text-shadow' className={styles.boxShadow}>
               <div className="dark:text-white hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#0f172a] py-10 shadow-md">
-                <p className="text-2xl font-semibold text-center">
+                <p className="text-xl font-medium text-center">
                   Text Shadow Generator
+                </p>
+              </div>
+            </Link>
+            <Link href='/css-generators/gradient-generator' className={styles.boxShadow}>
+              <div className="dark:text-white hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#0f172a] py-10 shadow-md">
+                <p className="text-xl font-medium text-center">
+                  Gradient Generator
+                </p>
+              </div>
+            </Link>
+            <Link href='/css-generators/text-gradient' className={styles.boxShadow}>
+              <div className="dark:text-white hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#0f172a] py-10 shadow-md">
+                <p className="text-xl font-medium text-center">
+                Text Gradient Generator
+                </p>
+              </div>
+            </Link>
+            <Link href='/css-generators/border-radius-generator' className={styles.boxShadow}>
+              <div className="dark:text-white hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#0f172a] py-10 shadow-md">
+                <p className="text-xl font-medium text-center">
+                Border Radius Generator
                 </p>
               </div>
             </Link>

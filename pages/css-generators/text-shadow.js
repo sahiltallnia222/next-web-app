@@ -14,6 +14,7 @@ export default function Textshadow() {
     textShadow: "7px 10px 8px #1F1E62",
     textColor: "#000000",
     bgColor: "#fafafa",
+    textSize:3
   });
 //   shadows contains only shadows of box
   const [shadows, setShadows] = useState([
@@ -76,6 +77,7 @@ export default function Textshadow() {
       textShadow: textShadow.substring(0, textShadow.length - 2),
       textColor: shadow.textColor,
       bgColor: shadow.bgColor,
+      textSize:shadow.textSize
     });
   }, [shadows]);
   const removeShadow = (index) => {
@@ -109,7 +111,7 @@ export default function Textshadow() {
               className=" flex justify-center items-center h-[40vh] md:h-full"
               style={{ backgroundColor: shadow.bgColor,textShadow:shadow.textShadow,color:shadow.textColor }}
             >
-            <p className="text-6xl text-center font-semibold">Text Shadow</p>
+            <p className="text-6xl text-center font-semibold" style={{fontSize:shadow.textSize+'rem'}}>Text Shadow</p>
             </div>
 
             {/* End of left side of shadow generator and start of right side. */}
@@ -203,6 +205,29 @@ export default function Textshadow() {
                   />
                 </div>
               </div>
+
+              <div className="px-4 py-2">
+                <div className="flex items-center justify-between text-sm p-2">
+                  <div>Text size</div>
+                  <div>{shadow.textSize} rem</div>
+                </div>
+                <div>
+                  <input
+                    type="range"
+                    min="1"
+                    max="5"
+                    step='0.1'
+                    value={shadow.textSize}
+                    onChange={(e)=>{
+                        let value={...shadow}
+                        value.textSize=e.target.value
+                        setShadow(value)
+                    }}
+                    className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                  />
+                </div>
+              </div>
+
 
               <div className="px-4 py-2 flex flex-col gap-4">
                 <div className="flex flex-row items-center justify-between">
@@ -332,11 +357,11 @@ export default function Textshadow() {
           <div className="w-full p-4 dark:text-white">
             <p className="font-semibold text-2xl py-2">Generated code</p>
             <SyntaxHighlighter language="css" style={docco}>
-              {`text-shadow:${shadow.textShadow}; \ncolor:${shadow.textColor};\nbackground-color:${shadow.bgColor};`}
+              {`text-shadow:${shadow.textShadow}; \ncolor:${shadow.textColor};\nbackground-color:${shadow.bgColor};\nfont-size:${shadow.textSize}rem`}
             </SyntaxHighlighter>
 
             <CopyToClipboard
-              text={`text-shadow:${shadow.textShadow};\ncolor:${shadow.textColor};\nbackground-color:${shadow.bgColor};`}
+              text={`text-shadow:${shadow.textShadow};\ncolor:${shadow.textColor};\nbackground-color:${shadow.bgColor}\nfont-size:${shadow.textSize}rem;`}
               className=" px-4 py-2 ml-2 text-white font-semibold mt-4 dark:hover:bg-white dark:hover:text-blue-500 transition-all duration-500 border-blue-500 bg-blue-500 "
             >
               <button onClick={codeCopyNotification}>Copy Code</button>
