@@ -32,13 +32,13 @@ export default function TextGradientGenerator() {
   const [gradient, setGradient] = useState({
     gradientType: 0,
     direction: 0,
-    boxWidth: 100,
+    textSize: 50,
     shape: 0,
     size: 0,
     positionX: 50,
     positionY: 50,
   });
-
+ 
   const [stopColorsString, setStopColorsString] = useState("");
 
   const [startColor, setStartColor] = useState({
@@ -124,10 +124,41 @@ export default function TextGradientGenerator() {
     values.gradientType = e.target.value;
     setGradient(values);
   };
+  let backgroundGradient=`${
+    gradients[gradient.gradientType]
+  }(${
+    gradient.gradientType == 0 || gradient.gradientType == 3
+      ? gradient.direction + "deg,"
+      : ""
+  }${
+    gradient.gradientType == 1 || gradient.gradientType == 4
+      ? shapes[gradient.shape] + " "
+      : ""
+  }${
+    (gradient.gradientType == 1 || gradient.gradientType == 4) &&
+    sizes[gradient.size] != ""
+      ? sizes[gradient.size] + " "
+      : ""
+  }${
+    gradient.gradientType == 1 ||
+    gradient.gradientType == 4 ||
+    gradient.gradientType == 2 ||
+    gradient.gradientType == 5
+      ? `at ${gradient.positionX}% ${gradient.positionY}% , `
+      : ""
+  } ${startColor.color} ${
+    gradient.gradientType == 2 || gradient.gradientType == 5
+      ? startColor.degree + "deg"
+      : startColor.percentage + "%"
+  }, ${stopColorsString} ${endColor.color} ${
+    gradient.gradientType == 2 || gradient.gradientType == 5
+      ? endColor.degree + "deg"
+      : endColor.percentage + "%"
+  })`
   return (
     <div>
       <div className="lg:w-[64rem] mx-auto w-full">
-        <h1 className="text-3xl md:text-5xl text-blue-500 text-center font-semibold pb-5  pt-3">
+        <h1 className="text-5xl md:text-5xl text-blue-500 text-center font-semibold md:pb-5 pb-3 pt-3">
           Text Gradient Generators
         </h1>
         {/* start */}
@@ -135,71 +166,34 @@ export default function TextGradientGenerator() {
           {/* left box */}
           <div className=" h-[70vh] md:h-[32rem] md:col-span-4 flex justify-start flex-col items-center">
             <h1
-              className={` ${styles.textGrdientClass}`}
-              // className="h-[50%] w-full"
+             // key for text gradient (without it will not work https://stackoverflow.com/questions/53676000/css-background-clip-property-not-being-applied-in-react-when-background-is-dinam)
+             className="h-[46%] flex items-center justify-center font-medium  text-center"
+            key={backgroundGradient}
               style={{
-                fontSize: '72px',
-                background:`${
-                  gradients[gradient.gradientType]
-                }(${
-                  gradient.gradientType == 0 || gradient.gradientType == 3
-                    ? gradient.direction + "deg,"
-                    : ""
-                }${
-                  gradient.gradientType == 1 || gradient.gradientType == 4
-                    ? shapes[gradient.shape] + " "
-                    : ""
-                }${
-                  (gradient.gradientType == 1 || gradient.gradientType == 4) &&
-                  sizes[gradient.size] != ""
-                    ? sizes[gradient.size] + " "
-                    : ""
-                }${
-                  gradient.gradientType == 1 ||
-                  gradient.gradientType == 4 ||
-                  gradient.gradientType == 2 ||
-                  gradient.gradientType == 5
-                    ? `at ${gradient.positionX}% ${gradient.positionY}% , `
-                    : ""
-                } ${startColor.color} ${
-                  gradient.gradientType == 2 || gradient.gradientType == 5
-                    ? startColor.degree + "deg"
-                    : startColor.percentage + "%"
-                }, ${stopColorsString} ${endColor.color} ${
-                  gradient.gradientType == 2 || gradient.gradientType == 5
-                    ? endColor.degree + "deg"
-                    : endColor.percentage + "%"
-                })`,
-                width: `${gradient.boxWidth}%`,
-                '-webkit-text-fill-color': 'transparent',
+                background:backgroundGradient,
+                fontSize: `${gradient.textSize}px`,
+                'color': 'transparent',
                 backgroundClip:'text',
-                '-webkit-background-clip':'text',
+                WebkitBackgroundClip:'text'
               }}
-              // style={{
-              //   background: '#121FCF',
-              //   height: '50% !',
-              //   background: 'linear-gradient(98deg, #833ab4 0%,  #fcb045 100%)',
-              //   '-webkit-background-clip':' text',
-              //   '-webkit-text-fill-color': 'transparent',
-              // }}
             >Text Gradient</h1>
 
             <div className="w-full  flex justify-between items-center mt-3 gap-4">
               <div className="w-full">
                 <div>
                   <div className="flex text-sm justify-between items-center font-medium">
-                    <div>Box width</div>
-                    <div>{gradient.boxWidth} %</div>
+                    <div>Font size</div>
+                    <div>{gradient.textSize} px</div>
                   </div>
                   <input
                     type="range"
-                    min="0"
-                    max="100"
-                    value={gradient.boxWidth}
+                    min="20"
+                    max="80"
+                    value={gradient.textSize}
                     className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
                     onChange={(e) => {
                       let values = { ...gradient };
-                      values.boxWidth = e.target.value;
+                      values.textSize = e.target.value;
                       setGradient(values);
                     }}
                   />
@@ -219,37 +213,11 @@ export default function TextGradientGenerator() {
               <div className="flex items-center justify-between mb-2">
                 <p className="text-lg font-medium">Generated code</p>
                 <CopyToClipboard
-                  text={`background: ${
-                    gradients[gradient.gradientType]
-                  }(${
-                    gradient.gradientType == 0 || gradient.gradientType == 3
-                      ? gradient.direction + "deg,"
-                      : ""
-                  }${
-                    gradient.gradientType == 1 || gradient.gradientType == 4
-                      ? shapes[gradient.shape] + " "
-                      : ""
-                  }${
-                    (gradient.gradientType == 1 || gradient.gradientType == 4) &&
-                    sizes[gradient.size] != ""
-                      ? sizes[gradient.size] + " "
-                      : ""
-                  }${
-                    gradient.gradientType == 1 ||
-                    gradient.gradientType == 4 ||
-                    gradient.gradientType == 2 ||
-                    gradient.gradientType == 5
-                      ? `at ${gradient.positionX}% ${gradient.positionY}% , `
-                      : ""
-                  } ${startColor.color} ${
-                    gradient.gradientType == 2 || gradient.gradientType == 5
-                      ? startColor.degree + "deg"
-                      : startColor.percentage + "%"
-                  }, ${stopColorsString} ${endColor.color} ${
-                    gradient.gradientType == 2 || gradient.gradientType == 5
-                      ? endColor.degree + "deg"
-                      : endColor.percentage + "%"
-                  });`}
+                  text={`background: ${backgroundGradient};
+                  font-size: ${gradient.textSize}px;
+                  color: transparent;
+                  background-clip:text;
+                  -webkit-background-clip:text;`}
                   className=" px-3 py-2 text-white font-semibold dark:hover:bg-white dark:hover:text-blue-500 transition-all duration-500 border-blue-500 bg-blue-500 "
                 >
                   <button onClick={codeCopyNotification}>Copy Code</button>
@@ -286,7 +254,7 @@ export default function TextGradientGenerator() {
                   gradient.gradientType == 2 || gradient.gradientType == 5
                     ? endColor.degree + "deg"
                     : endColor.percentage + "%"
-                });\n`}
+                });\nfont-size: ${gradient.textSize}px;\ncolor: transparent;\nbackground-clip:text;\n-webkit-background-clip:text`}
               </SyntaxHighlighter>
             </div>
           </div>

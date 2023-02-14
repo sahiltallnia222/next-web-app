@@ -66,13 +66,3 @@
 }
 
 /* scrollbar hidden ends here */
-
-.textGrdientClass {
-  background: #121FCF;
-  height: 50%;
-  background: repeating-linear-gradient(to right, #121FCF 0%, #CF1512 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-}

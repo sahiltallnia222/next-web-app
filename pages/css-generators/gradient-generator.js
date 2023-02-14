@@ -104,10 +104,10 @@ export default function GradientGenerator() {
     let stCString = "";
     stopColors.forEach((color) => {
       if((gradient.gradientType==2 || gradient.gradientType==5)){
-        stCString += `${color.color} ${color.degree}deg ,`;
+        stCString +=`${color.color} ${color.degree}deg,`;
       }
       else{
-        stCString += `${color.color} ${color.percentage}% ,`;
+        stCString +=`${color.color} ${color.percentage}%,`;
       }
     });
     setStopColorsString(stCString);
@@ -227,7 +227,7 @@ export default function GradientGenerator() {
                     gradient.gradientType == 4 ||
                     gradient.gradientType == 2 ||
                     gradient.gradientType == 5
-                      ? `at ${gradient.positionX}% ${gradient.positionY}% , `
+                      ? `at ${gradient.positionX}% ${gradient.positionY}% ,`
                       : ""
                   } ${startColor.color} ${
                     gradient.gradientType == 2 || gradient.gradientType == 5
@@ -264,7 +264,7 @@ export default function GradientGenerator() {
                   gradient.gradientType == 4 ||
                   gradient.gradientType == 2 ||
                   gradient.gradientType == 5
-                    ? `at ${gradient.positionX}% ${gradient.positionY}% , `
+                    ? `at ${gradient.positionX}% ${gradient.positionY}% ,`
                     : ""
                 } ${startColor.color} ${
                   gradient.gradientType == 2 || gradient.gradientType == 5
