@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 export default function App({ Component, pageProps }) {
   return (
     <>
+    {/* contrast css generators color shades */}
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

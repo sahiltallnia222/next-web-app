@@ -694,6 +694,7 @@ export default function GradientGenerator() {
                         onChange={(e) => {
                           let values = { ...endColor };
                           values.color = e.target.value;
+                          values.colorHexCode=e.target.value
                           setEndColor(values);
                         }}
                       />
