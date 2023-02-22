@@ -27,7 +27,7 @@ export default function Layout({ children }) {
   return (
     <>
       <div className={darkMode?"dark":""}>
-        <div className="relative w-full dark:bg-[#131b2ef4]">
+        <div className="relative w-full dark:bg-[#0f172a]">
           <Navbar toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
           <div className="min-h-screen mt-20">{children}</div>
           <Footer />

@@ -1,7 +1,13 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "styles/style.module.css";
-import { HiArrowLongRight } from "react-icons/hi2";
+import { TbBoxMultiple } from "react-icons/tb";
+import { GoTextSize } from "react-icons/go";
+import { MdGradient, MdFormatColorText, MdTransform } from "react-icons/md";
+import { AiOutlineRadiusSetting } from "react-icons/ai";
+import { BsSquareFill, BsCursorFill } from "react-icons/bs";
+import { CgScrollV } from "react-icons/cg";
+import { FiZap } from "react-icons/fi";
 export default function Home() {
   return (
     <>
@@ -10,39 +16,99 @@ export default function Home() {
       </Head>
       <main>
         <div>
-          <div className="dark:bg-[#0f172a] bg-blue-500 text-white h-[40vh] xl:h-[50vh] flex flex-col gap-4 md:gap-16  justify-center">
-            <h1 className="text-3xl md:text-5xl tracking-normal text-center font-semibold">
-              Make your website more{" "}
-              <span className="dark:text-blue-500">attractive</span>
+          <div className=" text-white py-8 md:py-16 justify-center flex items-center px-4">
+            <h1 className="text-4xl xl:w-1/3 md:w-2/3 md:text-5xl tracking-normal text-center font-semibold">
+              <span className={styles.textGrad}>
+                Make your website more attractive
+              </span>
             </h1>
-            <Link href="/css-generators" className="w-64 mx-auto">
-              <div className="dark:hover:bg-blue-500 hover:text-black rounded-full bg-white text-black transition-colors duration-300 p-3 2xl:px-8 gap-4 sm:gap-0 flex items-center dark:hover:text-white justify-center group">
-                <p className="  md:w-[80%] text-lg lg:text-2xl font-medium ">
-                  Get started
-                </p>
-                <div className="w-[15%]">
-                  <HiArrowLongRight
-                    size="1.7em"
-                    className="float-right group-hover:translate-x-3 transition-transform duration-300 font-semibold"
-                  />
+          </div>
+          {/* css gnerator --- */}
+          <div>
+            <div className="lg:w-[64rem] min-h-screen mx-auto w-full ">
+              <div className="flex items-center text-xl md:text-2xl px-4 pt-4 gap-4 dark:text-white">
+                <div>
+                  <FiZap />
                 </div>
+                <h1 className="font-semibold ">CSS GENERATOR</h1>
               </div>
-            </Link>
+              <div className="p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <Link href="/css-generators/box-shadow">
+                  <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent">
+                    <TbBoxMultiple size={"2.3em"} />
+                    <p className="text-xl font-medium text-center">
+                      Box Generator
+                    </p>
+                  </div>
+                </Link>
+                <Link href="/css-generators/text-shadow">
+                  <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                    <GoTextSize size={"2.3rem"} />
+                    <p className="text-xl font-medium text-center">
+                      Text Generator
+                    </p>
+                  </div>
+                </Link>
+                <Link href="/css-generators/gradient-generator">
+                  <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                    <MdGradient size={"2.3rem"} />
+                    <p className="text-xl font-medium text-center">
+                      Gradient Generator
+                    </p>
+                  </div>
+                </Link>
+                <Link href="/css-generators/text-gradient">
+                  <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                    <MdFormatColorText size={"2.3rem"} />
+                    <p className="text-xl font-medium text-center">
+                      Text Gradient Generator
+                    </p>
+                  </div>
+                </Link>
+                <Link href="/css-generators/border-radius-generator">
+                  <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                    <AiOutlineRadiusSetting size={"2.3rem"} />
+                    <p className="text-xl font-medium text-center">
+                      Border Radius Generator
+                    </p>
+                  </div>
+                </Link>
+                <Link href="/css-generators/background-generator">
+                  <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                    <BsSquareFill size={"2.3rem"} />
+                    <p className="text-xl font-medium text-center">
+                      Background Generator
+                    </p>
+                  </div>
+                </Link>
+                <Link href="/css-generators/background-generator">
+                  <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                    <MdTransform size={"2.3rem"} />
+                    <p className="text-xl font-medium text-center">
+                      Transform CSS Generator
+                    </p>
+                  </div>
+                </Link>
+                <Link href="/css-generators/background-generator">
+                  <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                    <BsCursorFill size={"2.3rem"} />
+                    <p className="text-xl font-medium text-center">
+                      Cursor CSS Generator
+                    </p>
+                  </div>
+                </Link>
+                <Link href="/css-generators/background-generator">
+                  <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                    <CgScrollV size={"2.3rem"} />
+                    <p className="text-xl font-medium text-center">
+                      Scrollbar CSS Generator
+                    </p>
+                  </div>
+                </Link>
+              </div>
+            </div>
           </div>
-          <div className="flex flex-col items-center justify-center md:w-1/2 mx-auto gap-5 md:mt-16 mt-4 px-2">
-            <h2 className="dark:text-white text-center text-2xl md:text-4xl font-medium">
-              BOX SHADOW GENERATOR
-            </h2>
-            <p className="md:text-lg text-md mx-auto text-center dark:text-white font-medium tracking-normal [word-spacing:0.1rem]">
-              A simple tool to generate box shadow for any element of website,
-              value of box shadow parameter can be adjusted using slider, live
-              preview, multiple shadow functionality, easy to use and
-              instant copy of ready-made css code.
-            </p>
-            <Link href="/css-generators/box-shadow" className="bg-blue-500 px-8 py-2 rounded-full hover:bg-white hover:text-black transition-all duration-500 font-medium text-white font-md tracking-wide [word-spacing:0.1rem]">
-              visit it
-            </Link>
-          </div>
+          {/* end of css generator box */}
         </div>
       </main>
     </>

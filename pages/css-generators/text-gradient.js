@@ -254,7 +254,7 @@ export default function TextGradientGenerator() {
                   gradient.gradientType == 2 || gradient.gradientType == 5
                     ? endColor.degree + "deg"
                     : endColor.percentage + "%"
-                });\nfont-size: ${gradient.textSize}px;\ncolor: transparent;\nbackground-clip:text;\n-webkit-background-clip:text`}
+                });\nfont-size: ${gradient.textSize}px;\ncolor: transparent;\nbackground-clip:text;\n-webkit-background-clip:text;`}
               </SyntaxHighlighter>
             </div>
           </div>
