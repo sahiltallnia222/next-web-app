@@ -6,6 +6,9 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
+import {MdAddToPhotos} from 'react-icons/md'
+import { FaRegCopy } from "react-icons/fa";
+import Head from "next/head";
 
 export default function GradientGenerator() {
   const gradients = [
@@ -125,13 +128,17 @@ export default function GradientGenerator() {
     setGradient(values);
   };
   return (
-    <div>
+    <>
+      <Head>
+        <title>Background Gradient Generator</title>
+      </Head>
+      <div>
       <div className="lg:w-[64rem] mx-auto w-full">
-        <h1 className="text-3xl md:text-5xl text-blue-500 text-center font-semibold pb-5  pt-3">
-          Gradient Generators
+        <h1 className={`md:text-5xl text-4xl text-blue-500 text-center font-semibold pb-5  pt-3 ${styles.textGrad}`}>
+          Gradient Generator
         </h1>
         {/* start */}
-        <div className="w-full grid grid-cols-1 gap-3 items-start md:grid-cols-6 p-4 dark:text-white">
+        <div className="w-full grid grid-cols-1 gap-3 items-start md:grid-cols-6 p-4 dark:text-white dark:bg-[#1d2537]">
           {/* left box */}
           <div className=" h-[70vh] md:h-[32rem] md:col-span-4 flex justify-start flex-col items-center">
             <div
@@ -194,11 +201,12 @@ export default function GradientGenerator() {
                 </div>
               </div>
               <div>
-                <button
-                  className="w-[7rem] px-3 py-2 text-white font-semibold dark:hover:bg-white dark:hover:text-blue-500 transition-all duration-500 border-blue-500 bg-blue-500 "
+              <button
+                  className="w-[8rem] px-3 py-2 text-white flex rounded-lg items-center text-sm gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 bg-blue-500 "
                   onClick={addStopColor}
                 >
-                  Add Color
+                  <span>Add color</span>
+                  <span><MdAddToPhotos/></span>
                 </button>
               </div>
             </div>
@@ -238,9 +246,9 @@ export default function GradientGenerator() {
                       ? endColor.degree + "deg"
                       : endColor.percentage + "%"
                   });`}
-                  className=" px-3 py-2 text-white font-semibold dark:hover:bg-white dark:hover:text-blue-500 transition-all duration-500 border-blue-500 bg-blue-500 "
-                >
-                  <button onClick={codeCopyNotification}>Copy Code</button>
+                  className=" px-4 py-2 text-white flex items-center justify-between gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 bg-blue-500 rounded-lg text-sm"
+                  >
+                  <button onClick={codeCopyNotification}> <span>Copy</span><span><FaRegCopy/></span></button>
                 </CopyToClipboard>
               </div>
               <SyntaxHighlighter language="css" style={docco}>
@@ -282,7 +290,7 @@ export default function GradientGenerator() {
           <div
             className={`md:h-[32rem] md:col-span-2 md:overflow-scroll md:overflow-x-hidden ${styles.scrollbarClass}`}
           >
-            <div className=" border border-gray-200 cursor-pointer text-sm block w-full p-4 dark:border-none dark:bg-[#0f172a] dark:placeholder-gray-400 dark:text-white outline-none">
+            <div className=" border border-gray-200 cursor-pointer text-sm block w-full dark:border-none p-4 dark:bg-[#0f172a] dark:placeholder-gray-400 dark:text-white outline-none">
               <label
                 htmlFor="gradient-type"
                 className="block mb-3 text-sm font-medium text-gray-900 dark:text-white"
@@ -293,7 +301,7 @@ export default function GradientGenerator() {
                 id="gradient-type"
                 defaultValue="linear-gradient"
                 onChange={toggleSize}
-                className="p-2.5 w-full dark:text-white outline-none text-sm block dark:bg-[#1d2537] cursor-pointer dark:border-none border-gray-200 border"
+                className="p-2.5 w-full dark:text-white outline-none text-sm block  dark:bg-[#1d2537] cursor-pointer dark:border-none border-gray-200 border"
               >
                 <option value="0">Linear Gradient</option>
                 <option value="1">Radial Gradient</option>
@@ -772,5 +780,6 @@ export default function GradientGenerator() {
         {/* end-------- */}
       </div>
     </div>
+    </>
   );
 }

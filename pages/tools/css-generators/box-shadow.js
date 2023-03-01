@@ -7,6 +7,7 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
 import { TbBoxMultiple } from "react-icons/tb";
+import { FaRegCopy } from "react-icons/fa";
 import { TiDelete } from "react-icons/ti";
 export default function Boxshadow() {
   const [shadowNo, setShadowNo] = useState(0);
@@ -105,11 +106,11 @@ export default function Boxshadow() {
       <div>
         {/* center div ------------------------------------------------------------------- */}
         <div className="lg:w-[64rem] mx-auto w-full">
-          <h1 className="text-3xl md:text-5xl text-blue-500 text-center font-semibold pb-5  pt-3">
-            Box Shadow Generators
+          <h1 className={`md:text-5xl text-4xl text-blue-500 text-center font-semibold pb-5  pt-3 ${styles.textGrad}`}>
+            Box Shadow Generator
           </h1>
 
-          <div className="w-full grid grid-cols-1 items-center md:grid-cols-2 p-4 dark:text-white dark:bg-[#0f172a]">
+          <div className="w-full grid grid-cols-1 items-center md:grid-cols-2 p-4 dark:text-white dark:bg-[#1d2537]">
             {/* Left side of shadow generator. */}
             <div
               className=" flex justify-center items-center h-[40vh] md:h-full"
@@ -343,8 +344,8 @@ export default function Boxshadow() {
 
           {/* End of 2 boxes of box shadow generator */}
           {/* Multiple shadow box */}
-          <div className="p-4 dark:text-white">
-            <h2 className="font-semibold text-2xl py-3">
+          <div className="p-4 dark:text-white dark:bg-[#1d2537]">
+            <h2 className="font-medium text-lg py-3">
               Add multiple box shadows
             </h2>
             <div className="flex flex-wrap items-start gap-4">
@@ -385,18 +386,19 @@ export default function Boxshadow() {
 
           {/* End of multiple shadow section */}
           {/* Code section */}
-          <div className="w-full p-4 dark:text-white">
-            <p className="font-semibold text-2xl py-2">Generated code</p>
+          <div className="w-full p-4 dark:text-white dark:bg-[#1d2537] mt-4">
+          <div className="flex items-center justify-between mb-3">
+            <p className="font-medium text-lg py-2">Generated CSS code</p>
+            <CopyToClipboard
+              text={`box-shadow:${shadow.boxShadow}; \nbackground-color:${shadow.boxColor};  /* background color of inner box */ \nbackground-color:${shadow.bgColor};  /* background color of outer box (Paste this code in style of outer box.) */`}
+              className=" px-4 py-2 text-white flex items-center justify-between gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 bg-blue-500 rounded-lg text-sm"
+              >
+               <button onClick={codeCopyNotification}> <span>Copy</span><span><FaRegCopy/></span></button>
+            </CopyToClipboard>
+            </div>
             <SyntaxHighlighter language="css" style={docco}>
               {`box-shadow:${shadow.boxShadow}; \nbackground-color:${shadow.boxColor};  /* background color of inner box */ \nbackground-color:${shadow.bgColor};  /* background color of outer box (Paste this code in style of outer box.) */`}
             </SyntaxHighlighter>
-
-            <CopyToClipboard
-              text={`box-shadow:${shadow.boxShadow}; \nbackground-color:${shadow.boxColor};  /* background color of inner box */ \nbackground-color:${shadow.bgColor};  /* background color of outer box (Paste this code in style of outer box.) */`}
-              className=" px-4 py-2 ml-2 text-white font-semibold mt-4 dark:hover:bg-white dark:hover:text-blue-500 transition-all duration-500 border-blue-500 bg-blue-500 "
-            >
-              <button onClick={codeCopyNotification}>Copy Code</button>
-            </CopyToClipboard>
           </div>
           {/* End of code section */}
 

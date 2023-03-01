@@ -3,8 +3,10 @@ import { useRef, useEffect, useState } from "react";
 import Draggable from "react-draggable";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { toast } from "react-toastify";
+import styles from "styles/style.module.css";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import { FaRegCopy } from "react-icons/fa";
 import { VscDebugBreakpointLogUnverified } from "react-icons/vsc";
 
 export default function BorderRadiusGenerator() {
@@ -23,12 +25,6 @@ export default function BorderRadiusGenerator() {
   const [borderWidth, setBorderWidth] = useState(4);
   const [borderColor, setBorderColor] = useState("#f98234");
   const [bgColor, setbgColor] = useState("#f98234");
-  const [borderSide, setBorderSide] = useState({
-    top: true,
-    bottom: true,
-    left: true,
-    right: true,
-  });
   const [bounds, setBounds] = useState({
     left: 0,
     top: 0,
@@ -94,16 +90,16 @@ export default function BorderRadiusGenerator() {
   return (
     <>
       <Head>
-        <title>Border radius</title>
+        <title>Border Radius Generator</title>
       </Head>
       {borderBoxParentRef && (
         <div>
           <div className="lg:w-[64rem] mx-auto w-full ">
-            <h1 className="text-3xl md:text-5xl text-blue-500 text-center font-semibold pb-5  pt-3">
-              Box Shadow Generators
+            <h1 className={`md:text-5xl text-4xl text-blue-500 text-center font-semibold pb-5  pt-3 ${styles.textGrad}`}>
+              Border Radius Generator
             </h1>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 p-6 dark:bg-[#0f172a]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 p-6 dark:bg-[#1d2537]">
               {/* left box */}
               <div className=" w-full dark:text-white">
                 <div
@@ -285,12 +281,12 @@ export default function BorderRadiusGenerator() {
                 </div>
               </div>
               {/* right side */}
-              <div className="">
+              <div className="text-sm font-medium">
                 {/* border style */}
-                <div className="  border-gray-200 cursor-pointer block w-full dark:border-none dark:bg-[#0f172a] dark:placeholder-gray-400 dark:text-white outline-none">
+                <div className="  border-gray-200 cursor-pointer block w-full dark:border-none  dark:placeholder-gray-400 dark:text-white outline-none">
                   <label
                     htmlFor="border-style"
-                    className="block font-semibold mb-3 text-gray-900 dark:text-white"
+                    className="block mb-3 text-gray-900 dark:text-white"
                   >
                     Border style
                   </label>
@@ -300,7 +296,7 @@ export default function BorderRadiusGenerator() {
                     onChange={(e) => {
                       setBorderStyle(e.target.value);
                     }}
-                    className="p-2.5 w-full dark:text-white outline-none text-sm block dark:bg-[#1d2537] cursor-pointer dark:border-none border-gray-200 border"
+                    className="p-2.5 w-full dark:text-white outline-none text-sm block dark:bg-[#0f172a] cursor-pointer dark:border-none border-gray-200 border"
                   >
                     <option value="dotted">Dotted</option>
                     <option value="dashed">Dashed</option>
@@ -315,7 +311,7 @@ export default function BorderRadiusGenerator() {
                   </select>
                 </div>
                 <div className="">
-                  <div className="flex font-semibold pt-4 items-center justify-between dark:text-white">
+                  <div className="flex pt-4 items-center justify-between dark:text-white">
                     <div>Border Width</div>
                     <div>{borderWidth} px</div>
                   </div>
@@ -334,7 +330,7 @@ export default function BorderRadiusGenerator() {
                 </div>
 
                 <div className="flex flex-col gap-4">
-                  <div className="flex font-semibold justify-between items-center w-full md:w-1/2 mt-3 dark:text-white">
+                  <div className="flex justify-between items-center w-full md:w-1/2 mt-3 dark:text-white">
                     <span>Border Color </span>
                     <span>
                       <label
@@ -353,7 +349,7 @@ export default function BorderRadiusGenerator() {
                       />
                     </span>
                   </div>
-                  <div className="flex font-semibold justify-between items-center w-full md:w-1/2 dark:text-white">
+                  <div className="flex justify-between items-center w-full md:w-1/2 dark:text-white">
                     <span>Background Color</span>
                     <span>
                       <label
@@ -374,21 +370,22 @@ export default function BorderRadiusGenerator() {
                   </div>
                 </div>
                 <div className="w-full pt-6 dark:text-white">
-            <p className="font-semibold text-xl pb-1">Generated code</p>
-            <SyntaxHighlighter language="css" style={docco}>
-              {`border-radius:${borderRadius};\nborder-style:${borderStyle};\nborder-width:${borderWidth}px;\nborder-color:${borderColor};\nbackground-color:${bgColor};`}
-            </SyntaxHighlighter>
-
-            <CopyToClipboard
+                <div className="flex items-center justify-between mb-3">
+                  <p className="font-medium text-lg pb-1">Generated code</p>
+                  <CopyToClipboard
               text={`border-radius:${borderRadius};
 border-style:${borderStyle};
 border-width:${borderWidth}px;
 border-color:${borderColor}
 background-color:${bgColor};`}
-              className=" px-4 py-2 ml-2 text-white font-semibold mt-4 dark:hover:bg-white dark:hover:text-blue-500 transition-all duration-500 border-blue-500 bg-blue-500 "
-            >
-              <button onClick={codeCopyNotification}>Copy Code</button>
+                className=" px-4 py-2 text-white flex items-center justify-between gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 bg-blue-500 rounded-lg text-sm"
+                >
+              <button onClick={codeCopyNotification}> <span>Copy</span><span><FaRegCopy/></span></button>
             </CopyToClipboard>
+              </div>
+            <SyntaxHighlighter language="css" style={docco}>
+              {`border-radius:${borderRadius};\nborder-style:${borderStyle};\nborder-width:${borderWidth}px;\nborder-color:${borderColor};\nbackground-color:${bgColor};`}
+            </SyntaxHighlighter>
           </div>
               </div>
             </div>

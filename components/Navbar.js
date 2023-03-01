@@ -83,17 +83,17 @@ export default function Navbar({toggleDarkMode,darkMode}) {
       <div
         onClick={toggleRightBox}
         ref={rightBoxRef}
-        className="md:hidden bg-[#0f172a] z-50 fixed text-md font-semibold top-0 right-0 w-full text-white flex flex-col h-screen translate-x-full transition-transform duration-300 px-6"
+        className="md:hidden dark:bg-[#1d2537] bg-white  z-50 fixed text-md font-semibold top-0 right-0 w-full dark:text-white flex flex-col h-screen translate-x-full transition-transform duration-300 px-6"
       >
         <div className="flex items-center justify-between w-full h-16">
           <Logo />
           <RxCross2 size="1.7em" className="hover:cursor-pointer" />
         </div>
 
-        <Link href="/" className="p-2 hover:text-blue-500 mt-4">
+        <Link href="/" className="p-2 mt-4">
           Home
         </Link>
-        <Link href="/css-generators" className="p-2 hover:text-blue-500 ">
+        <Link href="/tools/css-generators" className="p-2 ">
           CSS Generators
         </Link>
 

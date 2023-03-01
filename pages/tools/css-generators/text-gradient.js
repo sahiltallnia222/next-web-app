@@ -5,7 +5,10 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { toast } from "react-toastify";
+import { FaRegCopy } from "react-icons/fa";
+import {MdAddToPhotos} from 'react-icons/md'
 import { useEffect } from "react";
+import Head from "next/head";
 
 export default function TextGradientGenerator() {
   const gradients = [
@@ -156,13 +159,17 @@ export default function TextGradientGenerator() {
       : endColor.percentage + "%"
   })`
   return (
-    <div>
+    <>
+    <Head>
+      <title>Text Gradient Generator</title>
+    </Head>
+      <div>
       <div className="lg:w-[64rem] mx-auto w-full">
-        <h1 className="text-5xl md:text-5xl text-blue-500 text-center font-semibold md:pb-5 pb-3 pt-3">
-          Text Gradient Generators
+        <h1 className={`md:text-5xl text-4xl text-blue-500 text-center font-semibold pb-5  pt-3 ${styles.textGrad}`}>
+          Text Gradient Generator
         </h1>
         {/* start */}
-        <div className="w-full grid grid-cols-1 gap-3 items-start md:grid-cols-6 p-4 dark:text-white">
+        <div className="w-full grid grid-cols-1 gap-3 items-start md:grid-cols-6 p-4 dark:text-white dark:bg-[#1d2537]">
           {/* left box */}
           <div className=" h-[70vh] md:h-[32rem] md:col-span-4 flex justify-start flex-col items-center">
             <h1
@@ -201,26 +208,27 @@ export default function TextGradientGenerator() {
               </div>
               <div>
                 <button
-                  className="w-[7rem] px-3 py-2 text-white font-semibold dark:hover:bg-white dark:hover:text-blue-500 transition-all duration-500 border-blue-500 bg-blue-500 "
+                  className="w-[8rem] px-3 py-2 text-white flex rounded-lg items-center gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 text-sm bg-blue-500 "
                   onClick={addStopColor}
                 >
-                  Add Color
+                  <span>Add color</span>
+                  <span><MdAddToPhotos/></span>
                 </button>
               </div>
             </div>
 
             <div className="w-full  dark:text-white mt-4">
               <div className="flex items-center justify-between mb-2">
-                <p className="text-lg font-medium">Generated code</p>
+                <p className="text-lg font-medium">Generated CSS code</p>
                 <CopyToClipboard
                   text={`background: ${backgroundGradient};
                   font-size: ${gradient.textSize}px;
                   color: transparent;
                   background-clip:text;
                   -webkit-background-clip:text;`}
-                  className=" px-3 py-2 text-white font-semibold dark:hover:bg-white dark:hover:text-blue-500 transition-all duration-500 border-blue-500 bg-blue-500 "
-                >
-                  <button onClick={codeCopyNotification}>Copy Code</button>
+                  className=" px-4 py-2 text-white flex items-center justify-between gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 bg-blue-500 rounded-lg text-sm"
+                  >
+                  <button onClick={codeCopyNotification}> <span>Copy</span><span><FaRegCopy/></span></button>
                 </CopyToClipboard>
               </div>
               <SyntaxHighlighter language="css" style={docco}>
@@ -751,5 +759,6 @@ export default function TextGradientGenerator() {
         {/* end-------- */}
       </div>
     </div>
+    </>
   );
 }

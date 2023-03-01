@@ -5,9 +5,11 @@ import { TbBoxMultiple } from "react-icons/tb";
 import { GoTextSize } from "react-icons/go";
 import { MdGradient, MdFormatColorText, MdTransform } from "react-icons/md";
 import { AiOutlineRadiusSetting } from "react-icons/ai";
-import { BsSquareFill, BsCursorFill } from "react-icons/bs";
+import {BsCursorFill } from "react-icons/bs";
 import { CgScrollV } from "react-icons/cg";
 import { FiZap } from "react-icons/fi";
+import {GiCube,GiPowerButton} from 'react-icons/gi'
+
 export default function Home() {
   return (
     <>
@@ -17,10 +19,8 @@ export default function Home() {
       <main>
         <div>
           <div className=" text-white py-8 md:py-16 justify-center flex items-center px-4">
-            <h1 className="text-4xl xl:w-1/3 md:w-2/3 md:text-5xl tracking-normal text-center font-semibold">
-              <span className={styles.textGrad}>
-                Make your website more attractive
-              </span>
+            <h1 className="text-4xl lg:w-1/2 md:w-2/3 xl:text-5xl lg:px-10 tracking-normal text-center font-semibold">
+              <span className={styles.textGrad}>Make your website more attractive</span>
             </h1>
           </div>
           {/* css gnerator --- */}
@@ -33,14 +33,6 @@ export default function Home() {
                 <h1 className="font-semibold ">CSS GENERATOR</h1>
               </div>
               <div className="p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Link href="/tools/css-generators/background-generator">
-                  <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
-                    <BsSquareFill size={"2.3rem"} />
-                    <p className="text-xl font-medium text-center">
-                      Background Generator
-                    </p>
-                  </div>
-                </Link>
                 <Link href="/tools/css-generators/border-radius-generator">
                   <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
                     <AiOutlineRadiusSetting size={"2.3rem"} />
@@ -57,7 +49,15 @@ export default function Home() {
                     </p>
                   </div>
                 </Link>
-                <Link href="/tools/css-generators/background-generator">
+                <Link href="/tools/css-generators/button-generator">
+                  <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                    <GiPowerButton size={"2.3rem"} />
+                    <p className="text-xl font-medium text-center">
+                      Button Generator
+                    </p>
+                  </div>
+                </Link>
+                <Link href="/tools/css-generators/cursor-options">
                   <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
                     <BsCursorFill size={"2.3rem"} />
                     <p className="text-xl font-medium text-center">
@@ -74,7 +74,7 @@ export default function Home() {
                     </p>
                   </div>
                 </Link>
-                <Link href="/tools/css-generators/background-generator">
+                <Link href="/tools/css-generators/scrolbar-css-generator">
                   <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
                     <CgScrollV size={"2.3rem"} />
                     <p className="text-xl font-medium text-center">
@@ -99,14 +99,22 @@ export default function Home() {
                   </div>
                 </Link>
 
-                <Link href="/tools/css-generators/background-generator">
-                  <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
-                    <MdTransform size={"2.3rem"} />
-                    <p className="text-xl font-medium text-center">
-                      Transform CSS Generator
-                    </p>
-                  </div>
-                </Link>
+                <Link href="/tools/css-generators/transform-generator-2d">
+              <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <MdTransform size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  2D Transform CSS Generator
+                </p>
+              </div>
+            </Link>
+            <Link href="/tools/css-generators/transform-generator-3d">
+              <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <GiCube size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  3D Transform CSS Generator
+                </p>
+              </div>
+            </Link>
               </div>
             </div>
           </div>
