@@ -130,7 +130,7 @@ export default function GradientGenerator() {
   return (
     <>
       <Head>
-        <title>Background Gradient Generator</title>
+        <title>Gradient Generator</title>
       </Head>
       <div>
       <div className="lg:w-[64rem] mx-auto w-full">

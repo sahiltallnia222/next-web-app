@@ -45,7 +45,7 @@ export default function CursorOptions() {
                         className="h-full dark:text-white flex items-center gap-4 justify-center font-semibold w-full dark:hover:bg-[#1d2537] transition-all duration-500 text-black  dark:bg-[#0f172a] bg-gray-200 hover:bg-gray-300 rounded-sm text-sm "
                       >
                         <button onClick={codeCopyNotification}>
-                          <span>copy Code</span>
+                          <span>Copy Code</span>
                           <span>
                             <FaRegCopy />
                           </span>

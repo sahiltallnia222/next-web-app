@@ -286,7 +286,7 @@ export default function Textshadow() {
                     <span>Shadow Color </span>
                     <span className="flex items-center">
                       <label
-                        htmlFor="shadow-color"
+                        htmlFor={`shadow-color-${shadowNo}}`}
                         className="border-2 border-black px-3 py-3 rounded"
                         style={{
                           backgroundColor: `${shadows[shadowNo].sColor}`,
@@ -295,7 +295,7 @@ export default function Textshadow() {
                       <input
                         type="color"
                         value={shadows[shadowNo].sColor}
-                        id="shadow-color"
+                        id={`shadow-color-${shadowNo}}`}
                         className="w-0 invisible"
                         onChange={(e) => {
                           let values = [...shadows];

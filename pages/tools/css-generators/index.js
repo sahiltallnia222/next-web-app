@@ -3,7 +3,7 @@ import Link from "next/link";
 import { TbBoxMultiple } from "react-icons/tb";
 import styles from "styles/style.module.css";
 import { GoTextSize } from "react-icons/go";
-import { MdGradient, MdFormatColorText, MdTransform } from "react-icons/md";
+import { MdGradient, MdFormatColorText, MdTransform ,MdOutlineTextRotateVertical,MdAnimation} from "react-icons/md";
 import { AiOutlineRadiusSetting } from "react-icons/ai";
 import {BsCursorFill } from "react-icons/bs";
 import { CgScrollV } from "react-icons/cg";
@@ -27,6 +27,14 @@ export default function CSSGENS() {
                 <AiOutlineRadiusSetting size={"2.3rem"} />
                 <p className="text-xl font-medium text-center">
                   Border Radius Generator
+                </p>
+              </div>
+            </Link>
+            <Link href="/tools/css-generators/box-animations">
+              <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent">
+                <MdAnimation size={"2.3em"} />
+                <p className="text-xl font-medium text-center">
+                  Box Animations
                 </p>
               </div>
             </Link>
@@ -68,6 +76,14 @@ export default function CSSGENS() {
                 <CgScrollV size={"2.3rem"} />
                 <p className="text-xl font-medium text-center">
                   Scrollbar CSS Generator
+                </p>
+              </div>
+            </Link>
+            <Link href="/tools/css-generators/text-animations">
+              <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <MdOutlineTextRotateVertical size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  Text Animations
                 </p>
               </div>
             </Link>

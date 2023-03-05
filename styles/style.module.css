@@ -76,4 +76,9 @@
   -webkit-background-clip:text;
 }
 
+.boxGrad{
+  background: linear-gradient(113deg, #3b82f6 25%,  #dd1fea 100%);
+}
+
 /* text gradeint */
+
