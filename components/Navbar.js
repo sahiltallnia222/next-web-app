@@ -35,7 +35,7 @@ export default function Navbar({toggleDarkMode,darkMode}) {
           <Link href="/" className="hover:text-blue-500 p-1  transition-all duration-200">
             HOME
           </Link>
-          <Link href="/tools/css-generators" className="hover:text-blue-500 p-1 transition-all duration-200">
+          <Link href="/tools" className="hover:text-blue-500 p-1 transition-all duration-200">
             TOOLS
           </Link>
           </div>
