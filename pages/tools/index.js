@@ -16,23 +16,24 @@ export default function Tools() {
           >
             All Tools
           </h1>
+          
           <div  className="p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+                <Link href="/tools/color-tools">
+                  <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                    <MdColorLens size={"2.3rem"} />
+                    <p className="text-xl font-medium text-center">
+                      Color Tools
+                    </p>
+                  </div>
+                </Link>
+            </div>
             <div>
                 <Link href="/tools/css-generators">
                   <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
                     <SiCss3 size={"2.3rem"} />
                     <p className="text-xl font-medium text-center">
                       CSS Tools
-                    </p>
-                  </div>
-                </Link>
-            </div>
-            <div>
-                <Link href="/tools/color-tools">
-                  <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
-                    <MdColorLens size={"2.3rem"} />
-                    <p className="text-xl font-medium text-center">
-                      Color Tools
                     </p>
                   </div>
                 </Link>
