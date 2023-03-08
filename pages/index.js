@@ -68,31 +68,6 @@ export default function Home() {
                     </p>
                   </div>
                 </Link>
-                <Link href="/tools/css-generators/button-generator">
-                  <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
-                    <GiPowerButton size={"2.3rem"} />
-                    <p className="text-xl font-medium text-center">
-                      Button Generator
-                    </p>
-                  </div>
-                </Link>
-                <Link href="/tools/css-generators/cursor-options">
-                  <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
-                    <BsCursorFill size={"2.3rem"} />
-                    <p className="text-xl font-medium text-center">
-                      Cursor CSS Generator
-                    </p>
-                  </div>
-                </Link>
-
-                <Link href="/tools/css-generators/gradient-generator">
-                  <div className="dark:text-white flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
-                    <MdGradient size={"2.3rem"} />
-                    <p className="text-xl font-medium text-center">
-                      Gradient Generator
-                    </p>
-                  </div>
-                </Link>
               </div>
             </div>
           </div>
