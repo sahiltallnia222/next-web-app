@@ -9,6 +9,7 @@ import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { FaRegCopy } from "react-icons/fa";
 import { VscDebugBreakpointLogUnverified } from "react-icons/vsc";
 import {GrFacebookOption} from 'react-icons/gr'
+import {RxReset} from 'react-icons/rx'
 
 export default function BorderRadiusGenerator() {
   const borderBoxParentRef = useRef();
@@ -57,74 +58,76 @@ export default function BorderRadiusGenerator() {
       theme: "light",
     });
   };
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (borderBoxParentRef.current && borderBoxRef.current) {
-        const parentBoxHeight = borderBoxParentRef.current.clientHeight;
-        const height = borderBoxRef.current.clientHeight;
-        setDotMargin((parentBoxHeight - height) / 2);
-        let values = { ...bounds };
-        values.bottom = height - 34;
-        values.right = height - 34;
-        let dValues = { ...middle };
-        dValues.YLT = values.bottom * 0.5;
-        dValues.XTL = values.right * 0.5;
-        dValues.XBL = values.right * 0.5;
-        dValues.YRT = values.bottom * 0.5;
-        dValues.pYLT=50;
-        dValues.pXTL=50;
-        dValues.pXBL=50;
-        dValues.pYRT=50;
+  const handleResize = (x) => {
+    if (borderBoxParentRef.current && borderBoxRef.current) {
+      const parentBoxHeight = borderBoxParentRef.current.clientHeight;
+      const height = borderBoxRef.current.clientHeight;
+      setDotMargin((parentBoxHeight - height) / 2);
+      let values = { ...bounds };
+      values.bottom = height - 34;
+      values.right = height - 34;
+      let dValues = { ...middle };
+      dValues.YLT = values.bottom * 0.5;
+      dValues.XTL = values.right * 0.5;
+      dValues.XBL = values.right * 0.5;
+      dValues.YRT = values.bottom * 0.5;
+      dValues.pYLT=50;
+      dValues.pXTL=50;
+      dValues.pXBL=50;
+      dValues.pYRT=50;
+      if(x){
         localStorage.setItem('border-radius-generator',JSON.stringify(dValues))
-        setMiddle(dValues);
-        setBounds(values);
-        values = { ...radiusValues };
-        values.YLT = Math.abs(parseInt(50));
-        values.YLB = 100 - values.YLT;
-        values.YRT = Math.abs(parseInt(50));
-        values.YRB = 100 - values.YRT;
-        values.XTL = Math.abs(parseInt(50));
-        values.XTR = 100 - values.XTL;
-        values.XBL = Math.abs(parseInt(50));
-        values.XBR = 100 - values.XBL;
-        setRadiusValues(values);
       }
-    };
-    const setUpBRG = () => {
-      if (borderBoxParentRef.current && borderBoxRef.current) {
-        const parentBoxHeight = borderBoxParentRef.current.clientHeight;
-        const height = borderBoxRef.current.clientHeight;
-        setDotMargin((parentBoxHeight - height) / 2);
-        // 34 is size of icons, to make sure that icon is not going out of box we uses this property
-        let values = { ...bounds };
-        values.bottom = height - 34;
-        values.right = height - 34;
-        let dValues = { ...middle };
-        dValues.YLT = values.bottom * 0.5;
-        dValues.XTL = values.right * 0.5;
-        dValues.XBL = values.right * 0.5;
-        dValues.YRT = values.bottom * 0.5;
-        dValues.pYLT=50;
-        dValues.pXTL=50;
-        dValues.pXBL=50;
-        dValues.pYRT=50;
-        setMiddle(dValues);
-        setBounds(values);
-        values = { ...radiusValues };
-        values.YLT = Math.abs(parseInt(50));
-        values.YLB = 100 - values.YLT;
-        values.YRT = Math.abs(parseInt(50));
-        values.YRB = 100 - values.YRT;
-        values.XTL = Math.abs(parseInt(50));
-        values.XTR = 100 - values.XTL;
-        values.XBL = Math.abs(parseInt(50));
-        values.XBR = 100 - values.XBL;
-        setRadiusValues(values);
-      }
-    };
-    window.addEventListener("resize",handleResize);
-    setUpBRG();
+      setMiddle(dValues);
+      setBounds(values);
+      values = { ...radiusValues };
+      values.YLT = Math.abs(parseInt(50));
+      values.YLB = 100 - values.YLT;
+      values.YRT = Math.abs(parseInt(50));
+      values.YRB = 100 - values.YRT;
+      values.XTL = Math.abs(parseInt(50));
+      values.XTR = 100 - values.XTL;
+      values.XBL = Math.abs(parseInt(50));
+      values.XBR = 100 - values.XBL;
+      setRadiusValues(values);
+    }
+  };
+  useEffect(() => {
+    // const setUpBRG = () => {
+    //   if (borderBoxParentRef.current && borderBoxRef.current) {
+    //     const parentBoxHeight = borderBoxParentRef.current.clientHeight;
+    //     const height = borderBoxRef.current.clientHeight;
+    //     setDotMargin((parentBoxHeight - height) / 2);
+    //     // 34 is size of icons, to make sure that icon is not going out of box we uses this property
+    //     let values = { ...bounds };
+    //     values.bottom = height - 34;
+    //     values.right = height - 34;
+    //     let dValues = { ...middle };
+    //     dValues.YLT = values.bottom * 0.5;
+    //     dValues.XTL = values.right * 0.5;
+    //     dValues.XBL = values.right * 0.5;
+    //     dValues.YRT = values.bottom * 0.5;
+    //     dValues.pYLT=50;
+    //     dValues.pXTL=50;
+    //     dValues.pXBL=50;
+    //     dValues.pYRT=50;
+    //     setMiddle(dValues);
+    //     setBounds(values);
+    //     values = { ...radiusValues };
+    //     values.YLT = Math.abs(parseInt(50));
+    //     values.YLB = 100 - values.YLT;
+    //     values.YRT = Math.abs(parseInt(50));
+    //     values.YRB = 100 - values.YRT;
+    //     values.XTL = Math.abs(parseInt(50));
+    //     values.XTR = 100 - values.XTL;
+    //     values.XBL = Math.abs(parseInt(50));
+    //     values.XBR = 100 - values.XBL;
+    //     setRadiusValues(values);
+    //   }
+    // };
+    window.addEventListener("resize",()=>{handleResize(true)});
+    // setUpBRG();
+    handleResize(false)
     if(typeof window!=undefined && localStorage.getItem('border-radius-generator')){
        const middle=JSON.parse(localStorage.getItem('border-radius-generator'))
         let dValues = { ...middle };
@@ -385,6 +388,10 @@ background-color:${bgColor};`}
                     {`border-radius:${borderRadius};\nborder-style:${borderStyle};\nborder-width:${borderWidth}px;\nborder-color:${borderColor};\nbackground-color:${bgColor};`}
                   </SyntaxHighlighter>
                 </div>
+                <button onClick={()=>{handleResize(true)}} className="mt-4 px-4 py-2 text-white flex items-center justify-between gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 bg-blue-500 rounded-lg text-sm">
+                  <span>Reset</span>
+                  <span><RxReset /></span>
+                </button>
               </div>
             </div>
             <div className="lg:dark:bg-[#1d2537] p-4 mt-4 lg:bg-gray-200 dark:text-white">
