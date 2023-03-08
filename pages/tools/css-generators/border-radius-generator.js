@@ -93,40 +93,7 @@ export default function BorderRadiusGenerator() {
     }
   };
   useEffect(() => {
-    // const setUpBRG = () => {
-    //   if (borderBoxParentRef.current && borderBoxRef.current) {
-    //     const parentBoxHeight = borderBoxParentRef.current.clientHeight;
-    //     const height = borderBoxRef.current.clientHeight;
-    //     setDotMargin((parentBoxHeight - height) / 2);
-    //     // 34 is size of icons, to make sure that icon is not going out of box we uses this property
-    //     let values = { ...bounds };
-    //     values.bottom = height - 34;
-    //     values.right = height - 34;
-    //     let dValues = { ...middle };
-    //     dValues.YLT = values.bottom * 0.5;
-    //     dValues.XTL = values.right * 0.5;
-    //     dValues.XBL = values.right * 0.5;
-    //     dValues.YRT = values.bottom * 0.5;
-    //     dValues.pYLT=50;
-    //     dValues.pXTL=50;
-    //     dValues.pXBL=50;
-    //     dValues.pYRT=50;
-    //     setMiddle(dValues);
-    //     setBounds(values);
-    //     values = { ...radiusValues };
-    //     values.YLT = Math.abs(parseInt(50));
-    //     values.YLB = 100 - values.YLT;
-    //     values.YRT = Math.abs(parseInt(50));
-    //     values.YRB = 100 - values.YRT;
-    //     values.XTL = Math.abs(parseInt(50));
-    //     values.XTR = 100 - values.XTL;
-    //     values.XBL = Math.abs(parseInt(50));
-    //     values.XBR = 100 - values.XBL;
-    //     setRadiusValues(values);
-    //   }
-    // };
     window.addEventListener("resize",()=>{handleResize(true)});
-    // setUpBRG();
     handleResize(false)
     if(typeof window!=undefined && localStorage.getItem('border-radius-generator')){
        const middle=JSON.parse(localStorage.getItem('border-radius-generator'))
@@ -152,7 +119,7 @@ export default function BorderRadiusGenerator() {
         setRadiusValues(values);
     }
     return () => window.removeEventListener("resize", handleResize);
-  }, [setBorderColor]);
+  }, []);
   let borderRadius = `${radiusValues.XTL}% ${radiusValues.XTR}% ${radiusValues.XBR}% ${radiusValues.XBL}% / ${radiusValues.YLT}% ${radiusValues.YRT}% ${radiusValues.YRB}% ${radiusValues.YLB}%`;
   return (
     <>
@@ -168,7 +135,7 @@ export default function BorderRadiusGenerator() {
               Border Radius Generator
             </h1>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 p-6 lg:dark:bg-[#1d2537] lg:bg-gray-200">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 p-6 dark:bg-[#1d2537] lg:bg-gray-200">
               {/* left box */}
               <div className=" w-full dark:text-white">
                 <div
@@ -394,7 +361,7 @@ background-color:${bgColor};`}
                 </button>
               </div>
             </div>
-            <div className="lg:dark:bg-[#1d2537] p-4 mt-4 lg:bg-gray-200 dark:text-white">
+            <div className="dark:bg-[#1d2537] p-4 mt-4 lg:bg-gray-200 dark:text-white">
               <p className="text-2xl pb-3 font-medium">
                 Example 1 of fancy border radius
               </p>
@@ -499,7 +466,7 @@ background-color:${bgColor};`}
                 </div>
               </div>
             </div>
-            <div className="lg:dark:bg-[#1d2537] p-4 mt-4 lg:bg-gray-200 dark:text-white">
+            <div className="dark:bg-[#1d2537] p-4 mt-4 lg:bg-gray-200 dark:text-white">
               <p className="text-2xl pb-3 font-medium">
                 Example 2 of fancy border radius
               </p>
@@ -609,7 +576,7 @@ background-color:${bgColor};`}
                 </div>
               </div>
             </div>
-            <div className="lg:dark:bg-[#1d2537] p-4 mt-4 lg:bg-gray-200 dark:text-white">
+            <div className="dark:bg-[#1d2537] p-4 mt-4 lg:bg-gray-200 dark:text-white">
               <p className="text-2xl pb-3 font-medium">
                 Example 3 of fancy border radius
               </p>
