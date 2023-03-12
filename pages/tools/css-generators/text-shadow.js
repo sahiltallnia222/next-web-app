@@ -9,7 +9,7 @@ import { TbBoxMultiple } from "react-icons/tb";
 import { TiDelete } from "react-icons/ti";
 import { FaRegCopy } from "react-icons/fa";
 import styles from "styles/style.module.css";
-
+import {RxReset} from 'react-icons/rx'
 
 
 export default function Textshadow() {
@@ -22,16 +22,47 @@ export default function Textshadow() {
     textSize:3
   });
 //   shadows contains only shadows of box
-  const [shadows, setShadows] = useState([
-    {
-      hOffset: 6,
-      vOffset: 2,
-      bRadius: 4,
+  const [shadows, setShadows] = useState([]);
+
+
+  const handleGenReset=()=>{
+    let values=[{
+      hOffset: 7,
+      vOffset: 10,
+      bRadius: 8,
       sOpacity: 1,
       sColor: "#1F1E62",
       sHexCode: "#1F1E62",
-    },
-  ]);
+    }]
+    setShadow({
+      textShadow: "7px 10px 8px #1F1E62",
+      textColor: "#000000",
+      bgColor: "#fafafa",
+      textSize:3
+    })
+    setShadowNo(0)
+    localStorage.setItem('text-shadow-generator',JSON.stringify(values))
+    setShadows(values)
+  }
+
+  useEffect(()=>{
+    if(window!=undefined && localStorage.getItem('text-shadow-generator') && JSON.parse(localStorage.getItem('text-shadow-generator')).length>0){
+      setShadows(JSON.parse(localStorage.getItem('text-shadow-generator')))
+    }
+    else{
+      let values=[{
+        hOffset: 7,
+        vOffset: 10,
+        bRadius: 8,
+        sOpacity: 1,
+        sColor: "#1F1E62",
+        sHexCode: "#1F1E62",
+      }]
+      localStorage.setItem('text-shadow-generator',JSON.stringify(values))
+      setShadows(values)
+    }
+},[])
+
 
   function hexToRGB(hex, alpha = 1) {
     var r = parseInt(hex.slice(1, 3), 16),
@@ -60,9 +91,9 @@ export default function Textshadow() {
   const addTextShadow = () => {
     const values = [...shadows];
     values.push({
-      hOffset: 6,
-      vOffset: 2,
-      bRadius: 4,
+      hOffset: 7,
+      vOffset: 10,
+      bRadius: 8,
       sOpacity: 1,
       sColor: randomHexColorCode(),
       sHexCode: randomHexColorCode()
@@ -84,6 +115,7 @@ export default function Textshadow() {
       bgColor: shadow.bgColor,
       textSize:shadow.textSize
     });
+    if(shadows.length>0){localStorage.setItem('text-shadow-generator',JSON.stringify(shadows))}
   }, [shadows]);
   const removeShadow = (index) => {
     if (shadowNo == shadows.length - 1) {
@@ -105,12 +137,12 @@ export default function Textshadow() {
       </Head>
       <div>
         {/* center div ------------------------------------------------------------------- */}
-        <div className="lg:w-[64rem] mx-auto w-full">
+       { shadows.length>0 && <div className="lg:w-[64rem] mx-auto w-full">
           <h1 className={`md:text-5xl text-4xl text-blue-500 text-center font-semibold pb-5  pt-3 ${styles.textGrad}`}>
             Text Shadow Generator
           </h1>
 
-          <div className="w-full grid grid-cols-1 items-center md:grid-cols-2 p-4 dark:text-white dark:bg-[#1d2537]">
+          <div className="w-full grid grid-cols-1 items-center md:grid-cols-2 p-4 dark:text-white bg-gray-200 dark:bg-[#1d2537]">
             {/* Left side of shadow generator. */}
             <div
               className=" flex justify-center items-center h-[40vh] md:h-full"
@@ -138,7 +170,7 @@ export default function Textshadow() {
                     }}
                     min="-250"
                     max="250"
-                    className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>
@@ -159,7 +191,7 @@ export default function Textshadow() {
                     }}
                     min="-250"
                     max="250"
-                    className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>
@@ -180,7 +212,7 @@ export default function Textshadow() {
                     }}
                     min="0"
                     max="25"
-                    className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>
@@ -206,7 +238,7 @@ export default function Textshadow() {
                       );
                       setShadows(values);
                     }}
-                    className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>
@@ -228,7 +260,7 @@ export default function Textshadow() {
                         value.textSize=e.target.value
                         setShadow(value)
                     }}
-                    className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>
@@ -311,13 +343,19 @@ export default function Textshadow() {
                   </div>
                 </div>
               </div>
+              <div className="px-3">
+              <button onClick={handleGenReset} className="mt-4 px-4 py-2 text-white flex items-center justify-between gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 bg-blue-500 rounded-lg text-sm">
+                  <span>Reset</span>
+                  <span><RxReset /></span>
+                </button>
+              </div>
             </div>
             {/* End of right side of shadow generator. */}
           </div>
 
           {/* End of 2 boxes of box shadow generator */}
           {/* Multiple shadow box */}
-          <div className="p-4 dark:text-white dark:bg-[#1d2537]">
+          <div className="p-4 dark:text-white dark:bg-[#1d2537] bg-gray-200 ">
             <h2 className="font-medium text-lg py-3">
               Add multiple text shadows
             </h2>
@@ -359,7 +397,7 @@ export default function Textshadow() {
 
           {/* End of multiple shadow section */}
           {/* Code section */}
-          <div className="w-full p-4 dark:text-white dark:bg-[#1d2537] mt-4">
+          <div className="w-full p-4 dark:text-white dark:bg-[#1d2537] bg-gray-200  mt-4">
           <div className="flex items-center justify-between mb-3">
                 <p className="font-medium text-lg py-2">Generated CSS code</p>
                 <CopyToClipboard
@@ -373,7 +411,7 @@ export default function Textshadow() {
               {`text-shadow:${shadow.textShadow}; \ncolor:${shadow.textColor};\nbackground-color:${shadow.bgColor};\nfont-size:${shadow.textSize}rem`}
             </SyntaxHighlighter>
           </div>
-          <div className="w-full p-4 dark:text-white dark:bg-[#1d2537]">
+          <div className="w-full p-4 dark:text-white dark:bg-[#1d2537] bg-gray-200 ">
           <div className="flex items-center justify-between mb-3">
                 <p className="font-medium text-lg py-2">HTML code</p>
                 <CopyToClipboard
@@ -388,7 +426,7 @@ export default function Textshadow() {
             </SyntaxHighlighter>
           </div>
           {/* End of code section */}
-        </div>
+        </div>}
 
         {/* center div ends here ------------------------------------------------------------------- */}
       </div>

@@ -25,9 +25,6 @@ export default function Navbar({toggleDarkMode,darkMode}) {
   // ---------------------------------------------------------
   return (
     <>
-      <Head>
-        <title>Css Generators</title>
-      </Head>
       <div className="fixed top-0 left-0 px-5 dark:text-white w-full h-20 dark:bg-[#1d2537] bg-white flex items-center justify-between z-20 shadow">
         <div className="flex items-center gap-16">
           <Logo />

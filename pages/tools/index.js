@@ -8,7 +8,9 @@ import {MdColorLens} from 'react-icons/md'
 export default function Tools() {
   return (
     <>
-      <Head></Head>
+      <Head>
+        <title>WEB TOOLS</title>
+      </Head>
       <div>
         <div className="lg:w-[64rem] mx-auto w-full">
           <h1

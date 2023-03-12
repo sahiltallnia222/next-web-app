@@ -1,3 +1,4 @@
+import Head from "next/head";
 import styles from "styles/style.module.css";
 import { useState } from "react";
 import { TiDelete } from "react-icons/ti";
@@ -8,7 +9,7 @@ import { toast } from "react-toastify";
 import { FaRegCopy } from "react-icons/fa";
 import {MdAddToPhotos} from 'react-icons/md'
 import { useEffect } from "react";
-import Head from "next/head";
+import {RxReset} from 'react-icons/rx'
 
 export default function TextGradientGenerator() {
   const gradients = [
@@ -32,32 +33,12 @@ export default function TextGradientGenerator() {
   // show and hide selection tab of size
   const [showSize, setShowSize] = useState(false);
   // gradient setting
-  const [gradient, setGradient] = useState({
-    gradientType: 0,
-    direction: 0,
-    textSize: 50,
-    shape: 0,
-    size: 0,
-    positionX: 50,
-    positionY: 50,
-  });
+  const [gradient, setGradient] = useState({});
  
   const [stopColorsString, setStopColorsString] = useState("");
 
-  const [startColor, setStartColor] = useState({
-    color: "#833ab4",
-    colorHexCode: "#833ab4",
-    opacity: 1,
-    percentage: 0,
-    degree: 0,
-  });
-  const [endColor, setEndColor] = useState({
-    color: "#fcb045",
-    colorHexCode: "#fcb045",
-    opacity: 1,
-    percentage: 100,
-    degree: 250,
-  });
+  const [startColor, setStartColor] = useState({});
+  const [endColor, setEndColor] = useState({});
 
   function hexToRGB(hex, alpha = 1) {
     var r = parseInt(hex.slice(1, 3), 16),
@@ -103,6 +84,56 @@ export default function TextGradientGenerator() {
   };
 
   // handle show and hide size
+
+  useEffect(()=>{
+    if(localStorage.getItem('text-gradient-generator')){
+      let data=JSON.parse(localStorage.getItem('text-gradient-generator'));
+      setGradient(data.gradient)
+      setStopColors(data.stopColors)
+      setStartColor(data.startColor)
+      setEndColor(data.endColor)
+    }
+    else{
+      setGradient({gradientType: 0,direction: 0,textSize: 50,shape: 0,size: 0,positionX: 50,positionY: 50,})
+      setStopColors([])
+      setStartColor({ color: "#833ab4", colorHexCode: "#833ab4", opacity: 1, percentage: 0, degree: 0})
+      setEndColor({color: "#fcb045",colorHexCode: "#fcb045", opacity: 1, percentage: 100,degree: 250})
+      localStorage.setItem('text-gradient-generator',JSON.stringify({
+        gradient:{gradientType: 0,direction: 0,textSize: 50,shape: 0,size: 0,positionX: 50,positionY: 50,},
+        stopColors:[],
+        startColor:{ color: "#833ab4", colorHexCode: "#833ab4", opacity: 1, percentage: 0, degree: 0},
+        endColor:{color: "#fcb045",colorHexCode: "#fcb045", opacity: 1, percentage: 100,degree: 250}
+      }))
+    }
+  },[])
+
+  useEffect(()=>{
+    if(Object.keys(gradient).length>0){
+      if(localStorage.getItem('text-gradient-generator')){
+        let data=JSON.parse(localStorage.getItem('text-gradient-generator'));
+        data.gradient=gradient;
+        localStorage.setItem('text-gradient-generator',JSON.stringify(data))
+      }
+    }
+    if(Object.keys(startColor).length>0){
+        let data=JSON.parse(localStorage.getItem('text-gradient-generator'));
+        data.startColor=startColor;
+        localStorage.setItem('text-gradient-generator',JSON.stringify(data))
+    }
+    if(Object.keys(endColor).length>0){
+        let data=JSON.parse(localStorage.getItem('text-gradient-generator'));
+        data.endColor=endColor;
+        localStorage.setItem('text-gradient-generator',JSON.stringify(data))
+    }
+    if(stopColors.length>0){
+      let data=JSON.parse(localStorage.getItem('text-gradient-generator'));
+        data.stopColors=stopColors;
+        localStorage.setItem('text-gradient-generator',JSON.stringify(data))
+    }
+  },[gradient,stopColors,startColor,endColor])
+
+
+
   useEffect(() => {
     let stCString = "";
     stopColors.forEach((color) => {
@@ -158,6 +189,21 @@ export default function TextGradientGenerator() {
       ? endColor.degree + "deg"
       : endColor.percentage + "%"
   })`
+
+  const handleGenReset=()=>{
+    setGradient({gradientType: 0,direction: 0,textSize: 50,shape: 0,size: 0,positionX: 50,positionY: 50,})
+    setStopColors([])
+    setStartColor({ color: "#833ab4", colorHexCode: "#833ab4", opacity: 1, percentage: 0, degree: 0})
+    setEndColor({color: "#fcb045",colorHexCode: "#fcb045", opacity: 1, percentage: 100,degree: 250})
+    localStorage.setItem('text-gradient-generator',JSON.stringify({
+      gradient:{gradientType: 0,direction: 0,textSize: 50,shape: 0,size: 0,positionX: 50,positionY: 50,},
+      stopColors:[],
+      startColor:{ color: "#833ab4", colorHexCode: "#833ab4", opacity: 1, percentage: 0, degree: 0},
+      endColor:{color: "#fcb045",colorHexCode: "#fcb045", opacity: 1, percentage: 100,degree: 250}
+    }))
+}
+
+
   return (
     <>
     <Head>
@@ -169,7 +215,7 @@ export default function TextGradientGenerator() {
           Text Gradient Generator
         </h1>
         {/* start */}
-        <div className="w-full grid grid-cols-1 gap-3 items-start md:grid-cols-6 p-4 dark:text-white dark:bg-[#1d2537]">
+        <div className="w-full grid grid-cols-1 gap-3 items-start md:grid-cols-6 p-4 dark:text-white bg-gray-200 dark:bg-[#1d2537]">
           {/* left box */}
           <div className=" h-[70vh] md:h-[32rem] md:col-span-4 flex justify-start flex-col items-center">
             <h1
@@ -197,7 +243,7 @@ export default function TextGradientGenerator() {
                     min="20"
                     max="80"
                     value={gradient.textSize}
-                    className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
                     onChange={(e) => {
                       let values = { ...gradient };
                       values.textSize = e.target.value;
@@ -264,6 +310,12 @@ export default function TextGradientGenerator() {
                     : endColor.percentage + "%"
                 });\nfont-size: ${gradient.textSize}px;\ncolor: transparent;\nbackground-clip:text;\n-webkit-background-clip:text;`}
               </SyntaxHighlighter>
+            </div>
+            <div className="w-full">
+                <button onClick={handleGenReset}  className="mt-4 px-4 py-2 text-white flex items-center justify-between gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 bg-blue-500 rounded-lg text-sm">
+                  <span>Reset</span>
+                  <span><RxReset /></span>
+                </button>
             </div>
           </div>
           {/* right box  sizes[gradient.size]!=''?sizes[gradient.size]:'' */}
@@ -333,7 +385,7 @@ export default function TextGradientGenerator() {
                         min="0"
                         max="100"
                         defaultValue={gradient.positionX}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...gradient };
                           values.positionX = e.target.value;
@@ -353,7 +405,7 @@ export default function TextGradientGenerator() {
                         min="0"
                         max="100"
                         defaultValue={gradient.positionY}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...gradient };
                           values.positionY = e.target.value;
@@ -461,13 +513,13 @@ export default function TextGradientGenerator() {
                     type="range"
                     min="0"
                     max="360"
-                    defaultValue={gradient.direction}
+                    value={gradient.direction}
                     onChange={(e) => {
                       let values = { ...gradient };
                       values.direction = e.target.value;
                       setGradient(values);
                     }}
-                    className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>
@@ -522,7 +574,7 @@ export default function TextGradientGenerator() {
                       ? startColor.degree
                       : startColor.percentage
                   }
-                  className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                  className="w-full h-1  rounded-md appearance-none cursor-pointer"
                   onChange={(e) => {
                     let values = { ...startColor };
                     if (
@@ -546,7 +598,7 @@ export default function TextGradientGenerator() {
                     min="1"
                     max="100"
                     value={startColor.opacity * 100}
-                    className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
                     onChange={(e) => {
                       let values = { ...startColor };
                       values.color = hexToRGB(
@@ -582,6 +634,7 @@ export default function TextGradientGenerator() {
                             type="color"
                             id={`stopColor-${index}`}
                             className="w-0 invisible"
+                            value={stopColor.color}
                             onChange={(e) => {
                               let values = [...stopColors];
                               values[index].color = e.target.value;
@@ -621,7 +674,7 @@ export default function TextGradientGenerator() {
                           ? stopColor.degree
                           : stopColor.percentage
                       }
-                      className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                      className="w-full h-1  rounded-md appearance-none cursor-pointer"
                       onChange={(e) => {
                         let values = [...stopColors];
                         if (
@@ -645,7 +698,7 @@ export default function TextGradientGenerator() {
                         min="1"
                         max="100"
                         value={stopColor.opacity * 100}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = [...stopColors];
                           values[index].color = hexToRGB(
@@ -708,7 +761,7 @@ export default function TextGradientGenerator() {
                       ? endColor.degree
                       : endColor.percentage
                   }
-                  className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                  className="w-full h-1  rounded-md appearance-none cursor-pointer"
                   onChange={(e) => {
                     let values = { ...endColor };
                     if (
@@ -732,7 +785,7 @@ export default function TextGradientGenerator() {
                     min="1"
                     max="100"
                     value={endColor.opacity * 100}
-                    className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
                     onChange={(e) => {
                       let values = { ...endColor };
                       values.color = hexToRGB(

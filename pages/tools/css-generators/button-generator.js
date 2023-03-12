@@ -1,39 +1,46 @@
 import Head from "next/head";
 import styles from "styles/style.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import CopyToClipboard from "react-copy-to-clipboard";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { FaRegCopy } from "react-icons/fa";
+import {RxReset} from 'react-icons/rx'
 
 export default function ButtonGenerator() {
-  // useEffect(()=>{
-  //   if(typeof(window)!=undefined){
-  //     const x=document.getElementById('icon')
-  //     console.log(x.innerHTML);
-  //   }
-  // })
-
   const [showShadow,setShowShadow]=useState(true);
   const [showHover,setShowHover]=useState(true);
 
-  const [properties, setProperties] = useState({
-    paddingX: 10,
-    paddingY: 10,
-    borderRadius: 10,
-    color: "#ffffff",
-    bgColor: "#9a48ef",
-    fontSize: 20,
-    fontWeight: 400,
-    hoverBgColor: "#2345ae",
-    hoverColor: "#a22eaf",
-    transitionTime:0.1,
-    borderWidth:1,
-    borderColor:'#aef954',
-    translateY:5,
-    shadowDepth:7,
-  });
+  const [properties, setProperties] = useState({});
+  
+  useEffect(()=>{
+    if(localStorage.getItem('button-generator')){
+      setProperties(JSON.parse(localStorage.getItem('button-generator')))
+    }else{
+      let prop={
+        paddingX: 17,
+        paddingY: 11,
+        borderRadius: 36,
+        color: "#ffffff",
+        bgColor: "#9a48ef",
+        fontSize: 20,
+        fontWeight: 400,
+        hoverBgColor: "#9a48ef",
+        hoverColor: "#ffffff",
+        transitionTime:0.1,
+        borderWidth:0,
+        borderColor:'#aef954',
+        translateY:5,
+        shadowDepth:7,
+      }
+      localStorage.setItem('button-generator',JSON.stringify(prop))
+      setProperties(prop)
+    }
+  },[])
+  useEffect(()=>{
+    if(Object.keys(properties).length>0){localStorage.setItem('button-generator',JSON.stringify(properties))}
+  },[properties])
 
   const codeCopyNotification = () => {
     toast.success("Code copied successfully !", {
@@ -42,6 +49,27 @@ export default function ButtonGenerator() {
       theme: "light",
     });
   };
+
+  const handleGenReset=()=>{
+    let prop={
+      paddingX: 17,
+      paddingY: 11,
+      borderRadius: 36,
+      color: "#ffffff",
+      bgColor: "#9a48ef",
+      fontSize: 20,
+      fontWeight: 400,
+      hoverBgColor: "#9a48ef",
+      hoverColor: "#ffffff",
+      transitionTime:0.1,
+      borderWidth:0,
+      borderColor:'#aef954',
+      translateY:5,
+      shadowDepth:7,
+    }
+    localStorage.setItem('button-generator',JSON.stringify(prop))
+    setProperties(prop)
+  }
 
   return (
     <>
@@ -55,10 +83,10 @@ export default function ButtonGenerator() {
           >
             Button Generator
           </h1>
-          <div className="dark:bg-[#1d2537] p-4 dark:text-white mx-2 md:mx-0">
+          <div className="dark:bg-[#1d2537] bg-gray-200 p-4 dark:text-white mx-2 md:mx-0">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex flex-col">
-                <div className="flex items-center justify-center h-[12rem] border-b-2">
+                <div className="flex items-center justify-center h-[12rem] border-b-2 ">
                   <style jsx>{`
                     .btn {
                       padding: ${properties.paddingY}px ${properties.paddingX}px;
@@ -89,7 +117,7 @@ export default function ButtonGenerator() {
                     Click Here
                   </button>
                 </div>
-                <div className="flex justify-between items-center dark:bg-[#0f172a] p-2 mt-4  dark:text-white">
+                <div className="flex justify-between items-center dark:bg-[#0f172a] bg-white p-2 mt-4  dark:text-white">
                   <span>Color</span>
                   <span className="flex items-center justify-center">
                     <label
@@ -110,7 +138,7 @@ export default function ButtonGenerator() {
                     />
                   </span>
                 </div>
-                <div className="flex justify-between items-center dark:bg-[#0f172a] p-2 mt-4  dark:text-white">
+                <div className="flex justify-between items-center dark:bg-[#0f172a] bg-white p-2 mt-4  dark:text-white">
                   <span>Backgound Color</span>
                   <span className="flex items-center justify-center">
                     <label
@@ -131,7 +159,7 @@ export default function ButtonGenerator() {
                     />
                   </span>
                 </div>
-               {showHover &&  <div className="flex justify-between items-center dark:bg-[#0f172a] p-2 mt-4  dark:text-white">
+               {showHover &&  <div className="flex justify-between items-center dark:bg-[#0f172a] bg-white p-2 mt-4  dark:text-white">
                   <span>Hover Color</span>
                   <span className="flex items-center justify-center">
                     <label
@@ -152,7 +180,7 @@ export default function ButtonGenerator() {
                     />
                   </span>
                 </div>}
-               {showHover && <div className="flex justify-between items-center dark:bg-[#0f172a] p-2 mt-4  dark:text-white">
+               {showHover && <div className="flex justify-between items-center dark:bg-[#0f172a] bg-white p-2 mt-4  dark:text-white">
                   <span>Hover Backgound Color</span>
                   <span className="flex items-center justify-center">
                     <label
@@ -173,7 +201,7 @@ export default function ButtonGenerator() {
                     />
                   </span>
                 </div>}
-                <div className="flex justify-between items-center dark:bg-[#0f172a] p-2 mt-4  dark:text-white">
+                <div className="flex justify-between items-center dark:bg-[#0f172a] bg-white p-2 mt-4  dark:text-white">
                   <span>Border Color</span>
                   <span className="flex items-center justify-center">
                     <label
@@ -193,6 +221,12 @@ export default function ButtonGenerator() {
                       }}
                     />
                   </span>
+                </div>
+                <div>
+                <button onClick={handleGenReset} className="mt-4 px-4 py-2 text-white flex items-center justify-between gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 bg-blue-500 rounded-lg text-sm">
+                  <span>Reset</span>
+                  <span><RxReset /></span>
+                </button>
                 </div>
               </div>
               {/* right side */}
@@ -214,7 +248,7 @@ export default function ButtonGenerator() {
                         }}
                         min="0"
                         max="50"
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                       />
                     </div>
                   </div>
@@ -234,7 +268,7 @@ export default function ButtonGenerator() {
                         }}
                         min="0"
                         max="50"
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                       />
                     </div>
                   </div>
@@ -254,7 +288,7 @@ export default function ButtonGenerator() {
                         }}
                         min="0"
                         max="100"
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                       />
                     </div>
                   </div>
@@ -274,7 +308,7 @@ export default function ButtonGenerator() {
                         }}
                         min="15"
                         max="50"
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                       />
                     </div>
                   </div>
@@ -295,7 +329,7 @@ export default function ButtonGenerator() {
                         min="100"
                         max="900"
                         step={100}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                       />
                     </div>
                   </div>
@@ -317,7 +351,7 @@ export default function ButtonGenerator() {
                         min="0"
                         max="1"
                         step={0.001}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                       />
                     </div>
                   </div>
@@ -338,7 +372,7 @@ export default function ButtonGenerator() {
                         min="0"
                         max="20"
                         step={1}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                       />
                     </div>
                   </div>
@@ -359,7 +393,7 @@ export default function ButtonGenerator() {
                         min="5"
                         max="15"
                         step={1}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                       />
                     </div>
                   </div>}
@@ -407,7 +441,7 @@ export default function ButtonGenerator() {
             </div>
           </div>
           <div>
-          <div className="dark:bg-[#1d2537] mt-4">
+          <div className="dark:bg-[#1d2537] bg-gray-200 mt-4">
           <div className="w-full p-4 dark:text-white">
               <div className="flex items-center justify-between mb-3">
                 <p className="font-medium text-lg py-2">HTML Code</p>
