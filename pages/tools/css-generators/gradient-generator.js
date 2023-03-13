@@ -53,13 +53,13 @@ export default function GradientGenerator() {
     else{
       setGradient({gradientType: 0,direction: 0,boxWidth: 100,shape: 0,size: 0,positionX: 50,positionY: 50,})
       setStopColors([])
-      setStartColor({ color: "#833ab4", colorHexCode: "#833ab4", opacity: 1, percentage: 0, degree: 0})
-      setEndColor({color: "#fcb045",colorHexCode: "#fcb045", opacity: 1, percentage: 100,degree: 250})
+      setStartColor({colorHexCode: "#833ab4", opacity: 1, percentage: 0, degree: 0})
+      setEndColor({colorHexCode: "#fcb045", opacity: 1, percentage: 100,degree: 250})
       localStorage.setItem('gradient-generator',JSON.stringify({
         gradient:{gradientType: 0,direction: 0,boxWidth: 100,shape: 0,size: 0,positionX: 50,positionY: 50,},
         stopColors:[],
-        startColor:{ color: "#833ab4", colorHexCode: "#833ab4", opacity: 1, percentage: 0, degree: 0},
-        endColor:{color: "#fcb045",colorHexCode: "#fcb045", opacity: 1, percentage: 100,degree: 250}
+        startColor:{colorHexCode: "#833ab4", opacity: 1, percentage: 0, degree: 0},
+        endColor:{colorHexCode: "#fcb045", opacity: 1, percentage: 100,degree: 250}
       }))
     }
   },[])
@@ -124,7 +124,6 @@ export default function GradientGenerator() {
     let values = [...stopColors];
     let colorCode = randomHexColorCode();
     values.push({
-      color: colorCode,
       hexColorCode: colorCode,
       percentage: 50,
       opacity: 1,
@@ -140,10 +139,10 @@ export default function GradientGenerator() {
     let stCString = "";
     stopColors.forEach((color) => {
       if((gradient.gradientType==2 || gradient.gradientType==5)){
-        stCString +=`${color.color} ${color.degree}deg,`;
+        stCString +=`${hexToRGB(color.hexColorCode,color.opacity)} ${color.degree}deg,`;
       }
       else{
-        stCString +=`${color.color} ${color.percentage}%,`;
+        stCString +=`${hexToRGB(color.hexColorCode,color.opacity)} ${color.percentage}%,`;
       }
     });
     setStopColorsString(stCString);
@@ -182,12 +181,12 @@ const handleGenReset=()=>{
         <title>Gradient Generator</title>
       </Head>
       <div>
-      <div className="lg:w-[64rem] mx-auto w-full">
+     {Object.keys(gradient).length>0  && <div className="lg:w-[64rem] mx-auto w-full">
         <h1 className={`md:text-5xl text-4xl text-blue-500 text-center font-semibold pb-5  pt-3 ${styles.textGrad}`}>
           Gradient Generator
         </h1>
         {/* start */}
-        <div className="w-full grid grid-cols-1 gap-3 items-start md:grid-cols-6 p-4 dark:text-white bg-gray-200 dark:bg-[#1d2537]">
+        <div className="w-full grid grid-cols-1 gap-3 items-start md:grid-cols-6 p-4 dark:text-white bg-gray-100  dark:bg-[#1d2537]">
           {/* left box */}
           <div className=" h-[70vh] md:h-[32rem] md:col-span-4 flex justify-start flex-col items-center">
             <div
@@ -214,11 +213,11 @@ const handleGenReset=()=>{
                 gradient.gradientType == 5
                   ? `at ${gradient.positionX}% ${gradient.positionY}% , `
                   : ""
-              } ${startColor.color} ${
+              } ${hexToRGB(startColor.colorHexCode,startColor.opacity)} ${
                 gradient.gradientType == 2 || gradient.gradientType == 5
                   ? startColor.degree + "deg"
                   : startColor.percentage + "%"
-              }, ${stopColorsString} ${endColor.color} ${
+              }, ${stopColorsString} ${hexToRGB(endColor.colorHexCode,endColor.opacity)} ${
                 gradient.gradientType == 2 || gradient.gradientType == 5
                   ? endColor.degree + "deg"
                   : endColor.percentage + "%"
@@ -282,11 +281,11 @@ const handleGenReset=()=>{
                     gradient.gradientType == 5
                       ? `at ${gradient.positionX}% ${gradient.positionY}% ,`
                       : ""
-                  } ${startColor.color} ${
+                  } ${hexToRGB(startColor.colorHexCode,startColor.opacity)} ${
                     gradient.gradientType == 2 || gradient.gradientType == 5
                       ? startColor.degree + "deg"
                       : startColor.percentage + "%"
-                  }, ${stopColorsString} ${endColor.color} ${
+                  }, ${stopColorsString} ${hexToRGB(endColor.colorHexCode,endColor.opacity)} ${
                     gradient.gradientType == 2 || gradient.gradientType == 5
                       ? endColor.degree + "deg"
                       : endColor.percentage + "%"
@@ -319,11 +318,11 @@ const handleGenReset=()=>{
                   gradient.gradientType == 5
                     ? `at ${gradient.positionX}% ${gradient.positionY}% ,`
                     : ""
-                } ${startColor.color} ${
+                } ${hexToRGB(startColor.colorHexCode,startColor.opacity)} ${
                   gradient.gradientType == 2 || gradient.gradientType == 5
                     ? startColor.degree + "deg"
                     : startColor.percentage + "%"
-                }, ${stopColorsString} ${endColor.color} ${
+                }, ${stopColorsString} ${hexToRGB(endColor.colorHexCode,endColor.opacity)} ${
                   gradient.gradientType == 2 || gradient.gradientType == 5
                     ? endColor.degree + "deg"
                     : endColor.percentage + "%"
@@ -554,7 +553,7 @@ const handleGenReset=()=>{
                       <label
                         htmlFor="start-color"
                         className="border-2 rounded px-3 py-1"
-                        style={{ backgroundColor: startColor.color }}
+                        style={{ backgroundColor:startColor.colorHexCode }}
                       ></label>
                     </div>
                     <div>
@@ -562,7 +561,7 @@ const handleGenReset=()=>{
                         type="color"
                         id="start-color"
                         className="w-0 invisible"
-                        value={startColor.color}
+                        value={startColor.colorHexCode}
                         onChange={(e) => {
                           let values = { ...startColor };
                           values.color = e.target.value;
@@ -620,10 +619,6 @@ const handleGenReset=()=>{
                     className="w-full h-1  rounded-md appearance-none cursor-pointer"
                     onChange={(e) => {
                       let values = { ...startColor };
-                      values.color = hexToRGB(
-                        startColor.colorHexCode,
-                        e.target.value / 100
-                      );
                       values.opacity = e.target.value / 100;
                       setStartColor(values);
                     }}
@@ -645,7 +640,7 @@ const handleGenReset=()=>{
                           <label
                             htmlFor={`stopColor-${index}`}
                             className="border-2 rounded px-3 py-1"
-                            style={{ backgroundColor: `${stopColor.color}` }}
+                            style={{ backgroundColor: `${stopColor.hexColorCode}` }}
                           ></label>
                         </div>
                         <div>
@@ -653,10 +648,9 @@ const handleGenReset=()=>{
                             type="color"
                             id={`stopColor-${index}`}
                             className="w-0 invisible"
-                            value={stopColor.color}
+                            value={stopColor.hexColorCode}
                             onChange={(e) => {
                               let values = [...stopColors];
-                              values[index].color = e.target.value;
                               values[index].hexColorCode = e.target.value;
                               setStopColors(values);
                             }}
@@ -742,7 +736,7 @@ const handleGenReset=()=>{
                       <label
                         htmlFor="end-color"
                         className="border-2 rounded px-3 py-1"
-                        style={{ backgroundColor: endColor.color }}
+                        style={{ backgroundColor: endColor.colorHexCode }}
                       ></label>
                     </div>
                     <div>
@@ -750,10 +744,9 @@ const handleGenReset=()=>{
                         type="color"
                         id="end-color"
                         className="w-0 invisible"
-                        value={endColor.color}
+                        value={endColor.colorHexCode}
                         onChange={(e) => {
                           let values = { ...endColor };
-                          values.color = e.target.value;
                           values.colorHexCode=e.target.value
                           setEndColor(values);
                         }}
@@ -808,10 +801,6 @@ const handleGenReset=()=>{
                     className="w-full h-1  rounded-md appearance-none cursor-pointer"
                     onChange={(e) => {
                       let values = { ...endColor };
-                      values.color = hexToRGB(
-                        endColor.colorHexCode,
-                        e.target.value / 100
-                      );
                       values.opacity = e.target.value / 100;
                       setEndColor(values);
                     }}
@@ -830,7 +819,7 @@ const handleGenReset=()=>{
           {/* right box ends here */}
         </div>
         {/* end-------- */}
-      </div>
+      </div>}
     </div>
     </>
   );

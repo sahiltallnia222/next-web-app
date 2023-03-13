@@ -83,7 +83,7 @@ export default function ButtonGenerator() {
           >
             Button Generator
           </h1>
-          <div className="dark:bg-[#1d2537] bg-gray-200 p-4 dark:text-white mx-2 md:mx-0">
+          <div className="dark:bg-[#1d2537] bg-gray-100  p-4 dark:text-white mx-2 md:mx-0">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex flex-col">
                 <div className="flex items-center justify-center h-[12rem] border-b-2 ">
@@ -441,7 +441,7 @@ export default function ButtonGenerator() {
             </div>
           </div>
           <div>
-          <div className="dark:bg-[#1d2537] bg-gray-200 mt-4">
+          <div className="dark:bg-[#1d2537] bg-gray-100  mt-4">
           <div className="w-full p-4 dark:text-white">
               <div className="flex items-center justify-between mb-3">
                 <p className="font-medium text-lg py-2">HTML Code</p>

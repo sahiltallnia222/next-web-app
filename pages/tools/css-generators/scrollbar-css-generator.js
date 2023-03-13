@@ -1,24 +1,60 @@
 import Head from "next/head";
 import styles from "styles/style.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import CopyToClipboard from "react-copy-to-clipboard";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { FaRegCopy } from "react-icons/fa";
+import {RxReset} from 'react-icons/rx'
 
 export default function ScrollbarGenerator() {
-  const [scrollbarProperties, setScrollbarProperties] = useState({
-    TRBGColor: "#1d2537",
-    TRHColor: "#1d2537",
-    TRAColor: "#1d2537",
-    TRWidth: 30,
-    TRRadius: 2,
-    TBGColor: "#0f172a",
-    THColor: "#0f172a",
-    TAColor: "#0f172a",
-    TRadius: 2,
-  });
+  const [scrollbarProperties, setScrollbarProperties] = useState({});
+
+  useEffect(()=>{
+    if(localStorage.getItem('scrollProps')){
+      let data=JSON.parse(localStorage.getItem('scrollProps'))
+      setScrollbarProperties(data)
+    }
+    else{
+      let data={
+        TRBGColor: "#1d2537",
+        TRHColor: "#1d2537",
+        TRAColor: "#1d2537",
+        TRWidth: 12,
+        TRRadius: 2,
+        TBGColor: "#0f172a",
+        THColor: "#0f172a",
+        TAColor: "#0f172a",
+        TRadius: 2,
+      }
+      setScrollbarProperties(data)
+      localStorage.setItem('scrollProps',JSON.stringify(data))
+    }
+  },[])
+
+  useEffect(()=>{
+    if(Object.keys(scrollbarProperties).length>0){
+      localStorage.setItem('scrollProps',JSON.stringify(scrollbarProperties))
+    }
+  },[scrollbarProperties])
+
+  const handleGenReset=()=>{
+    let data={
+      TRBGColor: "#1d2537",
+      TRHColor: "#1d2537",
+      TRAColor: "#1d2537",
+      TRWidth: 12,
+      TRRadius: 2,
+      TBGColor: "#0f172a",
+      THColor: "#0f172a",
+      TAColor: "#0f172a",
+      TRadius: 2,
+    }
+    setScrollbarProperties(data)
+    localStorage.setItem('scrollProps',JSON.stringify(data))
+  }
+
   const codeCopyNotification = () => {
     toast.success("Code copied successfully !", {
       position: "top-center",
@@ -81,11 +117,17 @@ export default function ScrollbarGenerator() {
           >
             Scrollbar CSS Generator
           </h1>
-          <div className="dark:bg-[#1d2537] p-4 dark:text-white">
+          <div className="dark:bg-[#1d2537] bg-gray-100  p-4 dark:text-white">
             <div className="grid grid-cols-1">
-              <div className="scrollbarClass overflow-x-scroll overflow-y-hidden mb-6  h-48 bg-blue-500">
+              <div className="scrollbarClass overflow-x-scroll overflow-y-hidden mb-2  h-48 bg-blue-500">
                 <p className="w-[200vw] text-3xl">Scrollbar CSS Generator</p>
               </div>
+              <div className="mb-4">
+                <button onClick={handleGenReset} className="mt-4 px-4 py-2 text-white flex items-center justify-between gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 bg-blue-500 rounded-lg text-sm">
+                  <span>Reset</span>
+                  <span><RxReset /></span>
+                </button>
+                </div>    
               <div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-2">
                   <div className="dark:bg-[#0f172a] border-2 dark:border-transparent px-3 py-3">
@@ -175,7 +217,7 @@ export default function ScrollbarGenerator() {
                             values.TRRadius = e.target.value;
                             setScrollbarProperties(values);
                           }}
-                          className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                          className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         />
                       </div>
                     </div>
@@ -195,7 +237,7 @@ export default function ScrollbarGenerator() {
                             values.TRWidth = e.target.value;
                             setScrollbarProperties(values);
                           }}
-                          className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                          className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         />
                       </div>
                     </div>
@@ -287,7 +329,7 @@ export default function ScrollbarGenerator() {
                             values.TRadius = e.target.value;
                             setScrollbarProperties(values);
                           }}
-                          className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                          className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         />
                       </div>
                     </div>
@@ -299,7 +341,7 @@ export default function ScrollbarGenerator() {
               <div></div>
             </div>
           </div>
-          <div className="dark:bg-[#1d2537]">
+          <div className="dark:bg-[#1d2537] bg-gray-100 ">
           <div className="w-full  p-4 dark:text-white mt-4">
             <div className="flex items-center justify-between mb-3">
               <p className="font-medium text-lg py-2">HTML Code</p>

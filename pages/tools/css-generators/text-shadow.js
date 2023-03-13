@@ -15,50 +15,60 @@ import {RxReset} from 'react-icons/rx'
 export default function Textshadow() {
   const [shadowNo, setShadowNo] = useState(0);
 //   shadow contains all the properties like text-shadow color background color, text shadow can be multiple
-  const [shadow, setShadow] = useState({
-    textShadow: "7px 10px 8px #1F1E62",
-    textColor: "#000000",
-    bgColor: "#fafafa",
-    textSize:3
-  });
+  const [shadow, setShadow] = useState({});
 //   shadows contains only shadows of box
   const [shadows, setShadows] = useState([]);
 
 
   const handleGenReset=()=>{
     let values=[{
-      hOffset: 7,
-      vOffset: 10,
-      bRadius: 8,
+      hOffset: -6,
+      vOffset: -1,
+      bRadius: 7,
       sOpacity: 1,
-      sColor: "#1F1E62",
       sHexCode: "#1F1E62",
     }]
     setShadow({
-      textShadow: "7px 10px 8px #1F1E62",
+      textShadow: "-6px -1px 7px #1F1E62",
       textColor: "#000000",
       bgColor: "#fafafa",
       textSize:3
     })
     setShadowNo(0)
-    localStorage.setItem('text-shadow-generator',JSON.stringify(values))
+    localStorage.setItem('text-shadow-generator',JSON.stringify({shadows:values,shadow:{
+      textShadow: "-6px -1px 7px #1F1E62",
+      textColor: "#000000",
+      bgColor: "#fafafa",
+      textSize:3
+    }}))
     setShadows(values)
   }
 
   useEffect(()=>{
-    if(window!=undefined && localStorage.getItem('text-shadow-generator') && JSON.parse(localStorage.getItem('text-shadow-generator')).length>0){
-      setShadows(JSON.parse(localStorage.getItem('text-shadow-generator')))
+    if(localStorage.getItem('text-shadow-generator')){
+      setShadows(JSON.parse(localStorage.getItem('text-shadow-generator')).shadows)
+      setShadow(JSON.parse(localStorage.getItem('text-shadow-generator')).shadow)
     }
     else{
       let values=[{
-        hOffset: 7,
-        vOffset: 10,
-        bRadius: 8,
+        hOffset: -6,
+        vOffset: -1,
+        bRadius: 7,
         sOpacity: 1,
-        sColor: "#1F1E62",
         sHexCode: "#1F1E62",
       }]
-      localStorage.setItem('text-shadow-generator',JSON.stringify(values))
+      setShadow({
+        textShadow: "-6px -1px 7px #1F1E62",
+        textColor: "#000000",
+        bgColor: "#fafafa",
+        textSize:3
+      })
+      localStorage.setItem('text-shadow-generator',JSON.stringify({shadows:values,shadow:{
+        textShadow: "-6px -1px 7px #1F1E62",
+        textColor: "#000000",
+        bgColor: "#fafafa",
+        textSize:3
+      }}))
       setShadows(values)
     }
 },[])
@@ -91,11 +101,10 @@ export default function Textshadow() {
   const addTextShadow = () => {
     const values = [...shadows];
     values.push({
-      hOffset: 7,
-      vOffset: 10,
-      bRadius: 8,
+      hOffset: -6,
+      vOffset: -1,
+      bRadius: 7,
       sOpacity: 1,
-      sColor: randomHexColorCode(),
       sHexCode: randomHexColorCode()
     });
     setShadows(values);
@@ -107,16 +116,25 @@ export default function Textshadow() {
     shadows.forEach((shadow) => {
       textShadow += `${shadow.hOffset}px ${shadow.vOffset}px ${
         shadow.bRadius
-      }px ${shadow.sColor}, `;
+      }px ${hexToRGB(shadow.sHexCode,shadow.sOpacity)}, `;
     });
-    setShadow({
+    if(shadow.textColor && shadow.bgColor && shadow.textSize){let val={
       textShadow: textShadow.substring(0, textShadow.length - 2),
       textColor: shadow.textColor,
       bgColor: shadow.bgColor,
       textSize:shadow.textSize
-    });
-    if(shadows.length>0){localStorage.setItem('text-shadow-generator',JSON.stringify(shadows))}
+    }
+    setShadow(val);
+    if(shadows.length>0){
+      localStorage.setItem('text-shadow-generator',JSON.stringify({...JSON.parse(localStorage.getItem('text-shadow-generator')), shadows:shadows}))
+    }
+  }
   }, [shadows]);
+  useEffect(()=>{
+    if(Object.keys(shadow).length>1){
+      localStorage.setItem('text-shadow-generator',JSON.stringify({...JSON.parse(localStorage.getItem('text-shadow-generator')), shadow:shadow}))
+    }
+  },[shadow])
   const removeShadow = (index) => {
     if (shadowNo == shadows.length - 1) {
       setShadowNo(0);
@@ -142,7 +160,7 @@ export default function Textshadow() {
             Text Shadow Generator
           </h1>
 
-          <div className="w-full grid grid-cols-1 items-center md:grid-cols-2 p-4 dark:text-white bg-gray-200 dark:bg-[#1d2537]">
+          <div className="w-full grid grid-cols-1 items-center md:grid-cols-2 p-4 dark:text-white bg-gray-100  dark:bg-[#1d2537]">
             {/* Left side of shadow generator. */}
             <div
               className=" flex justify-center items-center h-[40vh] md:h-full"
@@ -232,10 +250,6 @@ export default function Textshadow() {
                       console.log(e.target.value);
                       let values = [...shadows];
                       values[shadowNo].sOpacity = e.target.value / 100;
-                      values[shadowNo].sColor = hexToRGB(
-                        values[shadowNo].sHexCode,
-                        e.target.value / 100
-                      );
                       setShadows(values);
                     }}
                     className="w-full h-1  rounded-md appearance-none cursor-pointer"
@@ -321,21 +335,17 @@ export default function Textshadow() {
                         htmlFor={`shadow-color-${shadowNo}}`}
                         className="border-2 border-black px-3 py-3 rounded"
                         style={{
-                          backgroundColor: `${shadows[shadowNo].sColor}`,
+                          backgroundColor: `${hexToRGB(shadows[shadowNo].sHexCode,shadows[shadowNo].sOpacity)}`,
                         }}
                       ></label>
                       <input
                         type="color"
-                        value={shadows[shadowNo].sColor}
+                        value={shadows[shadowNo].sHexCode}
                         id={`shadow-color-${shadowNo}}`}
                         className="w-0 invisible"
                         onChange={(e) => {
                           let values = [...shadows];
                           values[shadowNo].sHexCode = e.target.value;
-                          values[shadowNo].sColor = hexToRGB(
-                            e.target.value,
-                            values[shadowNo].sOpacity
-                          );
                           setShadows(values);
                         }}
                       />
@@ -355,7 +365,7 @@ export default function Textshadow() {
 
           {/* End of 2 boxes of box shadow generator */}
           {/* Multiple shadow box */}
-          <div className="p-4 dark:text-white dark:bg-[#1d2537] bg-gray-200 ">
+          <div className="p-4 dark:text-white dark:bg-[#1d2537] bg-gray-100  ">
             <h2 className="font-medium text-lg py-3">
               Add multiple text shadows
             </h2>
@@ -397,9 +407,9 @@ export default function Textshadow() {
 
           {/* End of multiple shadow section */}
           {/* Code section */}
-          <div className="w-full p-4 dark:text-white dark:bg-[#1d2537] bg-gray-200  mt-4">
+          <div className="w-full p-4 dark:text-white dark:bg-[#1d2537] bg-gray-100   mt-4">
           <div className="flex items-center justify-between mb-3">
-                <p className="font-medium text-lg py-2">Generated CSS code</p>
+                <p className="font-medium text-lg py-2">CSS Code</p>
                 <CopyToClipboard
               text={`text-shadow:${shadow.textShadow};\ncolor:${shadow.textColor};\nbackground-color:${shadow.bgColor}\nfont-size:${shadow.textSize}rem;`}
               className=" px-4 py-2 text-white flex items-center justify-between gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 bg-blue-500 rounded-lg text-sm"
@@ -411,7 +421,7 @@ export default function Textshadow() {
               {`text-shadow:${shadow.textShadow}; \ncolor:${shadow.textColor};\nbackground-color:${shadow.bgColor};\nfont-size:${shadow.textSize}rem`}
             </SyntaxHighlighter>
           </div>
-          <div className="w-full p-4 dark:text-white dark:bg-[#1d2537] bg-gray-200 ">
+          {/* <div className="w-full p-4 dark:text-white dark:bg-[#1d2537] bg-gray-100  ">
           <div className="flex items-center justify-between mb-3">
                 <p className="font-medium text-lg py-2">HTML code</p>
                 <CopyToClipboard
@@ -424,7 +434,7 @@ export default function Textshadow() {
             <SyntaxHighlighter language="css" style={docco}>
               {`text-shadow:${shadow.textShadow}; \ncolor:${shadow.textColor};\nbackground-color:${shadow.bgColor};\nfont-size:${shadow.textSize}rem`}
             </SyntaxHighlighter>
-          </div>
+          </div> */}
           {/* End of code section */}
         </div>}
 

@@ -20,7 +20,7 @@ const [saturate,setSaturate]=useState(0)
           >
             Color Lightness
           </h1>
-          <div className="dark:bg-[#1d2537] p-4 bg-gray-100 w-full">
+          <div className="dark:bg-[#1d2537] p-4 bg-gray-100   w-full">
           <div className="flex flex-1  w-full justify-between items-center dark:bg-[#1d2537] p-2 dark:text-white">
                 <span>Choose Color</span>
                 <span className="flex items-center justify-center cursor-pointer">
@@ -57,7 +57,7 @@ const [saturate,setSaturate]=useState(0)
                     }}
                     min="0"
                     max="50"
-                    className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1 rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>
@@ -76,7 +76,7 @@ const [saturate,setSaturate]=useState(0)
                     }}
                     min="0"
                     max="50"
-                    className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1 rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>
@@ -96,7 +96,7 @@ const [saturate,setSaturate]=useState(0)
                         let value=(e.target.value)/10;
                         setSaturate(value)
                     }}
-                    className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1 rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>

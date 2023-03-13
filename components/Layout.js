@@ -3,6 +3,8 @@ import Footer from "./Footer";
 import { useEffect, useState } from "react";
 import LoadingBar from 'react-top-loading-bar'
 import { useRouter } from "next/router";
+import styles from '@/styles/style.module.css'
+
 
 export default function Layout({ children }) {
     const [darkMode,setDarkMode]=useState(true);
@@ -39,7 +41,7 @@ export default function Layout({ children }) {
   return (
     <>
       <div className={darkMode?"dark":""}>
-        <div className="relative w-full dark:bg-[#0f172a]">
+        <div className={`relative w-full dark:bg-[#0f172a]`}>
         <LoadingBar color='#3b82f6' progress={progress} waitingTime={400} onLoaderFinished={()=>{setProgress(0)}}
         />
           <Navbar toggleDarkMode={toggleDarkMode} darkMode={darkMode} />

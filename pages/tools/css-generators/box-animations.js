@@ -251,7 +251,7 @@ ${play=='animation1'?`.animation1 {
             }
 
           `}</style>
-          <div className="dark:bg-[#1d2537] bg-gray-200 dark:text-white p-4">
+          <div className="dark:bg-[#1d2537] bg-gray-100 dark:text-white p-4">
             {/* Generator box */}
             <div className=" grid grid-cols-2 md:grid-cols-4 gap-3">
               <div className="h-96 md:h-auto grid grid-cols-1 gap-2">
@@ -360,7 +360,7 @@ ${play=='animation1'?`.animation1 {
             {/* End of generated box */}
           </div>
           {/* code section */}
-          <div className="dark:bg-[#1d2537] bg-gray-200 mt-4 p-4">
+          <div className="dark:bg-[#1d2537] bg-gray-100 mt-4 p-4">
             <div className="w-full dark:text-white">
               <div className="flex items-center justify-between mb-3">
                 <p className="font-medium text-lg py-2">HTML Code</p>

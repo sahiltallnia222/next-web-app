@@ -14,11 +14,7 @@ import {RxReset} from 'react-icons/rx'
 
 export default function Boxshadow() {
   const [shadowNo, setShadowNo] = useState(0);
-  const [shadow, setShadow] = useState({
-    boxShadow: "1px 1px 28px -10px #1F1E62",
-    boxColor: "#ffffff",
-    bgColor: "#fafafa",
-  });
+  const [shadow, setShadow] = useState({});
   const [shadows, setShadows] = useState([]);
 
   function hexToRGB(hex, alpha = 1) {
@@ -54,7 +50,6 @@ export default function Boxshadow() {
       bRadius: 28,
       sRadius: -10,
       sOpacity: 0.93,
-      sColor: randomHexColorCode(),
       sHexCode: randomHexColorCode(),
       inset: false,
     });
@@ -67,23 +62,23 @@ export default function Boxshadow() {
       vOffset: 1,
       bRadius: 28,
       sRadius: -10,
-      sOpacity: 1,
-      sColor: "#000000",
+      sOpacity: 0.93,
       sHexCode: "#000000",
       inset: false,
     }]
-    setShadow({
-      boxShadow: "1px 1px 28px -10px #000000",
+    let sVal={
+      boxShadow: "1px 1px 28px -10px #1F1E62",
       boxColor: "#ffffff",
       bgColor: "#fafafa",
-    })
-    setShadowNo(0)
-    localStorage.setItem('box-shadow-generator',JSON.stringify(values))
+    }
+    setShadow(sVal)
+    localStorage.setItem('box-shadow-generator',JSON.stringify({shadows:values,shadow:sVal}))
     setShadows(values)
   }
   useEffect(()=>{
-      if(window!=undefined && localStorage.getItem('box-shadow-generator') && JSON.parse(localStorage.getItem('box-shadow-generator')).length>0){
-        setShadows(JSON.parse(localStorage.getItem('box-shadow-generator')))
+      if(localStorage.getItem('box-shadow-generator')){
+        setShadows(JSON.parse(localStorage.getItem('box-shadow-generator')).shadows)
+        setShadow(JSON.parse(localStorage.getItem('box-shadow-generator')).shadow)
       }
       else{
         let values=[{
@@ -92,11 +87,16 @@ export default function Boxshadow() {
           bRadius: 28,
           sRadius: -10,
           sOpacity: 0.93,
-          sColor: "#000000",
           sHexCode: "#000000",
           inset: false,
         }]
-        localStorage.setItem('box-shadow-generator',JSON.stringify(values))
+        let sVal={
+          boxShadow: "1px 1px 28px -10px #1F1E62",
+          boxColor: "#ffffff",
+          bgColor: "#fafafa",
+        }
+        setShadow(sVal)
+        localStorage.setItem('box-shadow-generator',JSON.stringify({shadows:values,shadow:sVal}))
         setShadows(values)
       }
   },[])
@@ -106,18 +106,30 @@ export default function Boxshadow() {
     shadows.forEach((shadow) => {
       boxShadow += `${shadow.hOffset}px ${shadow.vOffset}px ${
         shadow.bRadius
-      }px ${shadow.sRadius}px ${shadow.sColor} ${
+      }px ${shadow.sRadius}px ${hexToRGB(shadow.sHexCode,shadow.sOpacity)} ${
         shadow.inset ? "inset" : ""
       }, `;
     });
-    setShadow({
+
+    if(shadow.boxColor && shadow.bgColor){let val={
       boxShadow: boxShadow.substring(0, boxShadow.length - 2),
       boxColor: shadow.boxColor,
       bgColor: shadow.bgColor,
-    });
-    console.log(shadows);
-    if(shadows.length>0){localStorage.setItem('box-shadow-generator',JSON.stringify(shadows))}
+    }
+    setShadow(val);
+    if(shadows.length>0){
+      localStorage.setItem('box-shadow-generator',JSON.stringify({...JSON.parse(localStorage.getItem('box-shadow-generator')), shadows:shadows}))
+    }
+  }
   }, [shadows]);
+
+  useEffect(()=>{
+    if(Object.keys(shadow).length>1){
+      localStorage.setItem('box-shadow-generator',JSON.stringify({...JSON.parse(localStorage.getItem('box-shadow-generator')), shadow:shadow}))
+    }
+  },[shadow])
+
+
   const removeShadow = (index) => {
     if (shadowNo == shadows.length - 1) {
       setShadowNo(0);
@@ -143,7 +155,7 @@ export default function Boxshadow() {
             Box Shadow Generator
           </h1>
 
-          <div className="w-full grid grid-cols-1 items-center md:grid-cols-2 p-4 dark:text-white bg-gray-200  dark:bg-[#1d2537]">
+          <div className="w-full grid grid-cols-1 items-center md:grid-cols-2 p-4 dark:text-white bg-gray-100   dark:bg-[#1d2537]">
             {/* Left side of shadow generator. */}
             <div
               className=" flex justify-center items-center h-[40vh] md:h-full"
@@ -262,10 +274,6 @@ export default function Boxshadow() {
                       console.log(e.target.value);
                       let values = [...shadows];
                       values[shadowNo].sOpacity = e.target.value / 100;
-                      values[shadowNo].sColor = hexToRGB(
-                        values[shadowNo].sHexCode,
-                        e.target.value / 100
-                      );
                       setShadows(values);
                     }}
                     className="w-full h-1  rounded-md appearance-none cursor-pointer"
@@ -328,21 +336,17 @@ export default function Boxshadow() {
                         htmlFor="shadow-color"
                         className="border-2 border-black px-3 py-0 rounded"
                         style={{
-                          backgroundColor: `${shadows[shadowNo].sColor}`,
+                          backgroundColor: `${hexToRGB(shadows[shadowNo].sHexCode,shadows[shadowNo].sOpacity)}`,
                         }}
                       ></label>
                       <input
                         type="color"
-                        value={shadows[shadowNo].sColor}
+                        value={shadows[shadowNo].sHexCode}
                         id="shadow-color"
                         className="w-0 invisible"
                         onChange={(e) => {
                           let values = [...shadows];
                           values[shadowNo].sHexCode = e.target.value;
-                          values[shadowNo].sColor = hexToRGB(
-                            e.target.value,
-                            values[shadowNo].sOpacity
-                          );
                           setShadows(values);
                         }}
                       />
@@ -383,7 +387,7 @@ export default function Boxshadow() {
 
           {/* End of 2 boxes of box shadow generator */}
           {/* Multiple shadow box */}
-          <div className="p-4 dark:text-white dark:bg-[#1d2537] bg-gray-200">
+          <div className="p-4 dark:text-white dark:bg-[#1d2537] bg-gray-100 ">
             <h2 className="font-medium text-lg py-3">
               Add multiple box shadows
             </h2>
@@ -425,7 +429,7 @@ export default function Boxshadow() {
 
           {/* End of multiple shadow section */}
           {/* Code section */}
-          <div className="w-full p-4 dark:text-white dark:bg-[#1d2537] mt-4 bg-gray-200">
+          <div className="w-full p-4 dark:text-white dark:bg-[#1d2537] mt-4 bg-gray-100 ">
           <div className="flex items-center justify-between mb-3">
             <p className="font-medium text-lg py-2">CSS code</p>
             <CopyToClipboard
@@ -442,7 +446,7 @@ export default function Boxshadow() {
           {/* End of code section */}
 
           {/* Box shadow examples */}
-          <div className="p-4 pb-7 bg-gray-200 dark:bg-[#1d2537] mt-4">
+          <div className="p-4 pb-7 bg-gray-100  dark:bg-[#1d2537] mt-4">
             <h2 className="text-2xl font-semibold pb-3 dark:text-white ">
               Box Shadow Examples
             </h2>
@@ -622,7 +626,7 @@ export default function Boxshadow() {
           {/* Box shadow examples section ends here */}
 
           {/* Explanation of box shadow starts from here */}
-          <div className="p-4 dark:text-white bg-gray-200 mt-4 dark:bg-[#1d2537]">
+          <div className="p-4 dark:text-white bg-gray-100  mt-4 dark:bg-[#1d2537]">
             <h2 className="text-3xl font-semibold pb-5 pt-3">
               Box Shadow Explanation
             </h2>

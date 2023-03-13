@@ -130,7 +130,7 @@ const handleConvert=async()=>{
         </h1>
 
 
-       <div className="dark:bg-[#1d2537] p-4 relative">
+       <div className="dark:bg-[#1d2537] bg-gray-100 p-4 relative">
         {isProcessing==true && <div className="w-full bg-gray-100 text-black h-[200px] flex items-center justify-center ">
           <p>Processing...</p>
         </div>}

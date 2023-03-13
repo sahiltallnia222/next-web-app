@@ -88,7 +88,7 @@ export default function ColorTools() {
                         let value=(e.target.value)/100;
                         setRatio(value)
                     }}
-                    className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1 bg-gray-100  rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>

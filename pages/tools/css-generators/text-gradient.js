@@ -74,7 +74,6 @@ export default function TextGradientGenerator() {
     let values = [...stopColors];
     let colorCode = randomHexColorCode();
     values.push({
-      color: colorCode,
       hexColorCode: colorCode,
       percentage: 50,
       opacity: 1,
@@ -96,13 +95,13 @@ export default function TextGradientGenerator() {
     else{
       setGradient({gradientType: 0,direction: 0,textSize: 50,shape: 0,size: 0,positionX: 50,positionY: 50,})
       setStopColors([])
-      setStartColor({ color: "#833ab4", colorHexCode: "#833ab4", opacity: 1, percentage: 0, degree: 0})
+      setStartColor({colorHexCode: "#833ab4", opacity: 1, percentage: 0, degree: 0})
       setEndColor({color: "#fcb045",colorHexCode: "#fcb045", opacity: 1, percentage: 100,degree: 250})
       localStorage.setItem('text-gradient-generator',JSON.stringify({
         gradient:{gradientType: 0,direction: 0,textSize: 50,shape: 0,size: 0,positionX: 50,positionY: 50,},
         stopColors:[],
-        startColor:{ color: "#833ab4", colorHexCode: "#833ab4", opacity: 1, percentage: 0, degree: 0},
-        endColor:{color: "#fcb045",colorHexCode: "#fcb045", opacity: 1, percentage: 100,degree: 250}
+        startColor:{ colorHexCode: "#833ab4", opacity: 1, percentage: 0, degree: 0},
+        endColor:{colorHexCode: "#fcb045", opacity: 1, percentage: 100,degree: 250}
       }))
     }
   },[])
@@ -138,10 +137,10 @@ export default function TextGradientGenerator() {
     let stCString = "";
     stopColors.forEach((color) => {
       if((gradient.gradientType==2 || gradient.gradientType==5)){
-        stCString += `${color.color} ${color.degree}deg ,`;
+        stCString += `${hexToRGB(color.hexColorCode,color.opacity)} ${color.degree}deg ,`;
       }
       else{
-        stCString += `${color.color} ${color.percentage}% ,`;
+        stCString += `${hexToRGB(color.hexColorCode,color.opacity)} ${color.percentage}% ,`;
       }
     });
     setStopColorsString(stCString);
@@ -158,37 +157,40 @@ export default function TextGradientGenerator() {
     values.gradientType = e.target.value;
     setGradient(values);
   };
-  let backgroundGradient=`${
-    gradients[gradient.gradientType]
-  }(${
-    gradient.gradientType == 0 || gradient.gradientType == 3
-      ? gradient.direction + "deg,"
-      : ""
-  }${
-    gradient.gradientType == 1 || gradient.gradientType == 4
-      ? shapes[gradient.shape] + " "
-      : ""
-  }${
-    (gradient.gradientType == 1 || gradient.gradientType == 4) &&
-    sizes[gradient.size] != ""
-      ? sizes[gradient.size] + " "
-      : ""
-  }${
-    gradient.gradientType == 1 ||
-    gradient.gradientType == 4 ||
-    gradient.gradientType == 2 ||
-    gradient.gradientType == 5
-      ? `at ${gradient.positionX}% ${gradient.positionY}% , `
-      : ""
-  } ${startColor.color} ${
-    gradient.gradientType == 2 || gradient.gradientType == 5
-      ? startColor.degree + "deg"
-      : startColor.percentage + "%"
-  }, ${stopColorsString} ${endColor.color} ${
-    gradient.gradientType == 2 || gradient.gradientType == 5
-      ? endColor.degree + "deg"
-      : endColor.percentage + "%"
-  })`
+  let backgroundGradient=``
+  if(Object.keys(gradient).length>0 ){
+    backgroundGradient=`${
+      gradients[gradient.gradientType]
+    }(${
+      gradient.gradientType == 0 || gradient.gradientType == 3
+        ? gradient.direction + "deg,"
+        : ""
+    }${
+      gradient.gradientType == 1 || gradient.gradientType == 4
+        ? shapes[gradient.shape] + " "
+        : ""
+    }${
+      (gradient.gradientType == 1 || gradient.gradientType == 4) &&
+      sizes[gradient.size] != ""
+        ? sizes[gradient.size] + " "
+        : ""
+    }${
+      gradient.gradientType == 1 ||
+      gradient.gradientType == 4 ||
+      gradient.gradientType == 2 ||
+      gradient.gradientType == 5
+        ? `at ${gradient.positionX}% ${gradient.positionY}% , `
+        : ""
+    } ${hexToRGB(startColor.colorHexCode,startColor.opacity)} ${
+      gradient.gradientType == 2 || gradient.gradientType == 5
+        ? startColor.degree + "deg"
+        : startColor.percentage + "%"
+    }, ${stopColorsString} ${hexToRGB(endColor.colorHexCode,endColor.opacity)} ${
+      gradient.gradientType == 2 || gradient.gradientType == 5
+        ? endColor.degree + "deg"
+        : endColor.percentage + "%"
+    })`
+  }
 
   const handleGenReset=()=>{
     setGradient({gradientType: 0,direction: 0,textSize: 50,shape: 0,size: 0,positionX: 50,positionY: 50,})
@@ -215,7 +217,7 @@ export default function TextGradientGenerator() {
           Text Gradient Generator
         </h1>
         {/* start */}
-        <div className="w-full grid grid-cols-1 gap-3 items-start md:grid-cols-6 p-4 dark:text-white bg-gray-200 dark:bg-[#1d2537]">
+        {Object.keys(gradient).length>0  && <div className="w-full grid grid-cols-1 gap-3 items-start md:grid-cols-6 p-4 dark:text-white bg-gray-100  dark:bg-[#1d2537]">
           {/* left box */}
           <div className=" h-[70vh] md:h-[32rem] md:col-span-4 flex justify-start flex-col items-center">
             <h1
@@ -300,11 +302,11 @@ export default function TextGradientGenerator() {
                   gradient.gradientType == 5
                     ? `at ${gradient.positionX}% ${gradient.positionY}% , `
                     : ""
-                } ${startColor.color} ${
+                } ${hexToRGB(startColor.colorHexCode,startColor.opacity)} ${
                   gradient.gradientType == 2 || gradient.gradientType == 5
                     ? startColor.degree + "deg"
                     : startColor.percentage + "%"
-                }, ${stopColorsString} ${endColor.color} ${
+                }, ${stopColorsString} ${hexToRGB(endColor.colorHexCode,endColor.opacity)} ${
                   gradient.gradientType == 2 || gradient.gradientType == 5
                     ? endColor.degree + "deg"
                     : endColor.percentage + "%"
@@ -535,7 +537,7 @@ export default function TextGradientGenerator() {
                       <label
                         htmlFor="start-color"
                         className="border-2 rounded px-3 py-1"
-                        style={{ backgroundColor: startColor.color }}
+                        style={{ backgroundColor:  startColor.colorHexCode}}
                       ></label>
                     </div>
                     <div>
@@ -543,10 +545,9 @@ export default function TextGradientGenerator() {
                         type="color"
                         id="start-color"
                         className="w-0 invisible"
-                        value={startColor.color}
+                        value={startColor.colorHexCode}
                         onChange={(e) => {
                           let values = { ...startColor };
-                          values.color = e.target.value;
                           values.colorHexCode = e.target.value;
                           setStartColor(values);
                         }}
@@ -601,10 +602,6 @@ export default function TextGradientGenerator() {
                     className="w-full h-1  rounded-md appearance-none cursor-pointer"
                     onChange={(e) => {
                       let values = { ...startColor };
-                      values.color = hexToRGB(
-                        startColor.colorHexCode,
-                        e.target.value / 100
-                      );
                       values.opacity = e.target.value / 100;
                       setStartColor(values);
                     }}
@@ -626,7 +623,7 @@ export default function TextGradientGenerator() {
                           <label
                             htmlFor={`stopColor-${index}`}
                             className="border-2 rounded px-3 py-1"
-                            style={{ backgroundColor: `${stopColor.color}` }}
+                            style={{ backgroundColor: `${stopColor.hexColorCode}` }}
                           ></label>
                         </div>
                         <div>
@@ -634,10 +631,9 @@ export default function TextGradientGenerator() {
                             type="color"
                             id={`stopColor-${index}`}
                             className="w-0 invisible"
-                            value={stopColor.color}
+                            value={stopColor.hexColorCode}
                             onChange={(e) => {
                               let values = [...stopColors];
-                              values[index].color = e.target.value;
                               values[index].hexColorCode = e.target.value;
                               setStopColors(values);
                             }}
@@ -701,10 +697,6 @@ export default function TextGradientGenerator() {
                         className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = [...stopColors];
-                          values[index].color = hexToRGB(
-                            stopColor.hexColorCode,
-                            e.target.value / 100
-                          );
                           values[index].opacity = e.target.value / 100;
                           setStopColors(values);
                         }}
@@ -723,7 +715,7 @@ export default function TextGradientGenerator() {
                       <label
                         htmlFor="end-color"
                         className="border-2 rounded px-3 py-1"
-                        style={{ backgroundColor: endColor.color }}
+                        style={{ backgroundColor: endColor.colorHexCode }}
                       ></label>
                     </div>
                     <div>
@@ -731,10 +723,10 @@ export default function TextGradientGenerator() {
                         type="color"
                         id="end-color"
                         className="w-0 invisible"
-                        value={endColor.color}
+                        value={endColor.colorHexCode}
                         onChange={(e) => {
                           let values = { ...endColor };
-                          values.color = e.target.value;
+                          values.colorHexCode = e.target.value;
                           setEndColor(values);
                         }}
                       />
@@ -788,10 +780,6 @@ export default function TextGradientGenerator() {
                     className="w-full h-1  rounded-md appearance-none cursor-pointer"
                     onChange={(e) => {
                       let values = { ...endColor };
-                      values.color = hexToRGB(
-                        endColor.colorHexCode,
-                        e.target.value / 100
-                      );
                       values.opacity = e.target.value / 100;
                       setEndColor(values);
                     }}
@@ -808,7 +796,7 @@ export default function TextGradientGenerator() {
             </button> */}
           </div>
           {/* right box ends here */}
-        </div>
+        </div>}
         {/* end-------- */}
       </div>
     </div>

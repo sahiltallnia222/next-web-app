@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "styles/style.module.css";
 import { toast } from "react-toastify";
 import CopyToClipboard from "react-copy-to-clipboard";
@@ -6,33 +6,92 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { FaRegCopy } from "react-icons/fa";
 import Head from "next/head";
+import {RxReset} from 'react-icons/rx'
+
 
 export default function TransformGenerator() {
-  const [transform, setTransform] = useState({
-    rotateX: 0,
-    rotateY: 0,
-    rotateZ: 0,
-    scaleX: 1,
-    scaleY: 1,
-    scaleZ: 1,
-    translateX: 0,
-    translateY: 0,
-    translateZ: 0,
-    skewX: 0,
-    skewY: 0,
-    perspective: 2500,
-    perspectiveOriginX: 50,
-    perspectiveOriginY: 50,
-  });
-  const [colors, setColors] = useState({
-    front: "#3456ed",
-    back: "#4565ae",
-    top: "#af1234",
-    bottom: "#987634",
-    left: "#fea234",
-    right: "#aefcde",
-    text: "#000000",
-  });
+  const [transform, setTransform] = useState({});
+  const [colors, setColors] = useState({});
+
+  useEffect(()=>{
+    if(localStorage.getItem('3d-transform')){
+      let data=JSON.parse(localStorage.getItem('3d-transform'))
+      setTransform(data.transform)
+      setColors(data.colors)
+    }
+    else{
+      let tr={rotateX: 0,
+        rotateY: 0,
+        rotateZ: 0,
+        scaleX: 1,
+        scaleY: 1,
+        scaleZ: 1,
+        translateX: 0,
+        translateY: 0,
+        translateZ: 0,
+        skewX: 0,
+        skewY: 0,
+        perspective: 2500,
+        perspectiveOriginX: 50,
+        perspectiveOriginY: 50
+      }
+      let clr={
+        front: "#3456ed",
+        back: "#4565ae",
+        top: "#af1234",
+        bottom: "#987634",
+        left: "#fea234",
+        right: "#aefcde",
+        text: "#000000"
+      }
+      setTransform(tr)
+      setColors(clr)
+      let data={transform:tr,colors:clr}
+      localStorage.setItem('3d-transform',JSON.stringify(data))
+    }
+  },[])
+
+  const handleGenReset=()=>{
+    let tr={rotateX: 0,
+      rotateY: 0,
+      rotateZ: 0,
+      scaleX: 1,
+      scaleY: 1,
+      scaleZ: 1,
+      translateX: 0,
+      translateY: 0,
+      translateZ: 0,
+      skewX: 0,
+      skewY: 0,
+      perspective: 2500,
+      perspectiveOriginX: 50,
+      perspectiveOriginY: 50
+    }
+    let clr={
+      front: "#3456ed",
+      back: "#4565ae",
+      top: "#af1234",
+      bottom: "#987634",
+      left: "#fea234",
+      right: "#aefcde",
+      text: "#000000"
+    }
+    setTransform(tr)
+    setColors(clr)
+    let data={transform:tr,colors:clr}
+    localStorage.setItem('3d-transform',JSON.stringify(data))
+  }
+
+  useEffect(()=>{
+    let data=JSON.parse(localStorage.getItem('3d-transform'))
+    if(Object.keys(transform).length>0){
+      data.transform={...transform}
+    }
+    if(Object.keys(colors).length>0){
+      data.colors={...colors}
+    }
+    localStorage.setItem('3d-transform',JSON.stringify(data))
+  },[transform,colors])
 
   const codeCopyNotification = () => {
     toast.success("Code copied successfully !", {
@@ -52,7 +111,7 @@ export default function TransformGenerator() {
           <h1 className={`md:text-5xl text-4xl text-blue-500 text-center font-semibold pb-5  pt-3 ${styles.textGrad}`}>
             3D Transform CSS Generator
           </h1>
-          <div className="grid grid-cols-1 md:grid-cols-6 dark:bg-[#1d2537] md:h-[32rem]">
+          <div className="grid grid-cols-1 md:grid-cols-6 dark:bg-[#1d2537] bg-gray-100  md:h-[32rem]">
             <div className="flex items-center justify-center md:col-span-4 p-6 pt-12 ">
               <div
                 className="w-80 h-80"
@@ -132,6 +191,7 @@ export default function TransformGenerator() {
               className={`md:h-[32rem] md:col-span-2 md:overflow-scroll md:overflow-x-hidden ${styles.scrollbarClass}`}
             >
               <div className="md:col-span-2 dark:text-white p-6 ">
+                
                 <div className="flex flex-col gap-2">
                   <div>
                     <div className="flex items-center justify-between font-medium text-sm">
@@ -144,7 +204,7 @@ export default function TransformGenerator() {
                         min="0"
                         max="360"
                         value={transform.rotateX}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.rotateX = e.target.value;
@@ -164,7 +224,7 @@ export default function TransformGenerator() {
                         min="0"
                         max="360"
                         value={transform.rotateY}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.rotateY = e.target.value;
@@ -184,7 +244,7 @@ export default function TransformGenerator() {
                         min="0"
                         max="360"
                         value={transform.rotateZ}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.rotateZ = e.target.value;
@@ -205,7 +265,7 @@ export default function TransformGenerator() {
                         max="2"
                         step="0.1"
                         value={transform.scaleX}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.scaleX = e.target.value;
@@ -226,7 +286,7 @@ export default function TransformGenerator() {
                         max="2"
                         step="0.1"
                         value={transform.scaleY}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.scaleY = e.target.value;
@@ -247,7 +307,7 @@ export default function TransformGenerator() {
                         max="2"
                         step="0.1"
                         value={transform.scaleZ}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.scaleZ = e.target.value;
@@ -267,7 +327,7 @@ export default function TransformGenerator() {
                         min="-100"
                         max="100"
                         value={transform.translateX}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.translateX = e.target.value;
@@ -287,7 +347,7 @@ export default function TransformGenerator() {
                         min="-100"
                         max="100"
                         value={transform.translateY}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.translateY = e.target.value;
@@ -307,7 +367,7 @@ export default function TransformGenerator() {
                         min="-100"
                         max="100"
                         value={transform.translateZ}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.translateZ = e.target.value;
@@ -327,7 +387,7 @@ export default function TransformGenerator() {
                         min="0"
                         max="180"
                         value={transform.skewX}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.skewX = e.target.value;
@@ -347,7 +407,7 @@ export default function TransformGenerator() {
                         min="0"
                         max="180"
                         value={transform.skewY}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.skewY = e.target.value;
@@ -367,7 +427,7 @@ export default function TransformGenerator() {
                         min="500"
                         max="4000"
                         value={transform.perspective}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.perspective = e.target.value;
@@ -387,7 +447,7 @@ export default function TransformGenerator() {
                         min="0"
                         max="100"
                         value={transform.perspectiveOriginX}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.perspectiveOriginX = e.target.value;
@@ -407,7 +467,7 @@ export default function TransformGenerator() {
                         min="0"
                         max="100"
                         value={transform.perspectiveOriginY}
-                        className="w-full h-1 bg-gray-200 rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.perspectiveOriginY = e.target.value;
@@ -571,13 +631,19 @@ export default function TransformGenerator() {
                       </span>
                     </div>
                   </div>
+                  <div>
+                    <button onClick={handleGenReset} className="mt-4 px-4 py-2 text-white flex items-center justify-between gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 bg-blue-500 rounded-lg text-sm">
+                      <span>Reset</span>
+                      <span><RxReset /></span>
+                    </button>
+                </div>
                 </div>
               </div>
             </div>
             {/* end right box */}
           </div>
 {/* New box starts */}
-          <div className="dark:bg-[#1d2537] mt-4">
+          <div className="dark:bg-[#1d2537] bg-gray-100  mt-4">
             <div className="w-full p-4 dark:text-white">
               <div className="flex items-center justify-between mb-3">
                 <p className="font-medium text-lg py-2">Generated CSS code</p>

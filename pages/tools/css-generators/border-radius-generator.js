@@ -135,7 +135,7 @@ export default function BorderRadiusGenerator() {
               Border Radius Generator
             </h1>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 p-6 dark:bg-[#1d2537] lg:bg-gray-200">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 p-6 dark:bg-[#1d2537] lg:bg-gray-100 ">
               {/* left box */}
               <div className=" w-full dark:text-white">
                 <div
@@ -361,7 +361,7 @@ background-color:${bgColor};`}
                 </button>
               </div>
             </div>
-            <div className="dark:bg-[#1d2537] p-4 mt-4 lg:bg-gray-200 dark:text-white">
+            <div className="dark:bg-[#1d2537] p-4 mt-4 lg:bg-gray-100  dark:text-white">
               <p className="text-2xl pb-3 font-medium">
                 Example 1 of fancy border radius
               </p>
@@ -466,7 +466,7 @@ background-color:${bgColor};`}
                 </div>
               </div>
             </div>
-            <div className="dark:bg-[#1d2537] p-4 mt-4 lg:bg-gray-200 dark:text-white">
+            <div className="dark:bg-[#1d2537] p-4 mt-4 lg:bg-gray-100  dark:text-white">
               <p className="text-2xl pb-3 font-medium">
                 Example 2 of fancy border radius
               </p>
@@ -576,7 +576,7 @@ background-color:${bgColor};`}
                 </div>
               </div>
             </div>
-            <div className="dark:bg-[#1d2537] p-4 mt-4 lg:bg-gray-200 dark:text-white">
+            <div className="dark:bg-[#1d2537] p-4 mt-4 lg:bg-gray-100  dark:text-white">
               <p className="text-2xl pb-3 font-medium">
                 Example 3 of fancy border radius
               </p>
