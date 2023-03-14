@@ -39,7 +39,7 @@ console.log(clShades);
           >
             Color Tools
           </h1>
-          <div className="dark:bg-[#1d2537] p-4 bg-gray-100 w-full">
+          <div className="dark:bg-[#1d2537] p-4 bg-gray-200 w-full">
             <div className="flex items-start md:items-center md:flex-row flex-col  justify-center gap-3">
               <div className="flex flex-1  w-full justify-between items-center dark:bg-[#1d2537] p-2 dark:text-white">
                 <span>Start Color</span>

@@ -26,7 +26,7 @@ export default function ColorTools() {
           >
             Color Mixture Tool
           </h1>
-          <div className="dark:bg-[#1d2537] p-4 bg-gray-100 w-full">
+          <div className="dark:bg-[#1d2537] p-4 bg-gray-200 w-full">
             <div className="flex items-start md:items-center md:flex-row flex-col  justify-center gap-3">
               <div className="flex flex-1  w-full justify-between items-center dark:bg-[#1d2537] p-2 dark:text-white">
                 <span>Start Color</span>
@@ -73,6 +73,9 @@ export default function ColorTools() {
                 </span>
               </div>
             </div>
+            <div className="mt-4">
+              <p>Color Code {`${color}`}</p>
+            </div>
             <div className=" py-2">
                 <div className="flex items-center justify-between text-sm py-2">
                   <div>Ratio</div>
@@ -88,7 +91,7 @@ export default function ColorTools() {
                         let value=(e.target.value)/100;
                         setRatio(value)
                     }}
-                    className="w-full h-1 bg-gray-100  rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>

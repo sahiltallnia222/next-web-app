@@ -18,15 +18,15 @@ export default function ScrollbarGenerator() {
     }
     else{
       let data={
-        TRBGColor: "#1d2537",
-        TRHColor: "#1d2537",
-        TRAColor: "#1d2537",
+        TRBGColor: "#adadae",
+        TRHColor: "#adadae",
+        TRAColor: "#adadae",
         TRWidth: 12,
-        TRRadius: 2,
+        TRRadius: 24,
         TBGColor: "#0f172a",
         THColor: "#0f172a",
         TAColor: "#0f172a",
-        TRadius: 2,
+        TRadius: 24,
       }
       setScrollbarProperties(data)
       localStorage.setItem('scrollProps',JSON.stringify(data))
@@ -41,15 +41,15 @@ export default function ScrollbarGenerator() {
 
   const handleGenReset=()=>{
     let data={
-      TRBGColor: "#1d2537",
-      TRHColor: "#1d2537",
-      TRAColor: "#1d2537",
+      TRBGColor: "#adadae",
+      TRHColor: "#adadae",
+      TRAColor: "#adadae",
       TRWidth: 12,
-      TRRadius: 2,
+      TRRadius: 24,
       TBGColor: "#0f172a",
       THColor: "#0f172a",
       TAColor: "#0f172a",
-      TRadius: 2,
+      TRadius: 24,
     }
     setScrollbarProperties(data)
     localStorage.setItem('scrollProps',JSON.stringify(data))

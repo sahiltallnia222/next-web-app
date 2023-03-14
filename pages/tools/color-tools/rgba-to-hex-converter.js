@@ -55,7 +55,7 @@ export default function RgbatoHexConverter() {
             RGBA to Hex Converter
           </h1>
           <div className="dark:text-white">
-            <div className="dark:bg-[#1d2537] p-4 bg-gray-100  w-full">
+            <div className="dark:bg-[#1d2537] p-4 bg-gray-200  w-full">
               <div className="md:w-1/2 w-full dark:bg-[#0f172a] bg-white p-4 mx-auto">
                 <div>
                 <div>

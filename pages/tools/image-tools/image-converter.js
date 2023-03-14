@@ -109,7 +109,7 @@ const handleConvert=async()=>{
     setProcessing(false)
   }).catch(err=>{
     console.log(err);
-    Notification('Something went wrong !','error')
+    Notification('Max size limit exceeded','error')
     setProcessing(false)
   })
 }

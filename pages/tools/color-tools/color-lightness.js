@@ -20,7 +20,7 @@ const [saturate,setSaturate]=useState(0)
           >
             Color Lightness
           </h1>
-          <div className="dark:bg-[#1d2537] p-4 bg-gray-100   w-full">
+          <div className="dark:bg-[#1d2537] p-4 bg-gray-200   w-full">
           <div className="flex flex-1  w-full justify-between items-center dark:bg-[#1d2537] p-2 dark:text-white">
                 <span>Choose Color</span>
                 <span className="flex items-center justify-center cursor-pointer">
@@ -34,6 +34,7 @@ const [saturate,setSaturate]=useState(0)
                   <input
                     type="color"
                     id="ChooseColor"
+                    value={color}
                     className="w-0 invisible"
                     onChange={(e) => {
                         setColor(e.target.value)
@@ -42,6 +43,9 @@ const [saturate,setSaturate]=useState(0)
                 </span>
               </div>
             <div className="dark:text-white">
+              <div className="mt-3">
+                <p>Color Code {`${chroma(color).darken(dark)}`}</p>
+              </div>
                 <div className=" h-40 mt-4" style={{backgroundColor:chroma(color).darken(dark)}}></div>
                 <div className=" py-2">
                 <div className="flex items-center justify-between text-sm py-2">
@@ -61,6 +65,9 @@ const [saturate,setSaturate]=useState(0)
                   />
                 </div>
               </div>
+              <div className="mt-3">
+                <p>Color Code {`${chroma(color).brighten(bright)}`}</p>
+              </div>
                 <div className=" h-40 mt-4" style={{backgroundColor:chroma(color).brighten(bright)}}></div>
                 <div className=" py-2">
                 <div className="flex items-center justify-between text-sm py-2">
@@ -79,6 +86,10 @@ const [saturate,setSaturate]=useState(0)
                     className="w-full h-1 rounded-md appearance-none cursor-pointer"
                   />
                 </div>
+              </div>
+
+              <div className="mt-3">
+                <p>Color Code {`${chroma(color).saturate(saturate)}`}</p>
               </div>
               <div className=" h-40 mt-4" style={{backgroundColor:chroma(color).saturate(saturate)}}></div>
                 <div className=" py-2">

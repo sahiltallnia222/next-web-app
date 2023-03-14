@@ -1,6 +1,13 @@
 import sharp from "sharp";
 import { Buffer } from 'node:buffer';
 // import fs from 'fs'
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '50mb', // Increase the limit to 10 MB or a size of your choice
+    },
+  },
+};
 
 export default async function handler(req, res) {
     const {data}=req.body;

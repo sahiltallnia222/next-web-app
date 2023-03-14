@@ -39,7 +39,13 @@ export default function TextAnimations() {
       setPlay(x);
     }
   };
-const cssCode=`${play=='animation1'?`.animation1 {
+const cssCode=`.textGrad{
+  background: linear-gradient(113deg, #3b82f6 25%,  #dd1fea 100%);
+  color: transparent;
+  background-clip:text;
+  -webkit-background-clip:text;
+}
+${play=='animation1'?`.animation1 {
     animation:animation1 1.5s cubic-bezier(0.38, 1.2, 1, 1) both infinite ;
     text-align:center;
 }
@@ -393,7 +399,7 @@ const cssCode=`${play=='animation1'?`.animation1 {
               <div className="flex items-center justify-between mb-3">
                 <p className="font-medium text-lg py-2">HTML Code</p>
                 <CopyToClipboard
-                  text={`<p class='${play=='noAnimation'?'':play}'>Text Animations</p>`}
+                  text={`<p class='textGrad ${play=='noAnimation'?'':play}'>Text Animations</p>`}
                   className=" px-4 py-2 text-white flex items-center justify-between gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 bg-blue-500 rounded-lg text-sm"
                 >
                   <button onClick={codeCopyNotification} className="flex">
@@ -405,7 +411,7 @@ const cssCode=`${play=='animation1'?`.animation1 {
                 </CopyToClipboard>
               </div>
               <SyntaxHighlighter language="css" style={docco}>
-                {`<p class='${play=='noAnimation'?'':play}'>Text Animations</p>`}
+                {`<p class='textGrad ${play=='noAnimation'?'':play}'>Text Animations</p>`}
               </SyntaxHighlighter>
             </div>
             <div className="w-full dark:text-white mt-4">
