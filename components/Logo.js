@@ -4,9 +4,9 @@ export default function Logo() {
   return (
     <>
       <Link href="/">
-        <div className="w-24 relative h-16 flex items-center justify-center">
-          {/* <Image src='/images/logo.svg' fill={true} alt='Logo' priority={true} /> */}
-          <p className="font-semibold text-3xl text-blue-500">LOGO</p>
+        <div className="w-36 relative h-12 flex items-center justify-center">
+          <Image src='/images/logo.png' width={200} height={200} alt='Logo' priority={true} className='w-[200px] h-[50px]'/>
+          {/* <p className="font-semibold text-3xl text-blue-500">LOGO</p> */}
           </div>
       </Link>
     </>

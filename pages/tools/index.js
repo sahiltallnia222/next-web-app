@@ -9,14 +9,14 @@ export default function Tools() {
   return (
     <>
       <Head>
-        <title>WEB TOOLS</title>
+        <title>ALL TOOLS</title>
       </Head>
       <div>
         <div className="lg:w-[64rem] mx-auto w-full">
           <h1
             className={`md:text-5xl text-4xl text-blue-500 text-center font-semibold pb-5  pt-3 ${styles.textGrad}`}
           >
-            All Tools
+            ALL TOOLS
           </h1>
           
           <div  className="p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
