@@ -13,16 +13,16 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Webverse</title>
+        <title>WebVerse</title>
         <meta
         name="description"
-        content="Webverse is a all in one plateform to provide free website tools like css generators, image tools and color tools. In Webverse, you can learn css with css generators without any experience with live preview of css changes.You are direct copy paste css from css generator and paste in your website. Free image tools to make image best fit in your website. Free color tools to see preview of different colors and color shades that best fit in your website."
+        content="WebVerse is a all in one plateform to provide free website tools like css generators, image tools and color tools. In WebVerse, you can learn css with css generators without any experience with live preview of css changes.You are direct copy paste css from css generator and paste in your website. Free image tools to make image best fit in your website. Free color tools to see preview of different colors and color shades that best fit in your website."
       />
       <meta name="keywords" content="Webverse, web tools, free css generators, free image tools, free color tools"></meta>
-      <meta property="og:title" content="Webverse | Universe of web tools" />
+      <meta property="og:title" content="WebVerse | Universe of web tools" />
         <meta
           property="og:description"
-          content="Webverse is a all in one plateform to provide free website tools like css generators, image tools and color tools. In Webverse, you can learn css with css generators without any experience with live preview of css changes.You are direct copy paste css from css generator and paste in your website. Free image tools to make image best fit in your website. Free color tools to see preview of different colors and color shades that best fit in your website."
+          content="WebVerse is a all in one plateform to provide free website tools like css generators, image tools and color tools. In WebVerse, you can learn css with css generators without any experience with live preview of css changes.You are direct copy paste css from css generator and paste in your website. Free image tools to make image best fit in your website. Free color tools to see preview of different colors and color shades that best fit in your website."
         />
         <meta
           property="og:image"
