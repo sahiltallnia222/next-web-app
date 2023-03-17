@@ -10,6 +10,12 @@ import { FaRegCopy } from "react-icons/fa";
 import { VscDebugBreakpointLogUnverified } from "react-icons/vsc";
 import {GrFacebookOption} from 'react-icons/gr'
 import {RxReset} from 'react-icons/rx'
+import {BsFillLightningFill} from 'react-icons/bs'
+import Link from "next/link";
+import { MdAnimation} from "react-icons/md";
+import {GiPowerButton} from 'react-icons/gi'
+import { TbBoxMultiple } from "react-icons/tb";
+
 
 export default function BorderRadiusGenerator() {
   const borderBoxParentRef = useRef();
@@ -19,15 +25,9 @@ export default function BorderRadiusGenerator() {
   const topXLRef = useRef();
   const bottomXLRef = useRef();
   const [dotMargin, setDotMargin] = useState(0);
-  const [borderStyle, setBorderStyle] = useState("solid");
-  const [borderWidth, setBorderWidth] = useState(4);
-  const [borderColor, setBorderColor] = useState("#f98234");
-  const [bgColor, setbgColor] = useState("#f98234");
+  const [borderProps,setBorderProps]=useState({});
   const [middle, setMiddle] = useState({ XTL: 0,pXTL:0, YLT: 0,pYLT:0, YRT: 0,pYRT:0, XBL: 0,pXBL:0 });
-  const [bounds, setBounds] = useState({
-    right: 0,
-    bottom: 0,
-  });
+  const [bounds, setBounds] = useState({right: 0, bottom: 0});
   const [radiusValues, setRadiusValues] = useState({
     YLT: 0,
     YLB: 0,
@@ -38,6 +38,7 @@ export default function BorderRadiusGenerator() {
     XBL: 0,
     XBR: 0,
   });
+
   const handleDrag = (e, data, pos_1, pos_2, axis) => {
     let Dvalues = { ...middle };
     Dvalues[pos_1] = data[axis];
@@ -58,6 +59,7 @@ export default function BorderRadiusGenerator() {
       theme: "light",
     });
   };
+
   const handleResize = (x) => {
     if (borderBoxParentRef.current && borderBoxRef.current) {
       const parentBoxHeight = borderBoxParentRef.current.clientHeight;
@@ -76,6 +78,19 @@ export default function BorderRadiusGenerator() {
       dValues.pXBL=50;
       dValues.pYRT=50;
       if(x){
+        let data={
+          borderColor:'#000000',
+          bgColor:'#344BF9',
+          borderWidth:8,
+          borderStyle:'solid'
+        }
+        setBorderProps(data);
+        localStorage.setItem('border-color-width',JSON.stringify({
+          borderColor:'#000000',
+          bgColor:'#344BF9',
+          borderWidth:8,
+          borderStyle:'solid'
+        }))
         localStorage.setItem('border-radius-generator',JSON.stringify(dValues))
       }
       setMiddle(dValues);
@@ -92,6 +107,8 @@ export default function BorderRadiusGenerator() {
       setRadiusValues(values);
     }
   };
+
+
   useEffect(() => {
     window.addEventListener("resize",()=>{handleResize(true)});
     handleResize(false)
@@ -120,24 +137,75 @@ export default function BorderRadiusGenerator() {
     }
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+
   let borderRadius = `${radiusValues.XTL}% ${radiusValues.XTR}% ${radiusValues.XBR}% ${radiusValues.XBL}% / ${radiusValues.YLT}% ${radiusValues.YRT}% ${radiusValues.YRB}% ${radiusValues.YLB}%`;
+
+  useEffect(()=>{
+    if(localStorage.getItem('border-color-width')){
+      let data = JSON.parse(localStorage.getItem('border-color-width'))
+      setBorderProps(data);
+    }else{
+      let data={
+        borderColor:'#000000',
+        bgColor:'#344BF9',
+        borderWidth:8,
+        borderStyle:'solid'
+      }
+      setBorderProps(data);
+      localStorage.setItem('border-color-width',JSON.stringify({
+        borderColor:'#000000',
+        bgColor:'#344BF9',
+        borderWidth:8,
+        borderStyle:'solid'
+      }))
+    }
+  },[]);
+
+useEffect(()=>{
+  if(Object.keys(borderProps).length>0){
+    localStorage.setItem('border-color-width',JSON.stringify(borderProps));
+  }
+
+},[borderProps])
+
+
   return (
     <>
       <Head>
-        <title>Border Radius Generator</title>
+      <title>Border Radius Generators | WebVerse</title>
+        <meta
+        name="description"
+        content="Border radius generator tool will help you to create awesome shapes just by dragging the dots. Direct copy the generated css code and paste in your website and see the effects."
+      />
+      <meta name="keywords" content="Webverse, web tools, border radius generator, border radius generator css, border radius generator circle, free border radius generator, advanced border radius generator"></meta>
+      <meta property="og:title" content="Border Radius Generators | WebVerse" />
+        <meta
+          property="og:description"
+          content="Border radius generator tool will help you to create awesome shapes just by dragging the dots. Direct copy the generated css code and paste in your website and see the effects."
+        />
+        <meta
+          property="og:image"
+          content="/images/og-images/home-page-og.png"
+        />
       </Head>
+
+      {/* center div starts */}
+
+      <div>
       {borderBoxParentRef && (
-        <div>
-          <div className="lg:w-[64rem] mx-auto w-full ">
+          <div className="lg:w-[64rem] mx-auto w-full dark:text-white">
             <h1
               className={`md:text-5xl text-4xl text-blue-500 text-center font-semibold pb-5  pt-3 ${styles.textGrad}`}
             >
               Border Radius Generator
             </h1>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 p-6 dark:bg-[#1d2537] lg:bg-gray-100 ">
+            <p className=" leading-9 text-lg text-justify p-4  py-4 lg:px-0">
+              In web design, border radius generator is most commonly used tool to create diffrent shapes of the box because manually calculating the values and apply in the border radius can be a very tedious task. In border radius generator, you can drag the icons and adjust the values of border radius. Now just copy the generated css code and paste directly in your website and see the effects. 
+            </p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 p-4 lg:dark:bg-[#1d2537] lg:bg-gray-100 ">
               {/* left box */}
-              <div className=" w-full dark:text-white">
+              <div className="w-full">
                 <div
                   ref={borderBoxParentRef}
                   className="border dark:border-white border-black w-[88vw] md:w-[30rem] h-[88vw] md:h-[30rem] mx-auto flex justify-center items-center relative"
@@ -150,10 +218,10 @@ export default function BorderRadiusGenerator() {
                       className="w-[95%] h-[95%]"
                       style={{
                         borderRadius: borderRadius,
-                        borderStyle: borderStyle,
-                        borderWidth: borderWidth + "px",
-                        backgroundColor: bgColor,
-                        borderColor: borderColor,
+                        borderStyle: borderProps.borderStyle,
+                        borderWidth: borderProps.borderWidth + "px",
+                        backgroundColor: borderProps.bgColor,
+                        borderColor: borderProps.borderColor,
                       }}
                     ></div>
                   </div>
@@ -242,23 +310,26 @@ export default function BorderRadiusGenerator() {
                   </Draggable>
                 </div>
               </div>
+              {/* left box ends here */}
               {/* right side */}
-              <div className="text-sm font-medium">
+              {Object.keys(borderProps).length>0 && <div className="text-sm font-medium">
                 {/* border style */}
-                <div className="  border-gray-200 cursor-pointer block w-full dark:border-none  dark:placeholder-gray-400 dark:text-white outline-none">
+                <div className="border-gray-200 cursor-pointer block w-full dark:border-none  dark:placeholder-gray-400  outline-none">
                   <label
                     htmlFor="border-style"
-                    className="block mb-3 text-gray-900 dark:text-white"
+                    className="block mb-3"
                   >
                     Border style
                   </label>
                   <select
                     id="border-style"
-                    defaultValue={borderStyle}
+                    value={borderProps.borderStyle}
                     onChange={(e) => {
-                      setBorderStyle(e.target.value);
+                      let values={...borderProps};
+                      values.borderStyle=e.target.value;
+                      setBorderProps(values);
                     }}
-                    className="p-2.5 w-full dark:text-white outline-none text-sm block dark:bg-[#0f172a] cursor-pointer dark:border-none border-gray-200 border"
+                    className="p-2.5 w-full  outline-none text-sm block lg:dark:bg-[#0f172a] dark:bg-[#1d2537]  cursor-pointer dark:border-none border-gray-200 border"
                   >
                     <option value="dotted">Dotted</option>
                     <option value="dashed">Dashed</option>
@@ -272,78 +343,85 @@ export default function BorderRadiusGenerator() {
                     <option value="hidden">Hidden</option>
                   </select>
                 </div>
-                <div className="">
-                  <div className="flex pt-4 items-center justify-between dark:text-white">
+                {/* border style ends */}
+                <div>
+                  <div className="flex pt-4 items-center justify-between ">
                     <div>Border Width</div>
-                    <div>{borderWidth} px</div>
+                    <div>{borderProps.borderWidth} px</div>
                   </div>
                   <div>
                     <input
                       type="range"
-                      value={borderWidth}
+                      value={borderProps.borderWidth}
                       min="0"
                       max="100"
                       onChange={(e) => {
-                        setBorderWidth(e.target.value);
+                        let values={...borderProps}
+                        values.borderWidth=e.target.value
+                        setBorderProps(values)
                       }}
-                      className="w-full h-1 rounded-md appearance-none cursor-pointer"
+                      className="w-full h-1 bg-gray-300 lg:bg-white rounded-md appearance-none cursor-pointer"
                     />
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-4">
-                  <div className="flex justify-between items-center w-full md:w-1/2 mt-3 dark:text-white">
+                  <div className="flex justify-between items-center w-full md:w-1/2 mt-3 ">
                     <span>Border Color </span>
-                    <span>
+                    <span className="flex items-center justify-center">
                       <label
                         htmlFor="border-color"
-                        className="border-2 border-black  px-3 py-0 rounded"
-                        style={{ backgroundColor: borderColor }}
+                        className="border-2 border-black px-8 py-4 rounded"
+                        style={{ backgroundColor: borderProps.borderColor }}
                       ></label>
                       <input
                         type="color"
                         id="border-color"
-                        value={borderColor}
+                        value={borderProps.borderColor}
                         className="w-0 invisible"
                         onChange={(e) => {
-                          setBorderColor(e.target.value);
+                          let values={...borderProps}
+                          values.borderColor=e.target.value
+                          setBorderProps(values)
                         }}
                       />
                     </span>
                   </div>
-                  <div className="flex justify-between items-center w-full md:w-1/2 dark:text-white">
+                  <div className="flex justify-between items-center w-full md:w-1/2 ">
                     <span>Background Color</span>
-                    <span>
+                    <span className="flex items-center justify-center">
                       <label
                         htmlFor="bg-color"
-                        className="border-2 border-black  px-3 py-0 rounded"
-                        style={{ backgroundColor: bgColor }}
+                        className="border-2 border-black  px-8 py-4 rounded"
+                        style={{ backgroundColor: borderProps.bgColor }}
                       ></label>
                       <input
                         type="color"
                         id="bg-color"
-                        value={bgColor}
+                        value={borderProps.bgColor}
                         className="w-0 invisible"
                         onChange={(e) => {
-                          setbgColor(e.target.value);
+                          let values={...borderProps}
+                          values.bgColor=e.target.value;
+                          setBorderProps(values);
                         }}
                       />
                     </span>
                   </div>
                 </div>
-                <div className="w-full pt-6 dark:text-white">
+
+                <div className="w-full pt-6 ">
                   <div className="flex items-center justify-between mb-3">
                     <p className="font-medium text-lg pb-1">CSS code</p>
                     <CopyToClipboard
                       text={`border-radius:${borderRadius};
-border-style:${borderStyle};
-border-width:${borderWidth}px;
-border-color:${borderColor};
-background-color:${bgColor};`}
+border-style:${borderProps.borderStyle};
+border-width:${borderProps.borderWidth}px;
+border-color:${borderProps.borderColor};
+background-color:${borderProps.bgColor};`}
                       className=" px-4 py-2 text-white flex items-center justify-between gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 bg-blue-500 rounded-lg text-sm"
                     >
                       <button onClick={codeCopyNotification}>
-                        {" "}
                         <span>Copy</span>
                         <span>
                           <FaRegCopy />
@@ -352,20 +430,66 @@ background-color:${bgColor};`}
                     </CopyToClipboard>
                   </div>
                   <SyntaxHighlighter language="css" style={docco}>
-                    {`border-radius:${borderRadius};\nborder-style:${borderStyle};\nborder-width:${borderWidth}px;\nborder-color:${borderColor};\nbackground-color:${bgColor};`}
+                    {`border-radius:${borderRadius};\nborder-style:${borderProps.borderStyle};\nborder-width:${borderProps.borderWidth}px;\nborder-color:${borderProps.borderColor};\nbackground-color:${borderProps.bgColor};`}
                   </SyntaxHighlighter>
                 </div>
                 <button onClick={()=>{handleResize(true)}} className="mt-4 px-4 py-2 text-white flex items-center justify-between gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 bg-blue-500 rounded-lg text-sm">
                   <span>Reset</span>
                   <span><RxReset /></span>
                 </button>
+              </div>}
+            </div>
+
+            {/* explore css generators starts here  */}
+            <div className="lg:w-[64rem] mx-auto w-full p-4 lg:p-0 lg:py-4">
+              <div className="flex items-center justify-between ">
+                <div className="flex items-center text-xl md:text-2xl gap-4 py-4">
+                  <div>
+                    <BsFillLightningFill />
+                  </div>
+                  <h2 className="font-semibold">Explore other tools</h2>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/box-animations`} passHref>
+                  <div className="flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent">
+                    <MdAnimation size={"2.3em"} />
+                    <p className="text-xl font-medium text-center">
+                      Box Animations
+                    </p>
+                  </div>
+                </Link>
+                <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/box-shadow`} passHref>
+                  <div className="flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent">
+                    <TbBoxMultiple size={"2.3em"} />
+                    <p className="text-xl font-medium text-center">
+                      Box Shadow Generator
+                    </p>
+                  </div>
+                </Link>
+                <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/button-generator`} passHref>
+                  <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                    <GiPowerButton size={"2.3rem"} />
+                    <p className="text-xl font-medium text-center">
+                      Button Generator
+                    </p>
+                  </div>
+              </Link>
               </div>
             </div>
-            <div className="dark:bg-[#1d2537] p-4 mt-4 lg:bg-gray-100  dark:text-white">
-              <p className="text-2xl pb-3 font-medium">
-                Example 1 of fancy border radius
-              </p>
-              <div className="p-4">
+            {/*explore  css generator ends here */}
+
+            {/* examples stars */}
+            <div className="flex items-center justify-between p-4 lg:p-0">
+                <div className="flex items-center text-xl md:text-2xl gap-4 py-4">
+                  <div>
+                    <BsFillLightningFill />
+                  </div>
+                  <h2 className="font-semibold">Examples of fancy border radius</h2>
+                </div>
+            </div>
+            <div className="p-4 lg:dark:bg-[#1d2537] lg:bg-gray-100">
+              <div>
                 <style jsx>{`
                   .example1 {
                     animation: animation1 4s ease-in-out infinite;
@@ -466,11 +590,8 @@ background-color:${bgColor};`}
                 </div>
               </div>
             </div>
-            <div className="dark:bg-[#1d2537] p-4 mt-4 lg:bg-gray-100  dark:text-white">
-              <p className="text-2xl pb-3 font-medium">
-                Example 2 of fancy border radius
-              </p>
-              <div className="p-4">
+            <div className=" p-4 mt-4 lg:dark:bg-[#1d2537] lg:bg-gray-100 ">
+              <div>
                 <style jsx>{`
                   .example2 {
                     animation: animation2 4s ease-in-out infinite;
@@ -576,14 +697,20 @@ background-color:${bgColor};`}
                 </div>
               </div>
             </div>
-            <div className="dark:bg-[#1d2537] p-4 mt-4 lg:bg-gray-100  dark:text-white">
-              <p className="text-2xl pb-3 font-medium">
-                Example 3 of fancy border radius
-              </p>
-              <div className="p-4">
+            <div className="p-4 mt-4 lg:dark:bg-[#1d2537] lg:bg-gray-100 ">
+              <div>
                 <style jsx>{`
                 .exampleB3{
                   background-color:white;
+                  border: 1px solid black;
+                  width: 10rem;
+                  padding: 6px 10px;
+                  gap: 1rem;
+                  display: flex ;
+                  align-items: center;
+                  justify-content: center;
+                  margin:auto;
+                  color:black;
                 }
                   .example3 {
                     animation: animation3 4s ease-in-out infinite;
@@ -602,7 +729,7 @@ background-color:${bgColor};`}
                     }
                   }
                 `}</style>
-                <div className="mx-auto md:w-80 exampleB3 w-full flex items-center justify-center text-lg gap-4 p-3 text-center font-medium text-black">
+                <div className="exampleB3">
                   <span className="example3"><GrFacebookOption color="black" size={'1.4em'} /></span>
                   <span>Facebook</span>
                 </div>
@@ -626,7 +753,7 @@ background-color:${bgColor};`}
                       </CopyToClipboard>
                     </div>
                     <SyntaxHighlighter language="css" style={docco}>
-                      {`<div class="exampleB3k"><span class="example3"><i class="fa-brands fa-facebook-f"></i></span><span>Facebook</span></div> <!-- (font awesome icon) -->`}
+                      {`<div class="exampleB3"><span class="example3"><i class="fa-brands fa-facebook-f"></i></span><span>Facebook</span></div> <!-- (font awesome icon) -->`}
                     </SyntaxHighlighter>
                   </div>
                   <div className="mt-4">
@@ -635,6 +762,15 @@ background-color:${bgColor};`}
                       <CopyToClipboard
                         text={`.exampleB3{
   background-color:white;
+  border: 1px solid black;
+  width: 10rem;
+  padding: 6px 10px;
+  gap: 1rem;
+  display: flex ;
+  align-items: center;
+  justify-content: center;
+  margin:auto;
+  color:black;
 }
 .example3 {
   animation: animation3 4s ease-in-out infinite;
@@ -665,6 +801,15 @@ background-color:${bgColor};`}
                     <SyntaxHighlighter language="css" style={docco}>
                       {`.exampleB3{
   background-color:white;
+  border: 1px solid black;
+  width: 10rem;
+  padding: 6px 10px;
+  gap: 1rem;
+  display: flex ;
+  align-items: center;
+  justify-content: center;
+  margin:auto;
+  color:black;
 }
 .example3 {
   animation: animation3 4s ease-in-out infinite;
@@ -687,11 +832,12 @@ background-color:${bgColor};`}
                 </div>
               </div>
             </div>
-
-
+            {/* examples ends here */}
           </div>
-        </div>
       )}
+      </div>
+
+      {/* center div ends here */}
     </>
   );
 }

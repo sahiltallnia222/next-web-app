@@ -6,10 +6,15 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
-import { TbBoxMultiple } from "react-icons/tb";
 import { FaRegCopy } from "react-icons/fa";
 import { TiDelete } from "react-icons/ti";
 import {RxReset} from 'react-icons/rx'
+import {BsFillLightningFill} from 'react-icons/bs'
+import Link from "next/link";
+import {BsCursorFill } from "react-icons/bs";
+import {GiPowerButton} from 'react-icons/gi'
+import { TbBoxMultiple } from "react-icons/tb";
+import { MdGradient} from "react-icons/md";
 
 
 export default function Boxshadow() {
@@ -102,7 +107,6 @@ export default function Boxshadow() {
   },[])
   useEffect(() => {
     let boxShadow = "";
-    console.log('shadow');
     shadows.forEach((shadow) => {
       boxShadow += `${shadow.hOffset}px ${shadow.vOffset}px ${
         shadow.bRadius
@@ -142,11 +146,24 @@ export default function Boxshadow() {
       setShadows(values);
     }
   };
-// console.log(shadows);
   return (
     <>
       <Head>
-        <title>Box Shadow Generator</title>
+        <title>Box Shadow Generator | WebVerse</title>
+        <meta
+        name="description"
+        content="Box shadow is very important property which is used in almost all the websites. It is very time taking task to adjust values of box shadow. Box shadow generator can help to do this task very quickly just by dragging the values. This Box shadow generator covers all the properties of box shadow along with explanation. Create awesome box shadows along with live preview of changes and copy-paste the generated css in your website."
+      />
+      <meta name="keywords" content="Webverse, web tools, free box shadow generator, box shadow css,box shadow in css,box shadow,box shadow generator,box shadow examples,box shadow inset,box shadow html,box shadow css examples,box shadow opacity,box shadow top"></meta>
+      <meta property="og:title" content="Box Shadow Generator | WebVerse" />
+        <meta
+          property="og:description"
+          content="Box shadow is very important property which is used in almost all the websites. It is very time taking task to adjust values of box shadow. Box shadow generator can help to do this task very quickly just by dragging the values. This Box shadow generator covers all the properties of box shadow along with explanation. Create awesome box shadows along with live preview of changes and copy-paste the generated css in your website."
+        />
+        <meta
+          property="og:image"
+          content="/images/og-images/home-page-og.png"
+        />
       </Head>
       <div>
         {/* center div ------------------------------------------------------------------- */}
@@ -154,8 +171,10 @@ export default function Boxshadow() {
           <h1 className={`md:text-5xl text-4xl text-blue-500 text-center font-semibold pb-5  pt-3 ${styles.textGrad}`}>
             Box Shadow Generator
           </h1>
-
-          <div className="w-full grid grid-cols-1 items-center md:grid-cols-2 p-4 dark:text-white bg-gray-100   dark:bg-[#1d2537]">
+          <p className=" leading-9 text-lg text-justify p-4  py-4 lg:px-0 dark:text-white">
+            Box shadow is very important property which is used in almost all the websites. It is very time taking task to adjust values of box shadow. Box shadow generator can help to do this task very quickly just by dragging the values. This Box shadow generator covers all the properties of box shadow along with explanation. Create awesome box shadows along with live preview of changes and copy-paste the generated css in your website.
+          </p>
+          <div className="w-full grid grid-cols-1 items-center md:grid-cols-2 p-4 dark:text-white lg:bg-gray-100   lg:dark:bg-[#1d2537]">
             {/* Left side of shadow generator. */}
             <div
               className=" flex justify-center items-center h-[40vh] md:h-full"
@@ -191,7 +210,7 @@ export default function Boxshadow() {
                     }}
                     min="-250"
                     max="250"
-                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1 bg-gray-300 lg:bg-white rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>
@@ -212,7 +231,7 @@ export default function Boxshadow() {
                     }}
                     min="-250"
                     max="250"
-                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1 bg-gray-300 lg:bg-white rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>
@@ -233,7 +252,7 @@ export default function Boxshadow() {
                     }}
                     min="0"
                     max="300"
-                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1 bg-gray-300 lg:bg-white rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>
@@ -254,7 +273,7 @@ export default function Boxshadow() {
                       values[shadowNo].sRadius = e.target.value;
                       setShadows(values);
                     }}
-                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1 bg-gray-300 lg:bg-white rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>
@@ -271,24 +290,23 @@ export default function Boxshadow() {
                     max="100"
                     value={shadows[shadowNo].sOpacity * 100}
                     onChange={(e) => {
-                      console.log(e.target.value);
                       let values = [...shadows];
                       values[shadowNo].sOpacity = e.target.value / 100;
                       setShadows(values);
                     }}
-                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1 bg-gray-300 lg:bg-white rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>
 
               <div className="px-4 py-2 flex flex-col gap-4">
-                <div className="flex flex-row items-center justify-between">
-                  <div className="flex justify-between w-1/3">
+                <div className="flex lg:flex-row flex-col items-center gap-2 justify-between">
+                  <div className="flex justify-between w-full lg:w-1/3">
                     <span>Box Color </span>
-                    <span>
+                    <span className="flex items-center justify-center">
                       <label
                         htmlFor="box-color"
-                        className="border-2 border-black  px-3 py-0 rounded"
+                        className="border-2 border-black  px-6 py-3 rounded"
                         style={{ backgroundColor: `${shadow.boxColor}` }}
                       ></label>
                       <input
@@ -305,12 +323,12 @@ export default function Boxshadow() {
                     </span>
                   </div>
 
-                  <div className="flex justify-between w-1/2">
+                  <div className="flex justify-between w-full lg:w-1/2">
                     <span>Background Color </span>
-                    <span>
+                    <span className="flex items-center justify-center">
                       <label
                         htmlFor="bg-color"
-                        className="border-2 border-black  px-3 py-0 rounded"
+                        className="border-2 border-black  px-6 py-3 rounded"
                         style={{ backgroundColor: `${shadow.bgColor}` }}
                       ></label>
                       <input
@@ -328,13 +346,13 @@ export default function Boxshadow() {
                   </div>
                 </div>
 
-                <div className="flex flex-row items-center justify-between">
-                  <div className="w-1/3 flex justify-between">
+                <div className="flex lg:flex-row flex-col items-center gap-2 justify-between">
+                  <div className="lg:w-1/3 w-full flex justify-between">
                     <span>Shadow Color </span>
-                    <span>
+                    <span  className="flex items-center justify-center">
                       <label
                         htmlFor="shadow-color"
-                        className="border-2 border-black px-3 py-0 rounded"
+                        className="border-2 border-black px-6 py-3 rounded"
                         style={{
                           backgroundColor: `${hexToRGB(shadows[shadowNo].sHexCode,shadows[shadowNo].sOpacity)}`,
                         }}
@@ -353,7 +371,7 @@ export default function Boxshadow() {
                     </span>
                   </div>
 
-                  <div className="w-1/2 flex justify-between">
+                  <div className="lg:w-1/2 w-full flex justify-between">
                     <span>Inset</span>
                     <span>
                       <label className="switch">
@@ -387,7 +405,7 @@ export default function Boxshadow() {
 
           {/* End of 2 boxes of box shadow generator */}
           {/* Multiple shadow box */}
-          <div className="p-4 dark:text-white dark:bg-[#1d2537] bg-gray-100 ">
+          <div className="p-4 dark:text-white lg:dark:bg-[#1d2537] lg:bg-gray-100 ">
             <h2 className="font-medium text-lg py-3">
               Add multiple box shadows
             </h2>
@@ -429,7 +447,7 @@ export default function Boxshadow() {
 
           {/* End of multiple shadow section */}
           {/* Code section */}
-          <div className="w-full p-4 dark:text-white dark:bg-[#1d2537] mt-4 bg-gray-100 ">
+          <div className="w-full p-4 dark:text-white lg:dark:bg-[#1d2537] mt-4 lg:bg-gray-100 ">
           <div className="flex items-center justify-between mb-3">
             <p className="font-medium text-lg py-2">CSS code</p>
             <CopyToClipboard
@@ -445,8 +463,47 @@ export default function Boxshadow() {
           </div>
           {/* End of code section */}
 
+          {/* explore css generators starts here  */}
+          <div className="lg:w-[64rem] mx-auto w-full p-4 lg:p-0 lg:py-4 dark:text-white">
+              <div className="flex items-center justify-between ">
+                <div className="flex items-center text-xl md:text-2xl gap-4 py-4">
+                  <div>
+                    <BsFillLightningFill />
+                  </div>
+                  <h2 className="font-semibold">Explore other tools</h2>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/button-generator`} passHref>
+                  <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                    <GiPowerButton size={"2.3rem"} />
+                    <p className="text-xl font-medium text-center">
+                      Button Generator
+                    </p>
+                  </div>
+              </Link>
+              <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/cursor-options`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <BsCursorFill size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  Cursor CSS Generator
+                </p>
+              </div>
+            </Link>
+            <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/gradient-generator`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <MdGradient size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  Gradient Generator
+                </p>
+              </div>
+            </Link>
+              </div>
+            </div>
+            {/*explore  css generator ends here */}
+
           {/* Box shadow examples */}
-          <div className="p-4 pb-7 bg-gray-100  dark:bg-[#1d2537] mt-4">
+          <div className="p-4 pb-7 lg:bg-gray-100  lg:dark:bg-[#1d2537] mt-4">
             <h2 className="text-2xl font-semibold pb-3 dark:text-white ">
               Box Shadow Examples
             </h2>
@@ -626,8 +683,8 @@ export default function Boxshadow() {
           {/* Box shadow examples section ends here */}
 
           {/* Explanation of box shadow starts from here */}
-          <div className="p-4 dark:text-white bg-gray-100  mt-4 dark:bg-[#1d2537]">
-            <h2 className="text-3xl font-semibold pb-5 pt-3">
+          <div className="p-4 dark:text-white lg:bg-gray-100  mt-4 lg:dark:bg-[#1d2537]">
+            <h2 className="lg:text-3xl text-2xl font-semibold pb-5 pt-3">
               Box Shadow Explanation
             </h2>
             <p className="text-lg  space-x-2 tracking-wide leading-loose">
@@ -635,7 +692,7 @@ export default function Boxshadow() {
               element of webpage. We can provide multiple shadow effects (to the
               same element of webpage) with the help of box shadow in CSS.
             </p>
-            <p className="text-2xl font-semibold my-4">
+            <p className="text-xl lg:text-2xl font-semibold my-4">
               Syntax of box shadow property
             </p>
             <SyntaxHighlighter language="css" style={docco}>
@@ -643,7 +700,7 @@ export default function Boxshadow() {
               inset;
             </SyntaxHighlighter>
 
-            <p className="text-2xl font-semibold my-4">Horizontal Offset</p>
+            <p className="text-xl lg:text-2xl  font-semibold my-4">Horizontal Offset</p>
             <p className="text-lg  space-x-2 tracking-wide leading-loose">
               Horizontal offset put the shadow in left and right side of the
               element. Positive value to Horizontal offset (h-offset) will shift
@@ -676,7 +733,7 @@ export default function Boxshadow() {
               ></div>
             </div>
 
-            <p className="text-2xl font-semibold my-4">Vertical Offset</p>
+            <p className="font-semibold text-xl lg:text-2xl  my-4">Vertical Offset</p>
             <p className="text-lg  space-x-2 tracking-wide leading-loose">
               Vertical offset put the shadow in up and down direction of the
               element. Positive value to vertical offset (v-offset) will shift
@@ -710,7 +767,7 @@ export default function Boxshadow() {
               ></div>
             </div>
 
-            <p className="text-2xl font-semibold my-4">Blur Radius</p>
+            <p className="text-xl lg:text-2xl  font-semibold my-4">Blur Radius</p>
             <p className="text-lg  space-x-2 tracking-wide leading-loose">
               Blur radius is used to control the sharpness of shadow. In the 4
               examples given above, blur radius is 0 means that shadow edges are
@@ -730,7 +787,7 @@ export default function Boxshadow() {
                 style={{ boxShadow: "7px 10px 10px 0px black" }}
               ></div>
             </div>
-            <p className="text-2xl font-semibold my-4">
+            <p className="text-xl lg:text-2xl  font-semibold my-4">
               Spread Radius (optional)
             </p>
             <p className="text-lg  space-x-2 tracking-wide leading-loose">
@@ -765,7 +822,7 @@ export default function Boxshadow() {
               ></div>
             </div>
 
-            <p className="text-2xl font-semibold my-4">Color</p>
+            <p className="text-xl lg:text-2xl  font-semibold my-4">Color</p>
             <p className="text-lg  space-x-2 tracking-wide leading-loose">
               Color property of box shadow is used to provide the color to the
               shadow of the element. We can provide color in any type like hex
@@ -785,7 +842,7 @@ export default function Boxshadow() {
               ></div>
             </div>
 
-            <p className="text-2xl font-semibold my-4">Inset</p>
+            <p className="text-xl lg:text-2xl  font-semibold my-4">Inset</p>
             <p className="text-lg  space-x-2 tracking-wide leading-loose">
               Inset property is used to determine position of box shadow. By
               default in box-shadow property is is not defined it means shadow
@@ -805,7 +862,7 @@ export default function Boxshadow() {
               ></div>
             </div>
 
-            <p className="text-3xl font-semibold my-4">Multiple shadows</p>
+            <p className="lg:text-3xl text-2xl font-semibold my-4">Multiple shadows</p>
             <p className="text-lg  space-x-2 tracking-wide leading-loose">
               With box shadow property of CSS, we can put multiple shadows to
               single element. We can create many beautiful effects with the help

@@ -1,6 +1,5 @@
 import Head from "next/head";
 import styles from "styles/style.module.css";
-import { useRef } from "react";
 import { ImPlay2, ImPause } from "react-icons/im";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -8,10 +7,15 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { FaRegCopy } from "react-icons/fa";
+import {BsFillLightningFill} from 'react-icons/bs'
+import Link from "next/link";
+import {BsCursorFill } from "react-icons/bs";
+import {GiPowerButton} from 'react-icons/gi'
+import { TbBoxMultiple } from "react-icons/tb";
 
 export default function TextAnimations() {
-  const textRef = useRef();
   const [play, setPlay] = useState("");
+
   const codeCopyNotification = () => {
     toast.success("Code copied successfully !", {
       position: "top-center",
@@ -27,12 +31,19 @@ export default function TextAnimations() {
       setPlay(x);
     }
   };
+
 const cssCode=`.outer-box{
     perspective:'3000px';
     perspective-origin:'50% 50%';
 }
 ${play=='animation1'?`.animation1 {
     animation:animation1 1.5s cubic-bezier(0.38, 1.2, 1, 1) both infinite ;
+    background: linear-gradient(113deg, #3b82f6 25%,  #dd1fea 100%);
+    width:15rem;
+    height:15rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 @keyframes animation1{
     0%{
@@ -44,6 +55,12 @@ ${play=='animation1'?`.animation1 {
 }`:''}${play=='animation2'?`.animation2 {
     animation:animation2 1.5s cubic-bezier(0.38, 1.2, 1, 1) both infinite ;
     text-align:center;
+    background: linear-gradient(113deg, #3b82f6 25%,  #dd1fea 100%);
+    width:15rem;
+    height:15rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 @keyframes animation2{
     0%{
@@ -55,6 +72,12 @@ ${play=='animation1'?`.animation1 {
     }
 }`:''}${play=='animation3'?`.animation3 {
     animation:animation3 3s linear both infinite ;
+    background: linear-gradient(113deg, #3b82f6 25%,  #dd1fea 100%);
+    width:15rem;
+    height:15rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 @keyframes animation3{
     0%{
@@ -80,6 +103,12 @@ ${play=='animation1'?`.animation1 {
 }`:''}${play=='animation4'?`.animation4 {
     animation:animation4 1.6s cubic-bezier(0, 0.66, 1, 1) both infinite ;
     text-align:center;
+    background: linear-gradient(113deg, #3b82f6 25%,  #dd1fea 100%);
+    width:15rem;
+    height:15rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 @keyframes animation4{
     0%{
@@ -97,6 +126,12 @@ ${play=='animation1'?`.animation1 {
     }
 }`:''}${play=='animation5'?`.animation5 {
     animation:animation5 1.6s cubic-bezier(0, 1.07, 1, 1) both infinite ;
+    background: linear-gradient(113deg, #3b82f6 25%,  #dd1fea 100%);
+    width:15rem;
+    height:15rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 @keyframes animation5{
     0%{
@@ -116,6 +151,12 @@ ${play=='animation1'?`.animation1 {
 }`:''}${play=='animation6'?`.animation6 {
     animation:animation6 1.6s cubic-bezier(0, 1.07, 1, 1) both infinite ;
     text-align:center;
+    background: linear-gradient(113deg, #3b82f6 25%,  #dd1fea 100%);
+    width:15rem;
+    height:15rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 @keyframes animation6{
     0%{
@@ -129,10 +170,26 @@ ${play=='animation1'?`.animation1 {
         letter-spacing:0rem;
     }
 }`:''}`
+
+
   return (
     <>
       <Head>
-        <title>CSS Box Animations</title>
+        <title>CSS Box Animations | WebVerse</title>
+        <meta
+        name="description"
+        content="CSS box animations are the ways to add movement and visual effects to the boxes in our website. CSS animations can be used to draw attention toward any important information. In CSS box animations, we have provided you some awesome css box animation to use in your website. You can see the css animation effects by clicking on play button. After play the animation just copy the generated css code given below and paste in your website."
+      />
+      <meta name="keywords" content="Webverse, web tools, free css animation tool, css animation,css animation background,css animation hover,css animation on hover,css animation generator,css animation rotate,css animation examples,css animation keyframes,css animation delay,css animation property,css animation transition,css transition animation,css animation infinite,css animation bounce,css animation loop"></meta>
+      <meta property="og:title" content="CSS Box Animations | WebVerse" />
+        <meta
+          property="og:description"
+          content="CSS box animations are the ways to add movement and visual effects to the boxes in our website. CSS animations can be used to draw attention toward any important information. In CSS box animations, we have provided you some awesome css box animation to use in your website. You can see the css animation effects by clicking on play button. After play the animation just copy the generated css code given below and paste in your website."
+        />
+        <meta
+          property="og:image"
+          content="/images/og-images/home-page-og.png"
+        />
       </Head>
       <div className="lg:w-[64rem] mx-auto w-full ">
         <h1
@@ -140,6 +197,9 @@ ${play=='animation1'?`.animation1 {
         >
           CSS Box Animations
         </h1>
+        <p className=" leading-9 text-lg text-justify p-4  py-4 lg:px-0 dark:text-white">
+            CSS box animations are the ways to add movement and visual effects to the boxes in our website. CSS animations can be used to draw attention toward any important information. In CSS box animations, we have provided you some awesome css box animation to use in your website. You can see the css animation effects by clicking on play button. After play the animation just copy the generated css code given below and paste in your website.  
+        </p>
         <div>
           <style jsx>{`
             .animation1 {
@@ -360,7 +420,7 @@ ${play=='animation1'?`.animation1 {
             {/* End of generated box */}
           </div>
           {/* code section */}
-          <div className="dark:bg-[#1d2537] bg-gray-100 mt-4 p-4">
+          <div className="lg:dark:bg-[#1d2537] lg:bg-gray-100 mt-4 p-4">
             <div className="w-full dark:text-white">
               <div className="flex items-center justify-between mb-3">
                 <p className="font-medium text-lg py-2">HTML Code</p>
@@ -401,6 +461,45 @@ ${play=='animation1'?`.animation1 {
             </div>
           </div>
           {/* code section end */}
+
+          {/* explore css generators starts here  */}
+          <div className="lg:w-[64rem] mx-auto w-full p-4 lg:p-0 lg:py-4 dark:text-white">
+              <div className="flex items-center justify-between ">
+                <div className="flex items-center text-xl md:text-2xl gap-4 py-4">
+                  <div>
+                    <BsFillLightningFill />
+                  </div>
+                  <h2 className="font-semibold">Explore other tools</h2>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/box-shadow`} passHref>
+                  <div className="flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent">
+                    <TbBoxMultiple size={"2.3em"} />
+                    <p className="text-xl font-medium text-center">
+                      Box Shadow Generator
+                    </p>
+                  </div>
+                </Link>
+                <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/button-generator`} passHref>
+                  <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                    <GiPowerButton size={"2.3rem"} />
+                    <p className="text-xl font-medium text-center">
+                      Button Generator
+                    </p>
+                  </div>
+              </Link>
+              <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/cursor-options`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <BsCursorFill size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  Cursor CSS Generator
+                </p>
+              </div>
+            </Link>
+              </div>
+            </div>
+            {/*explore  css generator ends here */}
         </div>
       </div>
     </>
