@@ -7,11 +7,15 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { FaRegCopy } from "react-icons/fa";
 import {RxReset} from 'react-icons/rx'
+import {BsCursorFill } from "react-icons/bs";
+import {BsFillLightningFill} from 'react-icons/bs'
+import { CgScrollV } from "react-icons/cg";
+import { MdGradient} from "react-icons/md";
+import Link from "next/link";
 
 export default function ButtonGenerator() {
   const [showShadow,setShowShadow]=useState(true);
   const [showHover,setShowHover]=useState(true);
-
   const [properties, setProperties] = useState({});
   
   useEffect(()=>{
@@ -38,6 +42,7 @@ export default function ButtonGenerator() {
       setProperties(prop)
     }
   },[])
+
   useEffect(()=>{
     if(Object.keys(properties).length>0){localStorage.setItem('button-generator',JSON.stringify(properties))}
   },[properties])
@@ -74,17 +79,35 @@ export default function ButtonGenerator() {
   return (
     <>
       <Head>
-        <title>Button Generator</title>
+        <title>CSS Button Generator | WebVerse</title>
+        <meta
+        name="description"
+        content="Make stunning buttons in css using free css button generator. This css button generator contains all the properties that requires to make a button. People can also add hover effect and shadow effects using this css button generator and see the live preview of changes."
+      />
+      <meta name="keywords" content="Webverse, web tools, free css generators, button generator image,button generator html,button generator,button generator css,button generator html css,button generator online"></meta>
+      <meta property="og:title" content="CSS Button Generator | WebVerse" />
+        <meta
+          property="og:description"
+          content="Make stunning buttons in css using free css button generator. This css button generator contains all the properties that requires to make a button. People can also add hover effect and shadow effects using this css button generator and see the live preview of changes."
+        />
+        <meta
+          property="og:image"
+          content="/images/og-images/home-page-og.png"
+        />
       </Head>
       <div>
-        <div className="lg:w-[64rem] mx-auto w-full ">
+        <div className="lg:w-[64rem] mx-auto w-full dark:text-white">
           <h1
             className={`md:text-5xl text-4xl text-blue-500 text-center font-semibold pb-5  pt-3 ${styles.textGrad}`}
           >
-            Button Generator
+            CSS Button Generator
           </h1>
-          <div className="dark:bg-[#1d2537] bg-gray-100  p-4 dark:text-white mx-2 md:mx-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <p className=" leading-9 text-lg text-justify p-4  py-4 lg:px-0 dark:text-white">
+          Make stunning buttons in css using free css button generator. This css button generator contains all the properties that requires to make a button. People can also add hover effect and shadow effects using this css button generator and see the live preview of changes.
+          </p>
+          {/* generator starts */}
+          <div className="lg:dark:bg-[#1d2537] lg:bg-gray-100  p-4 dark:text-white mx-2 md:mx-0">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <div className="flex flex-col">
                 <div className="flex items-center justify-center h-[12rem] border-b-2 ">
                   <style jsx>{`
@@ -117,7 +140,7 @@ export default function ButtonGenerator() {
                     Click Here
                   </button>
                 </div>
-                <div className="flex justify-between items-center dark:bg-[#0f172a] bg-white p-2 mt-4  dark:text-white">
+                <div className="flex justify-between items-center lg:dark:bg-[#0f172a] dark:bg-[#1d2537] bg-white p-2 mt-4  dark:text-white">
                   <span>Color</span>
                   <span className="flex items-center justify-center">
                     <label
@@ -138,7 +161,7 @@ export default function ButtonGenerator() {
                     />
                   </span>
                 </div>
-                <div className="flex justify-between items-center dark:bg-[#0f172a] bg-white p-2 mt-4  dark:text-white">
+                <div className="flex justify-between items-center lg:dark:bg-[#0f172a] dark:bg-[#1d2537] bg-white p-2 mt-4  dark:text-white">
                   <span>Backgound Color</span>
                   <span className="flex items-center justify-center">
                     <label
@@ -159,7 +182,7 @@ export default function ButtonGenerator() {
                     />
                   </span>
                 </div>
-               {showHover &&  <div className="flex justify-between items-center dark:bg-[#0f172a] bg-white p-2 mt-4  dark:text-white">
+               {showHover &&  <div className="flex justify-between items-center lg:dark:bg-[#0f172a] dark:bg-[#1d2537] bg-white p-2 mt-4  dark:text-white">
                   <span>Hover Color</span>
                   <span className="flex items-center justify-center">
                     <label
@@ -180,7 +203,7 @@ export default function ButtonGenerator() {
                     />
                   </span>
                 </div>}
-               {showHover && <div className="flex justify-between items-center dark:bg-[#0f172a] bg-white p-2 mt-4  dark:text-white">
+               {showHover && <div className="flex justify-between items-center lg:dark:bg-[#0f172a] dark:bg-[#1d2537] bg-white p-2 mt-4  dark:text-white">
                   <span>Hover Backgound Color</span>
                   <span className="flex items-center justify-center">
                     <label
@@ -201,7 +224,7 @@ export default function ButtonGenerator() {
                     />
                   </span>
                 </div>}
-                <div className="flex justify-between items-center dark:bg-[#0f172a] bg-white p-2 mt-4  dark:text-white">
+                <div className="flex justify-between items-center lg:dark:bg-[#0f172a] dark:bg-[#1d2537] bg-white p-2 mt-4  dark:text-white">
                   <span>Border Color</span>
                   <span className="flex items-center justify-center">
                     <label
@@ -232,7 +255,7 @@ export default function ButtonGenerator() {
               {/* right side */}
               <div>
                 <div>
-                  <div className="px-4 py-2">
+                  <div className="lg:px-4 py-2">
                     <div className="flex items-center justify-between text-sm">
                       <div>Padding X</div>
                       <div>{properties.paddingX} px</div>
@@ -248,11 +271,11 @@ export default function ButtonGenerator() {
                         }}
                         min="0"
                         max="50"
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                       />
                     </div>
                   </div>
-                  <div className="px-4 py-2">
+                  <div className="lg:px-4 py-2">
                     <div className="flex items-center justify-between text-sm">
                       <div>Padding Y</div>
                       <div>{properties.paddingY} px</div>
@@ -268,11 +291,11 @@ export default function ButtonGenerator() {
                         }}
                         min="0"
                         max="50"
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300  rounded-md appearance-none cursor-pointer"
                       />
                     </div>
                   </div>
-                  <div className="px-4 py-2">
+                  <div className="lg:px-4 py-2">
                     <div className="flex items-center justify-between text-sm">
                       <div>Border Radius</div>
                       <div>{properties.borderRadius} px</div>
@@ -288,11 +311,11 @@ export default function ButtonGenerator() {
                         }}
                         min="0"
                         max="100"
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                       />
                     </div>
                   </div>
-                  <div className="px-4 py-2">
+                  <div className="lg:px-4 py-2">
                     <div className="flex items-center justify-between text-sm">
                       <div>Font Size</div>
                       <div>{properties.fontSize} px</div>
@@ -308,11 +331,11 @@ export default function ButtonGenerator() {
                         }}
                         min="15"
                         max="50"
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                       />
                     </div>
                   </div>
-                  <div className="px-4 py-2">
+                  <div className="lg:px-4 py-2">
                     <div className="flex items-center justify-between text-sm">
                       <div>Font Weight</div>
                       <div>{properties.fontWeight}</div>
@@ -329,12 +352,12 @@ export default function ButtonGenerator() {
                         min="100"
                         max="900"
                         step={100}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                       />
                     </div>
                   </div>
 
-                  <div className="px-4 py-2">
+                  <div className="lg:px-4 py-2">
                     <div className="flex items-center justify-between text-sm">
                       <div>Transition Time</div>
                       <div>{properties.transitionTime}</div>
@@ -351,11 +374,11 @@ export default function ButtonGenerator() {
                         min="0"
                         max="1"
                         step={0.001}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                       />
                     </div>
                   </div>
-                  <div className="px-4 py-2">
+                  <div className="lg:px-4 py-2">
                     <div className="flex items-center justify-between text-sm">
                       <div>Border Width</div>
                       <div>{properties.borderWidth}</div>
@@ -372,11 +395,11 @@ export default function ButtonGenerator() {
                         min="0"
                         max="20"
                         step={1}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                       />
                     </div>
                   </div>
-                  {showShadow && <div className="px-4 py-2">
+                  {showShadow && <div className="lg:px-4 py-2">
                     <div className="flex items-center justify-between text-sm">
                       <div>Shadow depth</div>
                       <div>{properties.shadowDepth}</div>
@@ -393,13 +416,13 @@ export default function ButtonGenerator() {
                         min="5"
                         max="15"
                         step={1}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                       />
                     </div>
                   </div>}
-                 <div className="flex justify-between items-center md:flex-row flex-col">
+                 <div className="flex justify-between items-center gap-2 md:flex-row flex-col">
 
-                 <div className="md:w-1/2 flex w-full justify-between px-4 py-2">
+                 <div className="lg:w-1/2 flex w-full justify-between lg:px-4 py-2">
                     <span>Hover Effect</span>
                     <span className="flex items-center justify-center">
                       <label className="switch">
@@ -416,7 +439,7 @@ export default function ButtonGenerator() {
                     </span>
                   </div>
 
-                  <div className="md:w-1/2 flex justify-between w-full items-center px-4 py-2">
+                  <div className="lg:w-1/2 flex justify-between w-full items-center lg:px-4 py-2">
                     <span>Shadow Effect</span>
                     <span className="flex items-center justify-center">
                       <label className="switch">
@@ -441,7 +464,10 @@ export default function ButtonGenerator() {
             </div>
           </div>
           <div>
-          <div className="dark:bg-[#1d2537] bg-gray-100  mt-4">
+            {/* generatro ends here */}
+
+            {/* generator code starts */}
+          <div className="lg:dark:bg-[#1d2537] lg:bg-gray-100  mt-4">
           <div className="w-full p-4 dark:text-white">
               <div className="flex items-center justify-between mb-3">
                 <p className="font-medium text-lg py-2">HTML Code</p>
@@ -528,7 +554,48 @@ ${showShadow ? `.actv{
 
               </SyntaxHighlighter>
             </div>
+          </div>
+          {/* generator codes ends here */}
+
+          {/* explore css generators starts here  */}
+          <div className="lg:w-[64rem] mx-auto w-full p-4 lg:p-0 lg:py-4 dark:text-white">
+              <div className="flex items-center justify-between ">
+                <div className="flex items-center text-xl md:text-2xl gap-4 py-4">
+                  <div>
+                    <BsFillLightningFill />
+                  </div>
+                  <h2 className="font-semibold">Explore other tools</h2>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/cursor-options`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <BsCursorFill size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  Cursor CSS Generator
+                </p>
+              </div>
+            </Link>
+            <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/gradient-generator`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <MdGradient size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  Gradient Generator
+                </p>
+              </div>
+            </Link>
+            <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/scrollbar-css-generator`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <CgScrollV size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  Scrollbar CSS Generator
+                </p>
+              </div>
+            </Link>
+              </div>
             </div>
+            {/*explore  css generator ends here */}
+
           </div>
         </div>
       </div>

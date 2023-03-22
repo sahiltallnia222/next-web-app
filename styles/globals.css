@@ -13,7 +13,6 @@ body{
     height: 8px;
   }
   body::-webkit-scrollbar-track {
-    /* border-radius: 200px; */
     background-color: #ffffff;
   }
   
@@ -26,7 +25,6 @@ body{
   }
   
   body::-webkit-scrollbar-thumb {
-    /* border-radius: 12px; */
     background-color: #757575;
   }
   
@@ -37,3 +35,4 @@ body{
   body::-webkit-scrollbar-thumb:active {
     background-color: #757575;
   }
+

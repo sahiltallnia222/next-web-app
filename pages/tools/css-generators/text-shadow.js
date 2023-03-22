@@ -10,7 +10,11 @@ import { TiDelete } from "react-icons/ti";
 import { FaRegCopy } from "react-icons/fa";
 import styles from "styles/style.module.css";
 import {RxReset} from 'react-icons/rx'
-
+import Link from "next/link";
+import {BsFillLightningFill} from 'react-icons/bs'
+import {GiCube} from 'react-icons/gi'
+import {MdTransform} from "react-icons/md";
+import { AiOutlineRadiusSetting } from "react-icons/ai";
 
 export default function Textshadow() {
   const [shadowNo, setShadowNo] = useState(0);
@@ -43,6 +47,7 @@ export default function Textshadow() {
     }}))
     setShadows(values)
   }
+
 
   useEffect(()=>{
     if(localStorage.getItem('text-shadow-generator')){
@@ -85,6 +90,7 @@ export default function Textshadow() {
     }
   }
 
+
   const codeCopyNotification = () => {
     toast.success("Code copied successfully !", {
       position: "top-center",
@@ -93,10 +99,12 @@ export default function Textshadow() {
     });
   };
 
+
   const randomHexColorCode = () => {
     let n = (Math.random() * 0xfffff * 1000000).toString(16);
     return "#" + n.slice(0, 6);
   };
+
 
   const addTextShadow = () => {
     const values = [...shadows];
@@ -110,6 +118,7 @@ export default function Textshadow() {
     setShadows(values);
     setShadowNo(shadows.length);
   };
+
 
   useEffect(() => {
     let textShadow = "";
@@ -135,6 +144,8 @@ export default function Textshadow() {
       localStorage.setItem('text-shadow-generator',JSON.stringify({...JSON.parse(localStorage.getItem('text-shadow-generator')), shadow:shadow}))
     }
   },[shadow])
+
+
   const removeShadow = (index) => {
     if (shadowNo == shadows.length - 1) {
       setShadowNo(0);
@@ -148,10 +159,26 @@ export default function Textshadow() {
     }
   };
 
+
   return (
     <>
       <Head>
-        <title>Text Shadow Generator</title>
+        <title>Text Shadow Generator | WebVerse</title>
+        <meta
+        name="description"
+        content="Elevate your website's design with free text shadow generator! This generator allows you to easily generate CSS for stunning text shadows that will make your website stand out. Simply customize your shadow and copy the code to use on your own website. With a range of options and effects, you can create unique and dynamic designs in just a few clicks. Try our text shadow generator today and take your website to the next level!"
+      />
+      <meta name="keywords" content="Webverse, web tools, free css generators,free text shadow generator css,text shadow generator effects,text shadow generator,text shadow generator css,font shadow generator,css text shadow generator,text shadow generator,text shadow html generator,text shadow inset generator,long shadow text generator,multiple text shadow generator"></meta>
+      <meta property="og:title" content="Text Shadow Generator | WebVerse" />
+        <meta
+          property="og:description"
+          content="Elevate your website's design with free text shadow generator! This generator allows you to easily generate CSS for stunning text shadows that will make your website stand out. Simply customize your shadow and copy the code to use on your own website. With a range of options and effects, you can create unique and dynamic designs in just a few clicks. Try our text shadow generator today and take your website to the next level!"
+        />
+        <meta
+          property="og:image"
+          content="/images/og-images/home-page-og.png"
+        />
+
       </Head>
       <div>
         {/* center div ------------------------------------------------------------------- */}
@@ -160,7 +187,11 @@ export default function Textshadow() {
             Text Shadow Generator
           </h1>
 
-          <div className="w-full grid grid-cols-1 items-center md:grid-cols-2 p-4 dark:text-white bg-gray-100  dark:bg-[#1d2537]">
+          <p className=" leading-9 text-lg text-justify p-4  py-4 lg:px-0 dark:text-white">
+          Elevate your website's design with free text shadow generator! This generator allows you to easily generate CSS for stunning text shadows that will make your website stand out. Simply customize your shadow and copy the code to use on your own website. With a range of options and effects, you can create unique and dynamic designs in just a few clicks. Try our text shadow generator today and take your website to the next level!
+          </p>
+
+          <div className="w-full grid grid-cols-1 items-center md:grid-cols-2 p-4 dark:text-white lg:bg-gray-100  lg:dark:bg-[#1d2537]">
             {/* Left side of shadow generator. */}
             <div
               className=" flex justify-center items-center h-[40vh] md:h-full"
@@ -188,7 +219,7 @@ export default function Textshadow() {
                     }}
                     min="-250"
                     max="250"
-                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>
@@ -209,7 +240,7 @@ export default function Textshadow() {
                     }}
                     min="-250"
                     max="250"
-                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>
@@ -230,7 +261,7 @@ export default function Textshadow() {
                     }}
                     min="0"
                     max="25"
-                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>
@@ -252,7 +283,7 @@ export default function Textshadow() {
                       values[shadowNo].sOpacity = e.target.value / 100;
                       setShadows(values);
                     }}
-                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>
@@ -274,7 +305,7 @@ export default function Textshadow() {
                         value.textSize=e.target.value
                         setShadow(value)
                     }}
-                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>
@@ -365,7 +396,7 @@ export default function Textshadow() {
 
           {/* End of 2 boxes of box shadow generator */}
           {/* Multiple shadow box */}
-          <div className="p-4 dark:text-white dark:bg-[#1d2537] bg-gray-100  ">
+          <div className="p-4 dark:text-white lg:dark:bg-[#1d2537] lg:bg-gray-100  ">
             <h2 className="font-medium text-lg py-3">
               Add multiple text shadows
             </h2>
@@ -407,11 +438,11 @@ export default function Textshadow() {
 
           {/* End of multiple shadow section */}
           {/* Code section */}
-          <div className="w-full p-4 dark:text-white dark:bg-[#1d2537] bg-gray-100   mt-4">
+          <div className="w-full p-4 dark:text-white lg:dark:bg-[#1d2537] lg:bg-gray-100   mt-4">
           <div className="flex items-center justify-between mb-3">
                 <p className="font-medium text-lg py-2">CSS Code</p>
                 <CopyToClipboard
-              text={`text-shadow:${shadow.textShadow};\ncolor:${shadow.textColor};\nbackground-color:${shadow.bgColor}\nfont-size:${shadow.textSize}rem;`}
+              text={`text-shadow:${shadow.textShadow};\ncolor:${shadow.textColor};\nbackground-color:${shadow.bgColor};\nfont-size:${shadow.textSize}rem;`}
               className=" px-4 py-2 text-white flex items-center justify-between gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 bg-blue-500 rounded-lg text-sm"
             >
               <button onClick={codeCopyNotification}> <span>Copy</span><span><FaRegCopy/></span></button>
@@ -421,7 +452,7 @@ export default function Textshadow() {
               {`text-shadow:${shadow.textShadow}; \ncolor:${shadow.textColor};\nbackground-color:${shadow.bgColor};\nfont-size:${shadow.textSize}rem`}
             </SyntaxHighlighter>
           </div>
-          {/* <div className="w-full p-4 dark:text-white dark:bg-[#1d2537] bg-gray-100  ">
+          {/* <div className="w-full p-4 dark:text-white lg:dark:bg-[#1d2537] lg:bg-gray-100  ">
           <div className="flex items-center justify-between mb-3">
                 <p className="font-medium text-lg py-2">HTML code</p>
                 <CopyToClipboard
@@ -437,6 +468,45 @@ export default function Textshadow() {
           </div> */}
           {/* End of code section */}
         </div>}
+
+           {/* explore css generators starts here  */}
+           <div className="lg:w-[64rem] mx-auto w-full p-4 lg:p-0 lg:py-4 dark:text-white">
+              <div className="flex items-center justify-between ">
+                <div className="flex items-center text-xl md:text-2xl gap-4 py-4">
+                  <div>
+                    <BsFillLightningFill />
+                  </div>
+                  <h2 className="font-semibold">Explore other tools</h2>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/transform-generator-2d`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <MdTransform size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  2D Transform CSS Generator
+                </p>
+              </div>
+            </Link>
+            <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/transform-generator-3d`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <GiCube size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  3D Transform CSS Generator
+                </p>
+              </div>
+            </Link>
+            <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/border-radius-generator`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <AiOutlineRadiusSetting size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  Border Radius Generator
+                </p>
+              </div>
+            </Link>
+              </div>
+            </div>
+            {/*explore  css generator ends here */}
 
         {/* center div ends here ------------------------------------------------------------------- */}
       </div>

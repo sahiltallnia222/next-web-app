@@ -7,6 +7,10 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { FaRegCopy } from "react-icons/fa";
 import {RxReset} from 'react-icons/rx'
+import Link from "next/link";
+import { GoTextSize } from "react-icons/go";
+import {MdFormatColorText,MdOutlineTextRotateVertical} from "react-icons/md";
+import {BsFillLightningFill} from 'react-icons/bs'
 
 export default function ScrollbarGenerator() {
   const [scrollbarProperties, setScrollbarProperties] = useState({});
@@ -62,10 +66,25 @@ export default function ScrollbarGenerator() {
       theme: "light",
     });
   };
+
   return (
     <>
       <Head>
-        <title>Scrollbar CSS Generator</title>
+        <title>Scrollbar CSS Generator | WebVerse</title>
+        <meta
+        name="description"
+        content="Generate custom scrollbars for your website with CSS scrollbar generator. Customize the appearance and behavior of your scrollbars to match your website's design and make your website stand out. Just copy the generated code and paste in your website."
+      />
+      <meta name="keywords" content="Webverse, web tools, free css generators, css scrollbar horizontal,css scrollbar,css scrollbar style,css scrollbar hide,css scrollbar none,css scrollbar width,css scrollbar div,css scrollbar in div,css scrollbar color,css scrollbar position,css scrollbar generator,css scrollbar height,css scrollbar firefox,css scrollbar design,css scrollbar always visible,css scrollbar margin,css scrollbar custom,css scrollbar codepen,css scrollbar examples,css scrollbar overlay,css scrollbar background color,css scrollbar invisible,css scrollbar margin right,css scrollbar inside div,css scrollbar auto,css scrollbar not working,css scrollbar disappears,css scrollbar padding,css scrollbar absolute,css scrollbar border radius,css scrollbar background transparent,css scrollbar element,css scrollbar edit,css scrollbar for div"></meta>
+      <meta property="og:title" content="Scrollbar CSS Generator | WebVerse" />
+        <meta
+          property="og:description"
+          content="Generate custom scrollbars for your website with CSS scrollbar generator. Customize the appearance and behavior of your scrollbars to match your website's design and make your website stand out. Just copy the generated code and paste in your website."
+        />
+        <meta
+          property="og:image"
+          content="/images/og-images/home-page-og.png"
+        />
       </Head>
       <div>
         <style jsx>{`
@@ -117,7 +136,12 @@ export default function ScrollbarGenerator() {
           >
             Scrollbar CSS Generator
           </h1>
-          <div className="dark:bg-[#1d2537] bg-gray-100  p-4 dark:text-white">
+          <p className=" leading-9 text-lg text-justify p-4  py-4 lg:px-0 dark:text-white">
+          Generate custom scrollbars for your website with CSS scrollbar generator. Customize the appearance and behavior of your scrollbars to match your website's design and make your website stand out. 
+          </p>
+
+          {/* generator starts */}
+          <div className="md:dark:bg-[#1d2537] md:bg-gray-100  p-4 dark:text-white">
             <div className="grid grid-cols-1">
               <div className="scrollbarClass overflow-x-scroll overflow-y-hidden mb-2  h-48 bg-blue-500">
                 <p className="w-[200vw] text-3xl">Scrollbar CSS Generator</p>
@@ -130,9 +154,9 @@ export default function ScrollbarGenerator() {
                 </div>    
               <div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-2">
-                  <div className="dark:bg-[#0f172a] border-2 dark:border-transparent px-3 py-3">
+                  <div className="md:dark:bg-[#0f172a] dark:bg-[#1d2537] border-2 dark:border-transparent px-3 py-3">
                     <div className="p-2 font-semibold">Track Properties</div>
-                    <div className="flex justify-between items-center dark:bg-[#1d2537] p-2 dark:text-white">
+                    <div className="flex justify-between items-center md:dark:bg-[#1d2537] dark:bg-[#0f172a]  p-2 dark:text-white">
                       <span>Background Color</span>
                       <span className="flex items-center justify-center cursor-pointer">
                         <label
@@ -155,7 +179,7 @@ export default function ScrollbarGenerator() {
                         />
                       </span>
                     </div>
-                    <div className="flex justify-between items-center dark:bg-[#1d2537] p-2 mt-2 dark:text-white">
+                    <div className="flex justify-between items-center md:dark:bg-[#1d2537] dark:bg-[#0f172a]  p-2 mt-2 dark:text-white">
                       <span>Active Color</span>
                       <span className="flex items-center justify-center">
                         <label
@@ -178,7 +202,7 @@ export default function ScrollbarGenerator() {
                         />
                       </span>
                     </div>
-                    <div className="flex justify-between items-center dark:bg-[#1d2537] p-2 mt-2  dark:text-white">
+                    <div className="flex justify-between items-center md:dark:bg-[#1d2537] dark:bg-[#0f172a]  p-2 mt-2  dark:text-white">
                       <span>Hover Color</span>
                       <span className="flex items-center justify-center">
                         <label
@@ -217,7 +241,7 @@ export default function ScrollbarGenerator() {
                             values.TRRadius = e.target.value;
                             setScrollbarProperties(values);
                           }}
-                          className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                          className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                         />
                       </div>
                     </div>
@@ -237,14 +261,14 @@ export default function ScrollbarGenerator() {
                             values.TRWidth = e.target.value;
                             setScrollbarProperties(values);
                           }}
-                          className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                          className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                         />
                       </div>
                     </div>
                   </div>
-                  <div className="dark:bg-[#0f172a] border-2 dark:border-transparent px-3 py-3">
+                  <div className="md:dark:bg-[#0f172a] dark:bg-[#1d2537]  border-2 dark:border-transparent px-3 py-3">
                     <div className="p-2 font-semibold">Thumb Properties</div>
-                    <div className="flex justify-between items-center dark:bg-[#1d2537] p-2 dark:text-white">
+                    <div className="flex justify-between items-center md:dark:bg-[#1d2537] dark:bg-[#0f172a] p-2 dark:text-white">
                       <span>Background Color</span>
                       <span className="flex items-center justify-center cursor-pointer">
                         <label
@@ -267,7 +291,7 @@ export default function ScrollbarGenerator() {
                         />
                       </span>
                     </div>
-                    <div className="flex justify-between items-center dark:bg-[#1d2537] p-2 mt-2 dark:text-white">
+                    <div className="flex justify-between items-center md:dark:bg-[#1d2537] dark:bg-[#0f172a]  p-2 mt-2 dark:text-white">
                       <span>Active Color</span>
                       <span className="flex items-center justify-center">
                         <label
@@ -290,7 +314,7 @@ export default function ScrollbarGenerator() {
                         />
                       </span>
                     </div>
-                    <div className="flex justify-between items-center dark:bg-[#1d2537] p-2 mt-2  dark:text-white">
+                    <div className="flex justify-between items-center md:dark:bg-[#1d2537] dark:bg-[#0f172a]  p-2 mt-2  dark:text-white">
                       <span>Hover Color</span>
                       <span className="flex items-center justify-center">
                         <label
@@ -329,7 +353,7 @@ export default function ScrollbarGenerator() {
                             values.TRadius = e.target.value;
                             setScrollbarProperties(values);
                           }}
-                          className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                          className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                         />
                       </div>
                     </div>
@@ -341,7 +365,10 @@ export default function ScrollbarGenerator() {
               <div></div>
             </div>
           </div>
-          <div className="dark:bg-[#1d2537] bg-gray-100 ">
+          {/* generator ends here */}
+
+          {/* Css code starts */}
+          <div className="md:dark:bg-[#1d2537] md:bg-gray-100 ">
           <div className="w-full  p-4 dark:text-white mt-4">
             <div className="flex items-center justify-between mb-3">
               <p className="font-medium text-lg py-2">HTML Code</p>
@@ -447,6 +474,47 @@ export default function ScrollbarGenerator() {
             </SyntaxHighlighter>
           </div>
           </div>
+          {/* css code ends here */}
+
+          {/* explore css generators starts here  */}
+        <div className="lg:w-[64rem] mx-auto w-full p-4 lg:p-0 lg:py-4 dark:text-white">
+              <div className="flex items-center justify-between ">
+                <div className="flex items-center text-xl md:text-2xl gap-4 py-4">
+                  <div>
+                    <BsFillLightningFill />
+                  </div>
+                  <h2 className="font-semibold">Explore other tools</h2>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/text-animations`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <MdOutlineTextRotateVertical size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  Text Animations
+                </p>
+              </div>
+            </Link>
+            <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/text-gradient`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <MdFormatColorText size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  Text Gradient Generator
+                </p>
+              </div>
+            </Link>
+            <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/text-shadow`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <GoTextSize size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  Text Shadow Generator
+                </p>
+              </div>
+            </Link>
+              </div>
+            </div>
+        {/*explore  css generator ends here */}
+
         </div>
       </div>
     </>

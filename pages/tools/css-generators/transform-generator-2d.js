@@ -7,6 +7,15 @@ import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import {FaRegCopy} from 'react-icons/fa'
 import Head from "next/head";
 import {RxReset} from 'react-icons/rx'
+import { MdAnimation} from "react-icons/md";
+import { AiOutlineRadiusSetting } from "react-icons/ai";
+import Link from "next/link";
+import {BsFillLightningFill} from 'react-icons/bs'
+import {GiCube} from 'react-icons/gi'
+
+
+
+
 export default function TransformGenerator() {
   const [transform, setTransform] = useState({});
 
@@ -77,14 +86,34 @@ export default function TransformGenerator() {
   return (
     <>
     <Head>
-      <title>2D Transform CSS Generator</title>
+      <title>2D Transform CSS Generator | WebVerse</title>
+        <meta
+        name="description"
+        content="Make your website stunning using free CSS transform generator tool. This tool allows you to set the various parameters of transform property and generate CSS code for you. Just copy and paste the code in your website and see the effects."
+      />
+      <meta name="keywords" content="Webverse, web tools, free css generators,free css 2d transform,2d transform in css,2d transformation examples,css 2d transform generator,css 2d transform examples"></meta>
+      <meta property="og:title" content="2D Transform CSS Generator | WebVerse" />
+        <meta
+          property="og:description"
+          content="Make your website stunning using free CSS transform generator tool. This tool allows you to set the various parameters of transform property and generate CSS code for you. Just copy and paste the code in your website and see the effects."
+        />
+        <meta
+          property="og:image"
+          content="/images/og-images/home-page-og.png"
+        />
     </Head>
       <div>
         <div className="lg:w-[64rem] mx-auto w-full">
           <h1 className={`md:text-5xl text-4xl text-blue-500 text-center font-semibold pb-5  pt-3 ${styles.textGrad}`}>
             2D Transform CSS Generator
           </h1>
-          <div className="grid grid-cols-1 md:grid-cols-6 dark:bg-[#1d2537] bg-gray-100  md:h-[32rem]">
+
+          <p className=" leading-9 text-lg text-justify p-4  py-4 lg:px-0 dark:text-white">
+          Make your website stunning using free CSS transform generator tool. This tool allows you to set the various parameters of transform property and generate CSS code for you. Just copy and paste the code in your website and see the effects.
+          </p>
+
+
+          <div className="grid grid-cols-1 md:grid-cols-6 lg:dark:bg-[#1d2537] lg:bg-gray-100  md:h-[32rem]">
             <div className="flex items-center justify-center md:col-span-4 p-6 pt-12 text-white" style={{
                   perspective: `${transform.perspective}px`,
                   perspectiveOrigin: `${transform.perspectiveOriginX}% ${transform.perspectiveOriginY}%`,
@@ -117,7 +146,7 @@ export default function TransformGenerator() {
                         min="0"
                         max="180"
                         value={transform.rotateX}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.rotateX = e.target.value;
@@ -137,7 +166,7 @@ export default function TransformGenerator() {
                         min="0"
                         max="180"
                         value={transform.rotateY}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.rotateY = e.target.value;
@@ -157,7 +186,7 @@ export default function TransformGenerator() {
                         min="0"
                         max="180"
                         value={transform.rotateZ}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.rotateZ = e.target.value;
@@ -178,7 +207,7 @@ export default function TransformGenerator() {
                         max="2"
                         step="0.1"
                         value={transform.scaleX}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.scaleX = e.target.value;
@@ -199,7 +228,7 @@ export default function TransformGenerator() {
                         max="2"
                         step="0.1"
                         value={transform.scaleY}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.scaleY = e.target.value;
@@ -220,7 +249,7 @@ export default function TransformGenerator() {
                         max="2"
                         step="0.1"
                         value={transform.scaleZ}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.scaleZ = e.target.value;
@@ -240,7 +269,7 @@ export default function TransformGenerator() {
                         min="-100"
                         max="100"
                         value={transform.translateX}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.translateX = e.target.value;
@@ -260,7 +289,7 @@ export default function TransformGenerator() {
                         min="-100"
                         max="100"
                         value={transform.translateY}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.translateY = e.target.value;
@@ -280,7 +309,7 @@ export default function TransformGenerator() {
                         min="-100"
                         max="100"
                         value={transform.translateZ}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.translateZ = e.target.value;
@@ -300,7 +329,7 @@ export default function TransformGenerator() {
                         min="0"
                         max="180"
                         value={transform.skewX}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.skewX = e.target.value;
@@ -320,7 +349,7 @@ export default function TransformGenerator() {
                         min="0"
                         max="180"
                         value={transform.skewY}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.skewY = e.target.value;
@@ -340,7 +369,7 @@ export default function TransformGenerator() {
                         min="300"
                         max="3000"
                         value={transform.perspective}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.perspective = e.target.value;
@@ -360,7 +389,7 @@ export default function TransformGenerator() {
                         min="0"
                         max="100"
                         value={transform.perspectiveOriginX}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.perspectiveOriginX = e.target.value;
@@ -380,7 +409,7 @@ export default function TransformGenerator() {
                         min="0"
                         max="100"
                         value={transform.perspectiveOriginY}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300  rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...transform };
                           values.perspectiveOriginY = e.target.value;
@@ -400,8 +429,41 @@ export default function TransformGenerator() {
             </div>
             {/* end right box */}
           </div>
-{/* New Box starts  */}
-          <div className="dark:bg-[#1d2537] bg-gray-100  mt-4">
+
+
+          {/* CSS CODE starts  */}
+          <div className="lg:dark:bg-[#1d2537] lg:bg-gray-100  mt-4">
+          <div className="w-full p-4 dark:text-white">
+              <div className="flex items-center justify-between mb-3">
+                <p className="font-medium text-lg py-2">HTML code</p>
+                <CopyToClipboard
+                  text={`<div class='outer-box'>
+  <div class='inner-box'>
+    <div class="flip-box">
+      <div class="front-box">Front Text</div>
+      <div class="back-box">Back Text</div>
+    </div>
+  </div>
+</div>`}
+                  className=" px-4 py-2 text-white flex items-center justify-between gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 bg-blue-500 rounded-lg text-sm"
+                >
+                  <button onClick={codeCopyNotification} className='flex'>
+                    <span>Copy</span>
+                    <span><FaRegCopy/></span>
+                  </button>
+                </CopyToClipboard>
+              </div>
+              <SyntaxHighlighter language="javascript" style={docco}>
+              {`<div class='outer-box'>
+  <div class='inner-box'>
+    <div class="flip-box">
+      <div class="front-box">Front Text</div>
+      <div class="back-box">Back Text</div>
+    </div>
+  </div>
+</div>`}
+              </SyntaxHighlighter>
+            </div>
             <div className="w-full p-4 dark:text-white">
               <div className="flex items-center justify-between mb-3">
                 <p className="font-medium text-lg py-2">Generated CSS code</p>
@@ -522,40 +584,48 @@ export default function TransformGenerator() {
 `}
               </SyntaxHighlighter>
             </div>
-
-            <div className="w-full p-4 dark:text-white">
-              <div className="flex items-center justify-between mb-3">
-                <p className="font-medium text-lg py-2">HTML code</p>
-                <CopyToClipboard
-                  text={`<div class='outer-box'>
-  <div class='inner-box'>
-    <div className="flip-box">
-      <div className="front-box">Front Text</div>
-      <div className="back-box">Back Text</div>
-    </div>
-  </div>
-</div>`}
-                  className=" px-4 py-2 text-white flex items-center justify-between gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 bg-blue-500 rounded-lg text-sm"
-                >
-                  <button onClick={codeCopyNotification} className='flex'>
-                    <span>Copy</span>
-                    <span><FaRegCopy/></span>
-                  </button>
-                </CopyToClipboard>
-              </div>
-              <SyntaxHighlighter language="javascript" style={docco}>
-              {`<div class='outer-box'>
-  <div class='inner-box'>
-    <div className="flip-box">
-      <div className="front-box">Front Text</div>
-      <div className="back-box">Back Text</div>
-    </div>
-  </div>
-</div>`}
-              </SyntaxHighlighter>
-            </div>
           </div>
-          {/* New Box ends Here */}
+          {/* CSS Code  ends Here */}
+
+          {/* explore css generators starts here  */}
+          <div className="lg:w-[64rem] mx-auto w-full p-4 lg:p-0 lg:py-4 dark:text-white">
+              <div className="flex items-center justify-between ">
+                <div className="flex items-center text-xl md:text-2xl gap-4 py-4">
+                  <div>
+                    <BsFillLightningFill />
+                  </div>
+                  <h2 className="font-semibold">Explore other tools</h2>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/transform-generator-3d`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <GiCube size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  3D Transform CSS Generator
+                </p>
+              </div>
+            </Link>
+            <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/border-radius-generator`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <AiOutlineRadiusSetting size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  Border Radius Generator
+                </p>
+              </div>
+            </Link>
+            <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/box-animations`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent">
+                <MdAnimation size={"2.3em"} />
+                <p className="text-xl font-medium text-center">
+                  Box Animations
+                </p>
+              </div>
+            </Link>
+              </div>
+            </div>
+            {/*explore  css generator ends here */}
+
         </div>
       </div>
     </>

@@ -1,9 +1,9 @@
 import Head from "next/head";
 import Link from "next/link";
-import { TbBoxMultiple } from "react-icons/tb";
 import styles from "styles/style.module.css";
 import { GoTextSize } from "react-icons/go";
 import { MdGradient, MdFormatColorText, MdTransform ,MdOutlineTextRotateVertical,MdAnimation} from "react-icons/md";
+import { TbBoxMultiple } from "react-icons/tb";
 import { AiOutlineRadiusSetting } from "react-icons/ai";
 import {BsCursorFill } from "react-icons/bs";
 import { CgScrollV } from "react-icons/cg";
@@ -66,12 +66,12 @@ export default function CSSGENS() {
               </div>
             </Link>
             <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/button-generator`} passHref>
-                  <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
-                    <GiPowerButton size={"2.3rem"} />
-                    <p className="text-xl font-medium text-center">
-                      Button Generator
-                    </p>
-                  </div>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <GiPowerButton size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  Button Generator
+                </p>
+              </div>
             </Link>
             <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/cursor-options`} passHref>
               <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">

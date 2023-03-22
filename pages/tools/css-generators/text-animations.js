@@ -8,20 +8,14 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { FaRegCopy } from "react-icons/fa";
+import Link from "next/link";
+import { GoTextSize } from "react-icons/go";
+import {BsFillLightningFill} from 'react-icons/bs'
+import {MdTransform,MdFormatColorText} from 'react-icons/md'
 
 export default function TextAnimations() {
   const textRef = useRef();
   const [play, setPlay] = useState("");
-  //   const toggleAnimationClass = () => {
-  //     if (!textRef.current.classList.contains("textAnimations")) {
-  //       textRef.current.classList.add("textAnimations");
-  //       setTimeout(() => {
-  //         textRef.current.classList.remove("textAnimations");
-  //       }, 1000);
-  //     } else {
-  //       textRef.current.classList.remove("textAnimations");
-  //     }
-  //   };
 
 
   const codeCopyNotification = () => {
@@ -39,7 +33,12 @@ export default function TextAnimations() {
       setPlay(x);
     }
   };
-const cssCode=`.textGrad{
+const cssCode=`.box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.textGrad{
   background: linear-gradient(113deg, #3b82f6 25%,  #dd1fea 100%);
   color: transparent;
   background-clip:text;
@@ -150,15 +149,30 @@ ${play=='animation1'?`.animation1 {
     }
     100%{
         opacity:1;
-        filter:blur(0px)
+        filter:blur(0px);
         transform:translateY(0rem);
         letter-spacing:0rem;
     }
 }`:''}`
+
   return (
     <>
       <Head>
-        <title>Text Animations</title>
+        <title>Text Animations | WebVerse</title>
+        <meta
+        name="description"
+        content="Get creative with your text! Our CSS text animation generator provides a range of options for adding visual flair to your written content. You can select and copy-paste the CSS for any animation you like. Elevate your website with dynamic, eye-catching text. Explore our collection now."
+      />
+      <meta name="keywords" content="Webverse, web tools, free css generators, css gradient generator,css gradient generator radial,css gradient generator animation,css gradient generator 3 colors,css gradient generator transparent,css gradient generator code"></meta>
+      <meta property="og:title" content="Text Animations | WebVerse" />
+        <meta
+          property="og:description"
+          content="Get creative with your text! Our CSS text animation generator provides a range of options for adding visual flair to your written content. You can select and copy-paste the CSS for any animation you like. Elevate your website with dynamic, eye-catching text. Explore our collection now."
+        />
+        <meta
+          property="og:image"
+          content="/images/og-images/home-page-og.png"
+        />
       </Head>
       <div className="lg:w-[64rem] mx-auto w-full ">
         <h1
@@ -166,7 +180,14 @@ ${play=='animation1'?`.animation1 {
         >
           Text Animations
         </h1>
+
+        <p className=" leading-9 text-lg text-justify p-4  py-4 lg:px-0 dark:text-white">
+          Get creative with your text! Our CSS text animation generator provides a range of options for adding visual flair to your written content. You can select and copy-paste the CSS for any animation you like. Elevate your website with dynamic, eye-catching text.
+          </p>
+
         <div>
+
+          {/* css generator  */}
           <style jsx>{`
             .animation1 {
                 animation:animation1 1.5s cubic-bezier(0.38, 1.2, 1, 1) both infinite ;
@@ -282,7 +303,7 @@ ${play=='animation1'?`.animation1 {
                 }
                 100%{
                     opacity:1;
-                    filter:blur(0px)
+                    filter:blur(0px);
                     transform:translateY(0rem);
                     letter-spacing:0rem;
                 }
@@ -394,12 +415,15 @@ ${play=='animation1'?`.animation1 {
               </div>
             </div>
           </div>
+          {/* css generator ends here */}
+
+          {/* generated codes */}
           <div className="dark:bg-[#1d2537] bg-gray-100 mt-4 p-4">
             <div className="w-full dark:text-white">
               <div className="flex items-center justify-between mb-3">
                 <p className="font-medium text-lg py-2">HTML Code</p>
                 <CopyToClipboard
-                  text={`<p class='textGrad ${play=='noAnimation'?'':play}'>Text Animations</p>`}
+                  text={`<div class='box'><p class='textGrad ${play=='noAnimation'?'':play}'>Text Animations</p></div>`}
                   className=" px-4 py-2 text-white flex items-center justify-between gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 bg-blue-500 rounded-lg text-sm"
                 >
                   <button onClick={codeCopyNotification} className="flex">
@@ -411,7 +435,7 @@ ${play=='animation1'?`.animation1 {
                 </CopyToClipboard>
               </div>
               <SyntaxHighlighter language="css" style={docco}>
-                {`<p class='textGrad ${play=='noAnimation'?'':play}'>Text Animations</p>`}
+                {`<div class='box'><p class='textGrad ${play=='noAnimation'?'':play}'>Text Animations</p></div>`}
               </SyntaxHighlighter>
             </div>
             <div className="w-full dark:text-white mt-4">
@@ -434,6 +458,47 @@ ${play=='animation1'?`.animation1 {
               </SyntaxHighlighter>
             </div>
           </div>
+          {/* generated codes ends */}
+
+        {/* explore css generators starts here  */}
+        <div className="lg:w-[64rem] mx-auto w-full p-4 lg:p-0 lg:py-4 dark:text-white">
+              <div className="flex items-center justify-between ">
+                <div className="flex items-center text-xl md:text-2xl gap-4 py-4">
+                  <div>
+                    <BsFillLightningFill />
+                  </div>
+                  <h2 className="font-semibold">Explore other tools</h2>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/text-gradient`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <MdFormatColorText size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  Text Gradient Generator
+                </p>
+              </div>
+            </Link>
+            <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/text-shadow`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <GoTextSize size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  Text Shadow Generator
+                </p>
+              </div>
+            </Link>
+            <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/transform-generator-2d`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <MdTransform size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  2D Transform CSS Generator
+                </p>
+              </div>
+            </Link>
+              </div>
+            </div>
+        {/*explore  css generator ends here */}
+
         </div>
       </div>
     </>

@@ -10,6 +10,11 @@ import { FaRegCopy } from "react-icons/fa";
 import {MdAddToPhotos} from 'react-icons/md'
 import { useEffect } from "react";
 import {RxReset} from 'react-icons/rx'
+import Link from "next/link";
+import {BsFillLightningFill} from 'react-icons/bs'
+import {GiCube} from 'react-icons/gi'
+import {MdTransform} from "react-icons/md";
+import { GoTextSize } from "react-icons/go";
 
 export default function TextGradientGenerator() {
   const gradients = [
@@ -93,14 +98,14 @@ export default function TextGradientGenerator() {
       setEndColor(data.endColor)
     }
     else{
-      setGradient({gradientType: 0,direction: 0,textSize: 50,shape: 0,size: 0,positionX: 50,positionY: 50,})
+      setGradient({gradientType: 0,direction: 90,textSize: 50,shape: 0,size: 0,positionX: 50,positionY: 50,})
       setStopColors([])
-      setStartColor({colorHexCode: "#833ab4", opacity: 1, percentage: 0, degree: 0})
+      setStartColor({colorHexCode: "#9900FF", opacity: 1, percentage: 0, degree: 0})
       setEndColor({color: "#fcb045",colorHexCode: "#fcb045", opacity: 1, percentage: 100,degree: 250})
       localStorage.setItem('text-gradient-generator',JSON.stringify({
-        gradient:{gradientType: 0,direction: 0,textSize: 50,shape: 0,size: 0,positionX: 50,positionY: 50,},
+        gradient:{gradientType: 0,direction: 90,textSize: 50,shape: 0,size: 0,positionX: 50,positionY: 50,},
         stopColors:[],
-        startColor:{ colorHexCode: "#833ab4", opacity: 1, percentage: 0, degree: 0},
+        startColor:{ colorHexCode: "#9900FF", opacity: 1, percentage: 0, degree: 0},
         endColor:{colorHexCode: "#fcb045", opacity: 1, percentage: 100,degree: 250}
       }))
     }
@@ -193,14 +198,14 @@ export default function TextGradientGenerator() {
   }
 
   const handleGenReset=()=>{
-    setGradient({gradientType: 0,direction: 0,textSize: 50,shape: 0,size: 0,positionX: 50,positionY: 50,})
+    setGradient({gradientType: 0,direction: 90,textSize: 50,shape: 0,size: 0,positionX: 50,positionY: 50,})
     setStopColors([])
-    setStartColor({ color: "#833ab4", colorHexCode: "#833ab4", opacity: 1, percentage: 0, degree: 0})
+    setStartColor({ color: "#9900FF", colorHexCode: "#9900FF", opacity: 1, percentage: 0, degree: 0})
     setEndColor({color: "#fcb045",colorHexCode: "#fcb045", opacity: 1, percentage: 100,degree: 250})
     localStorage.setItem('text-gradient-generator',JSON.stringify({
-      gradient:{gradientType: 0,direction: 0,textSize: 50,shape: 0,size: 0,positionX: 50,positionY: 50,},
+      gradient:{gradientType: 0,direction: 90,textSize: 50,shape: 0,size: 0,positionX: 50,positionY: 50,},
       stopColors:[],
-      startColor:{ color: "#833ab4", colorHexCode: "#833ab4", opacity: 1, percentage: 0, degree: 0},
+      startColor:{ color: "#9900FF", colorHexCode: "#9900FF", opacity: 1, percentage: 0, degree: 0},
       endColor:{color: "#fcb045",colorHexCode: "#fcb045", opacity: 1, percentage: 100,degree: 250}
     }))
 }
@@ -209,13 +214,30 @@ export default function TextGradientGenerator() {
   return (
     <>
     <Head>
-      <title>Text Gradient Generator</title>
+      <title>Text Gradient Generator | WebVerse</title>
+        <meta
+        name="description"
+        content="Create beautiful text gradients with our free CSS Text gradient generator! This generator allows you to quickly generate stunning text gradients and copy the CSS code to use on your own website. With a variety of customization options and a user-friendly interface, you can create unique and eye-catching designs in no time. Try our text gradient generator today and take your website to the next level!"
+      />
+      <meta name="keywords" content="Webverse, web tools, free css generators,free css text gradient,css text gradient color,css text gradient generator,css text linear gradient,css text gradient generator,text gradient in css,css text gradient left to right,css gradient text effect"></meta>
+      <meta property="og:title" content="Text Gradient Generator | WebVerse" />
+        <meta
+          property="og:description"
+          content="Create beautiful text gradients with our free CSS Text gradient generator! This generator allows you to quickly generate stunning text gradients and copy the CSS code to use on your own website. With a variety of customization options and a user-friendly interface, you can create unique and eye-catching designs in no time. Try our text gradient generator today and take your website to the next level!"
+        />
+        <meta
+          property="og:image"
+          content="/images/og-images/home-page-og.png"
+        />
     </Head>
       <div>
       <div className="lg:w-[64rem] mx-auto w-full">
         <h1 className={`md:text-5xl text-4xl text-blue-500 text-center font-semibold pb-5  pt-3 ${styles.textGrad}`}>
           Text Gradient Generator
         </h1>
+        <p className="leading-9 text-lg text-justify p-4  py-4 lg:px-0 dark:text-white">
+        Create beautiful text gradients with our free CSS Text gradient generator! This generator allows you to quickly generate stunning text gradients and copy the CSS code to use on your own website. With a variety of customization options and a user-friendly interface, you can create unique and eye-catching designs in no time. Try our text gradient generator today and take your website to the next level!
+        </p>
         {/* start */}
         {Object.keys(gradient).length>0  && <div className="w-full grid grid-cols-1 gap-3 items-start md:grid-cols-6 p-4 dark:text-white bg-gray-100  dark:bg-[#1d2537]">
           {/* left box */}
@@ -270,10 +292,11 @@ export default function TextGradientGenerator() {
                 <p className="text-lg font-medium">Generated CSS code</p>
                 <CopyToClipboard
                   text={`background: ${backgroundGradient};
-                  font-size: ${gradient.textSize}px;
-                  color: transparent;
-                  background-clip:text;
-                  -webkit-background-clip:text;`}
+  font-size: ${gradient.textSize}px;
+  color: transparent;
+  background-clip:text;
+  -webkit-background-clip:text;
+  display: inline;`}
                   className=" px-4 py-2 text-white flex items-center justify-between gap-2 font-semibold dark:hover:bg-blue-600 transition-all duration-300 border-blue-500 bg-blue-500 rounded-lg text-sm"
                   >
                   <button onClick={codeCopyNotification}> <span>Copy</span><span><FaRegCopy/></span></button>
@@ -310,7 +333,7 @@ export default function TextGradientGenerator() {
                   gradient.gradientType == 2 || gradient.gradientType == 5
                     ? endColor.degree + "deg"
                     : endColor.percentage + "%"
-                });\nfont-size: ${gradient.textSize}px;\ncolor: transparent;\nbackground-clip:text;\n-webkit-background-clip:text;`}
+                });\nfont-size: ${gradient.textSize}px;\ncolor: transparent;\nbackground-clip:text;\n-webkit-background-clip:text;\ndisplay: inline;`}
               </SyntaxHighlighter>
             </div>
             <div className="w-full">
@@ -798,6 +821,47 @@ export default function TextGradientGenerator() {
           {/* right box ends here */}
         </div>}
         {/* end-------- */}
+
+        
+           {/* explore css generators starts here  */}
+           <div className="lg:w-[64rem] mx-auto w-full p-4 lg:p-0 lg:py-4 dark:text-white">
+              <div className="flex items-center justify-between ">
+                <div className="flex items-center text-xl md:text-2xl gap-4 py-4">
+                  <div>
+                    <BsFillLightningFill />
+                  </div>
+                  <h2 className="font-semibold">Explore other tools</h2>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/text-shadow`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <GoTextSize size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  Text Shadow Generator
+                </p>
+              </div>
+            </Link>
+            <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/transform-generator-2d`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <MdTransform size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  2D Transform CSS Generator
+                </p>
+              </div>
+            </Link>
+            <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/transform-generator-3d`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <GiCube size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  3D Transform CSS Generator
+                </p>
+              </div>
+            </Link>
+              </div>
+            </div>
+        {/*explore  css generator ends here */}
+
       </div>
     </div>
     </>

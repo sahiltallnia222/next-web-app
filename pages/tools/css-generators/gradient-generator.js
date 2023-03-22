@@ -10,6 +10,10 @@ import { useEffect } from "react";
 import {MdAddToPhotos} from 'react-icons/md'
 import { FaRegCopy } from "react-icons/fa";
 import {RxReset} from 'react-icons/rx'
+import {MdFormatColorText,MdOutlineTextRotateVertical} from "react-icons/md";
+import {BsFillLightningFill} from 'react-icons/bs'
+import { CgScrollV } from "react-icons/cg";
+import Link from "next/link";
 
 export default function GradientGenerator() {
   const gradients = [
@@ -178,15 +182,34 @@ const handleGenReset=()=>{
   return (
     <>
       <Head>
-        <title>Gradient Generator</title>
+        <title>CSS Gradient Generator | WebVerse</title>
+        <meta
+        name="description"
+        content="CSS gradient generator helps you to generate css code for background gradient for your website. With this css gradient generator, you can add multiple colors in gradient. This css gradient covers all the properties of css gradient. You can also see the live preview of all the changes using this css gradient generator."
+      />
+      <meta name="keywords" content="Webverse, web tools, free css generators, css gradient generator,css gradient generator radial,css gradient generator animation,css gradient generator 3 colors,css gradient generator transparent,css gradient generator code"></meta>
+      <meta property="og:title" content="CSS Gradient Generator | WebVerse" />
+        <meta
+          property="og:description"
+          content="CSS gradient generator helps you to generate css code for background gradient for your website. With this css gradient generator, you can add multiple colors in gradient. This css gradient covers all the properties of css gradient. You can also see the live preview of all the changes using this css gradient generator."
+        />
+        <meta
+          property="og:image"
+          content="/images/og-images/home-page-og.png"
+        />
       </Head>
       <div>
      {Object.keys(gradient).length>0  && <div className="lg:w-[64rem] mx-auto w-full">
         <h1 className={`md:text-5xl text-4xl text-blue-500 text-center font-semibold pb-5  pt-3 ${styles.textGrad}`}>
-          Gradient Generator
+          CSS Gradient Generator
         </h1>
+
+        <p className=" leading-9 text-lg text-justify p-4  py-4 lg:px-0 dark:text-white">
+        CSS gradient generator helps you to generate css code for background gradient for your website. With this css gradient generator, you can add multiple colors in gradient. This css gradient covers all the properties of css gradient. You can also see the live preview of all the changes using this css gradient generator.
+        </p>
+
         {/* start */}
-        <div className="w-full grid grid-cols-1 gap-3 items-start md:grid-cols-6 p-4 dark:text-white bg-gray-100  dark:bg-[#1d2537]">
+        <div className="w-full grid grid-cols-1 gap-3 items-start md:grid-cols-6 p-4  dark:text-white  md:bg-gray-100  md:dark:bg-[#1d2537]">
           {/* left box */}
           <div className=" h-[70vh] md:h-[32rem] md:col-span-4 flex justify-start flex-col items-center">
             <div
@@ -235,7 +258,7 @@ const handleGenReset=()=>{
                     min="0"
                     max="100"
                     value={gradient.boxWidth}
-                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                     onChange={(e) => {
                       let values = { ...gradient };
                       values.boxWidth = e.target.value;
@@ -340,7 +363,7 @@ const handleGenReset=()=>{
           <div
             className={`md:h-[32rem] md:col-span-2 md:overflow-scroll md:overflow-x-hidden ${styles.scrollbarClass}`}
           >
-            <div className=" border border-gray-200 cursor-pointer text-sm block w-full dark:border-none p-4 dark:bg-[#0f172a] dark:placeholder-gray-400 dark:text-white outline-none">
+            <div className=" border border-gray-200 cursor-pointer text-sm block w-full dark:border-none p-4 md:dark:bg-[#0f172a] dark:bg-[#1d2537] dark:placeholder-gray-400 dark:text-white outline-none">
               <label
                 htmlFor="gradient-type"
                 className="block mb-3 text-sm font-medium text-gray-900 dark:text-white"
@@ -349,9 +372,9 @@ const handleGenReset=()=>{
               </label>
               <select
                 id="gradient-type"
-                defaultValue="linear-gradient"
+                value={gradient.gradientType}
                 onChange={toggleSize}
-                className="p-2.5 w-full dark:text-white outline-none text-sm block  dark:bg-[#1d2537] cursor-pointer dark:border-none border-gray-200 border"
+                className="p-2.5 w-full dark:text-white outline-none text-sm block  dark:bg-[#0f172a] md:dark:bg-[#1d2537]  cursor-pointer dark:border-none border-gray-200 border"
               >
                 <option value="0">Linear Gradient</option>
                 <option value="1">Radial Gradient</option>
@@ -363,7 +386,7 @@ const handleGenReset=()=>{
             </div>
 
             {(gradient.gradientType == 1 || gradient.gradientType == 4) && (
-              <div className="mt-2 p-4 border border-gray-200 cursor-pointer text-sm block w-full dark:border-none dark:bg-[#0f172a] dark:placeholder-gray-400 dark:text-white outline-none">
+              <div className="mt-2 p-4 border border-gray-200 cursor-pointer text-sm block w-full dark:border-none md:dark:bg-[#0f172a] dark:bg-[#1d2537] dark:placeholder-gray-400 dark:text-white outline-none">
                 <label
                   htmlFor="gradient-type"
                   className="block mb-3 text-sm font-medium text-gray-900 dark:text-white"
@@ -378,7 +401,7 @@ const handleGenReset=()=>{
                     values.size = e.target.value;
                     setGradient(values);
                   }}
-                  className="p-2.5 w-full dark:text-white outline-none text-sm block dark:bg-[#1d2537] cursor-pointer dark:border-none border-gray-200 border"
+                  className="p-2.5 w-full dark:text-white outline-none text-sm block dark:bg-[#0f172a] md:dark:bg-[#1d2537]  cursor-pointer dark:border-none border-gray-200 border"
                 >
                   <option value="0">Choose a value</option>
                   <option value="1">Closest side</option>
@@ -391,7 +414,7 @@ const handleGenReset=()=>{
             {((gradient.gradientType == 1 || gradient.gradientType == 4) &&
               gradient.size != 0 ||
               (gradient.gradientType == 2 || gradient.gradientType == 5)) && (
-                <div className="mt-2 p-4 border border-gray-200 cursor-pointer text-sm block w-full dark:border-none dark:bg-[#0f172a] dark:placeholder-gray-400 dark:text-white outline-none">
+                <div className="mt-2 p-4 border border-gray-200 cursor-pointer text-sm block w-full dark:border-none md:dark:bg-[#0f172a] dark:bg-[#1d2537] dark:placeholder-gray-400 dark:text-white outline-none">
                   <div>
                     <div className="flex items-center justify-between font-medium text-sm mt-3">
                       <div>Position-X</div>
@@ -403,7 +426,7 @@ const handleGenReset=()=>{
                         min="0"
                         max="100"
                         defaultValue={gradient.positionX}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...gradient };
                           values.positionX = e.target.value;
@@ -423,7 +446,7 @@ const handleGenReset=()=>{
                         min="0"
                         max="100"
                         defaultValue={gradient.positionY}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = { ...gradient };
                           values.positionY = e.target.value;
@@ -435,7 +458,7 @@ const handleGenReset=()=>{
                 </div>
               )}
             {(gradient.gradientType == 1 || gradient.gradientType == 4) && (
-              <div className="mt-2 border border-gray-200 cursor-pointer text-sm block w-full p-2.5 dark:border-none dark:bg-[#0f172a] dark:placeholder-gray-400 dark:text-white outline-none">
+              <div className="mt-2 border border-gray-200 cursor-pointer text-sm block w-full p-2.5 dark:border-none md:dark:bg-[#0f172a] dark:bg-[#1d2537] dark:placeholder-gray-400 dark:text-white outline-none">
                 <label
                   htmlFor="gradient-type"
                   className="block mb-3 text-sm font-medium text-gray-900 dark:text-white"
@@ -450,7 +473,7 @@ const handleGenReset=()=>{
                     values.shape = e.target.value;
                     setGradient(values);
                   }}
-                  className="p-2.5 w-full dark:text-white outline-none text-sm block dark:bg-[#1d2537] cursor-pointer dark:border-none border-gray-200 border"
+                  className="p-2.5 w-full dark:text-white outline-none text-sm block dark:bg-[#0f172a] md:dark:bg-[#1d2537] cursor-pointer dark:border-none border-gray-200 border"
                 >
                   <option value="0">Circle</option>
                   <option value="1">Ellipse</option>
@@ -519,7 +542,7 @@ const handleGenReset=()=>{
             </div> */}
 
             {(gradient.gradientType == 0 || gradient.gradientType == 3) && (
-              <div className="mt-2 dark:bg-[#0f172a] bg-none dark:border-none border border-gray-200 p-4">
+              <div className="mt-2 md:dark:bg-[#0f172a] dark:bg-[#1d2537]  bg-none dark:border-none border border-gray-200 p-4">
                 <div className="flex justify-between items-center mb-1 text-sm font-medium text-gray-900 dark:text-white">
                   <div className="flex justify-between items-center w-40">
                     <div>Direction</div>
@@ -537,14 +560,14 @@ const handleGenReset=()=>{
                       values.direction = e.target.value;
                       setGradient(values);
                     }}
-                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                   />
                 </div>
               </div>
             )}
 
             {/* color */}
-            <div className="mt-2 dark:bg-[#0f172a] bg-none dark:border-none border border-gray-200 p-4">
+            <div className="mt-2 md:dark:bg-[#0f172a] dark:bg-[#1d2537] bg-none dark:border-none border border-gray-200 p-4">
               <div className="flex justify-between items-center mb-1 text-sm font-medium text-gray-900 dark:text-white">
                 <div className="flex justify-between items-center w-40">
                   <div>Start color</div>
@@ -592,7 +615,7 @@ const handleGenReset=()=>{
                       ? startColor.degree
                       : startColor.percentage
                   }
-                  className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                  className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                   onChange={(e) => {
                     let values = { ...startColor };
                     if (
@@ -616,7 +639,7 @@ const handleGenReset=()=>{
                     min="1"
                     max="100"
                     value={startColor.opacity * 100}
-                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                     onChange={(e) => {
                       let values = { ...startColor };
                       values.opacity = e.target.value / 100;
@@ -629,7 +652,7 @@ const handleGenReset=()=>{
             {stopColors.map((stopColor, index) => {
               return (
                 <div
-                  className="mt-2 dark:bg-[#0f172a] bg-none dark:border-none border border-gray-200 p-4"
+                  className="mt-2 md:dark:bg-[#0f172a] dark:bg-[#1d2537] bg-none dark:border-none border border-gray-200 p-4"
                   key={index}
                 >
                   <div className="flex justify-between items-center mb-1 text-sm font-medium text-gray-900 dark:text-white">
@@ -687,7 +710,7 @@ const handleGenReset=()=>{
                           ? stopColor.degree
                           : stopColor.percentage
                       }
-                      className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                      className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                       onChange={(e) => {
                         let values = [...stopColors];
                         if (
@@ -711,7 +734,7 @@ const handleGenReset=()=>{
                         min="1"
                         max="100"
                         value={stopColor.opacity * 100}
-                        className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                        className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                         onChange={(e) => {
                           let values = [...stopColors];
                           values[index].color = hexToRGB(
@@ -727,7 +750,7 @@ const handleGenReset=()=>{
                 </div>
               );
             })}
-            <div className="mt-2 dark:bg-[#0f172a] bg-none dark:border-none border border-gray-200 p-4">
+            <div className="mt-2 md:dark:bg-[#0f172a] dark:bg-[#1d2537] bg-none dark:border-none border border-gray-200 p-4">
               <div className="flex justify-between items-center mb-1 text-sm font-medium text-gray-900 dark:text-white">
                 <div className="flex justify-between items-center w-40">
                   <div>End color</div>
@@ -774,7 +797,7 @@ const handleGenReset=()=>{
                       ? endColor.degree
                       : endColor.percentage
                   }
-                  className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                  className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                   onChange={(e) => {
                     let values = { ...endColor };
                     if (
@@ -798,7 +821,7 @@ const handleGenReset=()=>{
                     min="1"
                     max="100"
                     value={endColor.opacity * 100}
-                    className="w-full h-1  rounded-md appearance-none cursor-pointer"
+                    className="w-full h-1 bg-gray-300 rounded-md appearance-none cursor-pointer"
                     onChange={(e) => {
                       let values = { ...endColor };
                       values.opacity = e.target.value / 100;
@@ -819,6 +842,45 @@ const handleGenReset=()=>{
           {/* right box ends here */}
         </div>
         {/* end-------- */}
+
+        {/* explore css generators starts here  */}
+        <div className="lg:w-[64rem] mx-auto w-full p-4 lg:p-0 lg:py-4 dark:text-white">
+              <div className="flex items-center justify-between ">
+                <div className="flex items-center text-xl md:text-2xl gap-4 py-4">
+                  <div>
+                    <BsFillLightningFill />
+                  </div>
+                  <h2 className="font-semibold">Explore other tools</h2>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/scrollbar-css-generator`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <CgScrollV size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  Scrollbar CSS Generator
+                </p>
+              </div>
+            </Link>
+            <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/text-animations`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <MdOutlineTextRotateVertical size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  Text Animations
+                </p>
+              </div>
+            </Link>
+            <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/text-gradient`} passHref>
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+                <MdFormatColorText size={"2.3rem"} />
+                <p className="text-xl font-medium text-center">
+                  Text Gradient Generator
+                </p>
+              </div>
+            </Link>
+              </div>
+            </div>
+        {/*explore  css generator ends here */}
       </div>}
     </div>
     </>
