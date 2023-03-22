@@ -1,4 +1,4 @@
-import { useCallback, useMemo ,useState,useEffect} from "react";
+import { useCallback, useMemo ,useState} from "react";
 import { useDropzone } from "react-dropzone";
 import Head from "next/head";
 import styles from "styles/style.module.css";
@@ -8,6 +8,7 @@ import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import axios from "axios";
 import { toast } from "react-toastify";
+
 
 function ImageFormatConverter() {
   const imageFormats=['png','jpeg','webp','gif','tiff']
@@ -100,9 +101,11 @@ function ImageFormatConverter() {
     saveAs(zipFileBlob, 'images.zip');
     setOutputFiles([]);
   };
+
+
 const handleConvert=async()=>{
   setProcessing(true)
-  axios.post('/api/image-tools/image-converter',{data:files}).then(res=>{
+  axios.post(`${process.env.NEXT_PUBLIC_HOST}/api/image-tools/image-converter`,{data:files}).then(res=>{
     setOutputFiles(res.data.res);
     Notification('Converted successfully','success');
     setFiles([]);
@@ -119,7 +122,21 @@ const handleConvert=async()=>{
   return (
     <>
       <Head>
-        <title>Image Converter</title>
+        <title>Image Converter Tool | WebVerse</title>
+        <meta
+        name="description"
+        content="Looking to convert multiple image into differnt formats at once ? Our website has got you covered. You can convert multiple images into different formats at once. This tool will save your lot of time. We are providing this premium feature for free. Our tool supports .jpeg, .png, .webp, .gif, .tiff ."
+      />
+      <meta name="keywords" content="Webverse, web tools, free image convertor, free multiple image convertor, free image format convertor, different image format convertor, jpeg to png, png to jpeg, convert to webp, convert to giff, convert to tiff"></meta>
+      <meta property="og:title" content="Image Converter Tool | WebVerse" />
+        <meta
+          property="og:description"
+          content="Looking to convert multiple image into differnt formats at once ? Our website has got you covered. You can convert multiple images into different formats at once. This tool will save your lot of time. We are providing this premium feature for free. Our tool supports .jpeg, .png, .webp, .gif, .tiff ."
+        />
+        <meta
+          property="og:image"
+          content="/images/og-images/home-page-og.png"
+        />
       </Head>
 
       <div className="lg:w-[64rem] mx-auto w-full dark:text-white">
@@ -129,7 +146,7 @@ const handleConvert=async()=>{
           Image Converter
         </h1>
 
-
+      {/* Tool area starts */}
        <div className="dark:bg-[#1d2537] bg-gray-100 p-4 relative">
         {isProcessing==true && <div className="w-full bg-gray-100 text-black h-[200px] flex items-center justify-center ">
           <p>Processing...</p>
@@ -171,15 +188,30 @@ const handleConvert=async()=>{
               }
             </div>
           </div>}
+          {files.length>0 && <p className=" leading-9 text-sm text-justify p-4 py-4 lg:px-0">* Corresponding to each selected images, there is a menu containing formats of image, you can select any format of image from that menu in which you want to convert your image.</p>}
           {files.length>0 && <button onClick={handleConvert} className="bg-blue-500 hover:bg-blue-600 font-medium text-white px-4 py-2 mt-4">Convert</button>}
           {(outputFiles.length>0 && isProcessing==false)&& <button className="mt-4 bg-[#07bc0c] font-medium text-white hover:bg-green-600 px-4 py-2 rounded-3xl" onClick={downloadZip}>Download images</button>}
         </div>
+      {/* Tool area ends here */}
+      
+
+      {/* Imp inormation starts */}
+      <div>
+
+      </div>
+      {/* imp information ends here  */}
+      {/* <p className=" leading-9 text-md text-justify p-4 py-4 lg:px-0">
+        Dear users, we understand that your privacy is of utmost importance and we respect your trust in us. We want to assure you that our website is designed to ensure the safety and security of your data. We do not store any of your images on our servers. Our image conversion tool is designed to quickly and easily convert your images from one format to another, without any data retention. We value your trust and take the responsibility of protecting your data seriously. Thank you for choosing our website for your image conversion needs.
+      </p> */}
       </div>
     </>
   );
 }
 
 export default ImageFormatConverter;
+
+
+
   // {/* {outputFiles.length>0 && outputFiles.map((file,index)=>{
   //         return <a href={file.imgUrl} key={index} download={`image.${file.convertedTo}`}>Download Image</a>
   //       }) } */}

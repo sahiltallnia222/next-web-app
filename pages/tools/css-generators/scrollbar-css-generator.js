@@ -75,7 +75,7 @@ export default function ScrollbarGenerator() {
         name="description"
         content="Generate custom scrollbars for your website with CSS scrollbar generator. Customize the appearance and behavior of your scrollbars to match your website's design and make your website stand out. Just copy the generated code and paste in your website."
       />
-      <meta name="keywords" content="Webverse, web tools, free css generators, css scrollbar horizontal,css scrollbar,css scrollbar style,css scrollbar hide,css scrollbar none,css scrollbar width,css scrollbar div,css scrollbar in div,css scrollbar color,css scrollbar position,css scrollbar generator,css scrollbar height,css scrollbar firefox,css scrollbar design,css scrollbar always visible,css scrollbar margin,css scrollbar custom,css scrollbar codepen,css scrollbar examples,css scrollbar overlay,css scrollbar background color,css scrollbar invisible,css scrollbar margin right,css scrollbar inside div,css scrollbar auto,css scrollbar not working,css scrollbar disappears,css scrollbar padding,css scrollbar absolute,css scrollbar border radius,css scrollbar background transparent,css scrollbar element,css scrollbar edit,css scrollbar for div"></meta>
+      <meta name="keywords" content="Webverse, web tools, free css generators, free css scrollbar generator,css scrollbar padding,css scrollbar border radius,css scrollbar background transparent,css scrollbar element,css scrollbar edit,css scrollbar for div"></meta>
       <meta property="og:title" content="Scrollbar CSS Generator | WebVerse" />
         <meta
           property="og:description"

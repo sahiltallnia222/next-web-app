@@ -154,7 +154,7 @@ export default function Boxshadow() {
         name="description"
         content="Box shadow is very important property which is used in almost all the websites. It is very time taking task to adjust values of box shadow. Box shadow generator can help to do this task very quickly just by dragging the values. This Box shadow generator covers all the properties of box shadow along with explanation. Create awesome box shadows along with live preview of changes and copy-paste the generated css in your website."
       />
-      <meta name="keywords" content="Webverse, web tools, free box shadow generator, box shadow css,box shadow in css,box shadow,box shadow generator,box shadow examples,box shadow inset,box shadow html,box shadow css examples,box shadow opacity,box shadow top"></meta>
+      <meta name="keywords" content="Webverse, web tools, free box shadow generator, box shadow css,box shadow,box shadow generator,box shadow examples,box shadow inset,box shadow html,box shadow css examples,box shadow opacity"></meta>
       <meta property="og:title" content="Box Shadow Generator | WebVerse" />
         <meta
           property="og:description"

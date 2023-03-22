@@ -45,7 +45,21 @@ export default function RgbatoHexConverter() {
   return (
     <>
       <Head>
-        <title>RGBA to Hex Converter</title>
+        <title>RGBA to Hex Converter | WebVerse</title>
+        <meta
+        name="description"
+        content="RGBA to Hex convertor tool converts rgba values of color codes into hex value."
+      />
+      <meta name="keywords" content="Webverse, web tools, RGBA to Hex, RGBA to Hex convertor, color code convertor"></meta>
+      <meta property="og:title" content="Color Mixture Tool | WebVerse" />
+        <meta
+          property="og:description"
+          content="RGBA to Hex convertor tool converts rgba values of color codes into hex value."
+        />
+        <meta
+          property="og:image"
+          content="/images/og-images/home-page-og.png"
+        />
       </Head>
       <div>
         <div className="lg:w-[64rem] mx-auto w-full">

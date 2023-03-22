@@ -84,7 +84,7 @@ export default function ButtonGenerator() {
         name="description"
         content="Make stunning buttons in css using free css button generator. This css button generator contains all the properties that requires to make a button. People can also add hover effect and shadow effects using this css button generator and see the live preview of changes."
       />
-      <meta name="keywords" content="Webverse, web tools, free css generators, button generator image,button generator html,button generator,button generator css,button generator html css,button generator online"></meta>
+      <meta name="keywords" content="Webverse, web tools, free css generators, button generator,button generator online"></meta>
       <meta property="og:title" content="CSS Button Generator | WebVerse" />
         <meta
           property="og:description"

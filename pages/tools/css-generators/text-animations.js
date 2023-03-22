@@ -163,7 +163,7 @@ ${play=='animation1'?`.animation1 {
         name="description"
         content="Get creative with your text! Our CSS text animation generator provides a range of options for adding visual flair to your written content. You can select and copy-paste the CSS for any animation you like. Elevate your website with dynamic, eye-catching text. Explore our collection now."
       />
-      <meta name="keywords" content="Webverse, web tools, free css generators, css gradient generator,css gradient generator radial,css gradient generator animation,css gradient generator 3 colors,css gradient generator transparent,css gradient generator code"></meta>
+      <meta name="keywords" content="Webverse, web tools, free css generators, css gradient generator, css gradient generator with live preview"></meta>
       <meta property="og:title" content="Text Animations | WebVerse" />
         <meta
           property="og:description"

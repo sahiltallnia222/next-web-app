@@ -55,7 +55,21 @@ export default function HextoRgbaConverter() {
   return (
     <>
       <Head>
-        <title>Hex to RGBA Converter</title>
+        <title>Hex to RGBA Converter | WebVerse</title>
+        <meta
+        name="description"
+        content="Hex to RGBA convertor converts hex value of color code into rgba value of color code. This convertor allows to add 6 digit as well as 8 digit hex code of color."
+      />
+      <meta name="keywords" content="Webverse, web tools,Hex to RGBA convertor, Hex to RGBA, color code convertor"></meta>
+      <meta property="og:title" content="Color Mixture Tool | WebVerse" />
+        <meta
+          property="og:description"
+          content="Hex to RGBA convertor converts hex value of color code into rgba value of color code. This convertor allows to add 6 digit as well as 8 digit hex code of color."
+        />
+        <meta
+          property="og:image"
+          content="/images/og-images/home-page-og.png"
+        />
       </Head>
       <div>
         <div className="lg:w-[64rem] mx-auto w-full">

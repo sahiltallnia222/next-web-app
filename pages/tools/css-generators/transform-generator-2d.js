@@ -91,7 +91,7 @@ export default function TransformGenerator() {
         name="description"
         content="Make your website stunning using free CSS transform generator tool. This tool allows you to set the various parameters of transform property and generate CSS code for you. Just copy and paste the code in your website and see the effects."
       />
-      <meta name="keywords" content="Webverse, web tools, free css generators,free css 2d transform,2d transform in css,2d transformation examples,css 2d transform generator,css 2d transform examples"></meta>
+      <meta name="keywords" content="Webverse, web tools, free css generators,free css 2d transform,2d transform in css,2d transformation examples,css 2d transform generator"></meta>
       <meta property="og:title" content="2D Transform CSS Generator | WebVerse" />
         <meta
           property="og:description"

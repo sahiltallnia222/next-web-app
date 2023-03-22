@@ -187,7 +187,7 @@ const handleGenReset=()=>{
         name="description"
         content="CSS gradient generator helps you to generate css code for background gradient for your website. With this css gradient generator, you can add multiple colors in gradient. This css gradient covers all the properties of css gradient. You can also see the live preview of all the changes using this css gradient generator."
       />
-      <meta name="keywords" content="Webverse, web tools, free css generators, css gradient generator,css gradient generator radial,css gradient generator animation,css gradient generator 3 colors,css gradient generator transparent,css gradient generator code"></meta>
+      <meta name="keywords" content="Webverse, web tools, free css generators, css gradient generator,css gradient generator transparent,css gradient generator code"></meta>
       <meta property="og:title" content="CSS Gradient Generator | WebVerse" />
         <meta
           property="og:description"

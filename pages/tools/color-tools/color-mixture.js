@@ -17,7 +17,21 @@ export default function ColorTools() {
   return (
     <>
       <Head>
-        <title>Color Mixture Tool</title>
+        <title>Color Mixture Tool | WebVerse</title>
+        <meta
+        name="description"
+        content="Color tool is used to mix 2 colors in specfic ratio. This tool web design to choose color best fit for their website."
+      />
+      <meta name="keywords" content="Webverse, web tools, color tools, color mixture"></meta>
+      <meta property="og:title" content="Color Mixture Tool | WebVerse" />
+        <meta
+          property="og:description"
+          content="Color tool is used to mix 2 colors in specfic ratio. This tool web design to choose color best fit for their website."
+        />
+        <meta
+          property="og:image"
+          content="/images/og-images/home-page-og.png"
+        />
       </Head>
       <div>
         <div className="lg:w-[64rem] mx-auto w-full dark:text-white">

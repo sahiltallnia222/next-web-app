@@ -28,7 +28,7 @@ export default function CursorOptions() {
         name="description"
         content="For different types of elements, different type of cursors are used. Here is the list of all the cursors in css. Hover over the box, it will show you the type of cursor. Now just copy the cursor css and paste in your website. "
       />
-      <meta name="keywords" content="Webverse, web tools, free cursor tool, cursor in css,cursor pointer in css,change cursor in css,cursor css options,css cursor image,cursor values in css,cursor css disabled,cursor css pointer,cursor css custom,custom cursor in css,cursor css examples,cursor in css property,cursor in css hand"></meta>
+      <meta name="keywords" content="Webverse, web tools, free cursor tool, cursor in css,change cursor in css,cursor css options,css cursor image,cursor values in css,cursor css disabled,cursor css pointer,cursor css custom,custom cursor in css,cursor css examples,cursor in css property,cursor in css hand"></meta>
       <meta property="og:title" content="Cursors in CSS | WebVerse" />
         <meta
           property="og:description"

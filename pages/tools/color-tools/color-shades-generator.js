@@ -30,14 +30,28 @@ console.log(clShades);
   return (
     <>
       <Head>
-        <title>Color Tools</title>
+        <title>Color Shades Generator | WebVerse</title>
+        <meta
+        name="description"
+        content="Easily create shades for any color to use in your website. This tool also allows you to select start and end color of shades."
+      />
+      <meta name="keywords" content="Webverse, web tools, color shades generator, free shades generator,custom shades"></meta>
+      <meta property="og:title" content="Color Shades Generator | WebVerse" />
+        <meta
+          property="og:description"
+          content="Easily create shades for any color to use in your website. This tool also allows you to select start and end color of shades."
+        />
+        <meta
+          property="og:image"
+          content="/images/og-images/home-page-og.png"
+        />
       </Head>
       <div>
         <div className="lg:w-[64rem] mx-auto w-full">
           <h1
             className={`md:text-5xl text-4xl text-blue-500 text-center font-semibold pb-5  pt-3 ${styles.textGrad}`}
           >
-            Color Tools
+            Color Shades Generator 
           </h1>
           <div className="dark:bg-[#1d2537] p-4 bg-gray-200 w-full">
             <div className="flex items-start md:items-center md:flex-row flex-col  justify-center gap-3">

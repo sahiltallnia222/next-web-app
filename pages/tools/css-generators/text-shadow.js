@@ -168,7 +168,7 @@ export default function Textshadow() {
         name="description"
         content="Elevate your website's design with free text shadow generator! This generator allows you to easily generate CSS for stunning text shadows that will make your website stand out. Simply customize your shadow and copy the code to use on your own website. With a range of options and effects, you can create unique and dynamic designs in just a few clicks. Try our text shadow generator today and take your website to the next level!"
       />
-      <meta name="keywords" content="Webverse, web tools, free css generators,free text shadow generator css,text shadow generator effects,text shadow generator,text shadow generator css,font shadow generator,css text shadow generator,text shadow generator,text shadow html generator,text shadow inset generator,long shadow text generator,multiple text shadow generator"></meta>
+      <meta name="keywords" content="Webverse, web tools, free css generators,free text shadow generator css,text shadow generator,font shadow generator,multiple text shadow generator"></meta>
       <meta property="og:title" content="Text Shadow Generator | WebVerse" />
         <meta
           property="og:description"

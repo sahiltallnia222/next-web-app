@@ -178,7 +178,7 @@ useEffect(()=>{
         name="description"
         content="Border radius generator tool will help you to create awesome shapes just by dragging the dots. Direct copy the generated css code and paste in your website and see the effects."
       />
-      <meta name="keywords" content="Webverse, web tools, border radius generator, border radius generator css, border radius generator circle, free border radius generator, advanced border radius generator"></meta>
+      <meta name="keywords" content="Webverse, web tools, border radius generator, free border radius generator, advanced border radius generator"></meta>
       <meta property="og:title" content="Border Radius Generators | WebVerse" />
         <meta
           property="og:description"

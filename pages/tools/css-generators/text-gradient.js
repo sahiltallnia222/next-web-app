@@ -219,7 +219,7 @@ export default function TextGradientGenerator() {
         name="description"
         content="Create beautiful text gradients with our free CSS Text gradient generator! This generator allows you to quickly generate stunning text gradients and copy the CSS code to use on your own website. With a variety of customization options and a user-friendly interface, you can create unique and eye-catching designs in no time. Try our text gradient generator today and take your website to the next level!"
       />
-      <meta name="keywords" content="Webverse, web tools, free css generators,free css text gradient,css text gradient color,css text gradient generator,css text linear gradient,css text gradient generator,text gradient in css,css text gradient left to right,css gradient text effect"></meta>
+      <meta name="keywords" content="Webverse, web tools, free css generators,free css text gradient,css text gradient color,css text linear gradient,css text gradient generator,css gradient text effect"></meta>
       <meta property="og:title" content="Text Gradient Generator | WebVerse" />
         <meta
           property="og:description"

@@ -180,7 +180,7 @@ ${play=='animation1'?`.animation1 {
         name="description"
         content="CSS box animations are the ways to add movement and visual effects to the boxes in our website. CSS animations can be used to draw attention toward any important information. In CSS box animations, we have provided you some awesome css box animation to use in your website. You can see the css animation effects by clicking on play button. After play the animation just copy the generated css code given below and paste in your website."
       />
-      <meta name="keywords" content="Webverse, web tools, free css animation tool, css animation,css animation background,css animation hover,css animation on hover,css animation generator,css animation rotate,css animation examples,css animation keyframes,css animation delay,css animation property,css animation transition,css transition animation,css animation infinite,css animation bounce,css animation loop"></meta>
+      <meta name="keywords" content="Webverse, web tools, free css animation tool, css animation,css animation background,css animation hover,css animation on hover,css animation generator,css animation rotate,css animation examples,css animation keyframes,css animation delay,css animation property"></meta>
       <meta property="og:title" content="CSS Box Animations | WebVerse" />
         <meta
           property="og:description"

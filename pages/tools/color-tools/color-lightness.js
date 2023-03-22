@@ -11,7 +11,21 @@ const [saturate,setSaturate]=useState(0)
   return (
     <>
       <Head>
-        <title>Color Lightness</title>
+        <title>Color Lightness | WebVerse</title>
+        <meta
+        name="description"
+        content="Color tool to add darkness, lightness and saturation in color. This tool web design to choose color best fit for their website."
+      />
+      <meta name="keywords" content="Webverse, web tools, color lightness, color darkness, color saturation"></meta>
+      <meta property="og:title" content="Color Mixture Tool | WebVerse" />
+        <meta
+          property="og:description"
+          content="Color tool to add darkness, lightness and saturation in color. This tool web design to choose color best fit for their website."
+        />
+        <meta
+          property="og:image"
+          content="/images/og-images/home-page-og.png"
+        />
       </Head>
       <div>
         <div className="lg:w-[64rem] mx-auto w-full">

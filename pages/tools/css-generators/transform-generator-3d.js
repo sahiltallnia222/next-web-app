@@ -117,7 +117,7 @@ export default function TransformGenerator() {
         name="description"
         content="Make your website stunning using free CSS 3D transform generator tool. This tool allows you to set the various parameters of transform property and generate CSS code for you. Just copy and paste the code in your website and see the effects."
       />
-      <meta name="keywords" content="Webverse, web tools, css transform generator, free css generators,free css 3d transform,3d transform in css,3d transformation examples,css 3d transform generator,css 3d transform examples"></meta>
+      <meta name="keywords" content="Webverse, web tools, css transform generator, free css generators,free css 3d transform,3d transform in css,css 3d transform generator,css 3d transform examples"></meta>
       <meta property="og:title" content="3D Transform CSS Generator | WebVerse" />
         <meta
           property="og:description"
