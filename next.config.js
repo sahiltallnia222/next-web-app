@@ -12,13 +12,13 @@ module.exports = (phase) => {
         NEXT_PUBLIC_HOST:'http://localhost:3000'
       },
       async rewrites() {
-        return [
-          {
-            source: '/sitemap.xml',
-            destination: '/api/sitemap',
-          },
-        ]
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap',
       },
+    ]
+  },
     }
   }
 // production mode variables
