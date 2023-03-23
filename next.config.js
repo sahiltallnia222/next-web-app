@@ -1,16 +1,37 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'm.media-amazon.com',
-        port: '',
-        pathname: '/images/I/**',
-      },
-    ],
-  },
-}
+const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
 
-module.exports = nextConfig
+
+/** @type {import('next').NextConfig} */
+
+
+module.exports = (phase) => {
+  // devlopment mode variables
+  if (phase === PHASE_DEVELOPMENT_SERVER) {
+    return {
+      reactStrictMode: true,
+      env:{
+        NEXT_PUBLIC_HOST:'http://localhost:3000'
+      },
+      async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap',
+      },
+    ]
+  },
+    }
+  }
+// production mode variables
+  return {
+    reactStrictMode: true,
+    async rewrites() {
+      return [
+        {
+          source: '/sitemap.xml',
+          destination: '/api/sitemap',
+        },
+      ]
+    },
+  }
+}
