@@ -49,7 +49,6 @@ export default function HextoRgbaConverter() {
       a = 1;
     }
     setColor(`rgba(${r}, ${g}, ${b}, ${a})`)
-    // return `rgba(${r}, ${g}, ${b}, ${a})`;
   }
   
   return (

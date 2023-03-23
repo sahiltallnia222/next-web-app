@@ -6,6 +6,9 @@ import {IoIosColorWand} from 'react-icons/io'
 import {IoColorPaletteSharp} from 'react-icons/io5'
 import {FiCode} from 'react-icons/fi'
 import {GiNestedHexagons} from 'react-icons/gi'
+
+
+
 export default function ColorTools() {
   return (
     <>

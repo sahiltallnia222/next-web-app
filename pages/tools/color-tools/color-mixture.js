@@ -1,8 +1,8 @@
 import chroma from "chroma-js";
-
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import styles from "styles/style.module.css";
+
 
 export default function ColorTools() {
     const [colors, setColors] = useState({

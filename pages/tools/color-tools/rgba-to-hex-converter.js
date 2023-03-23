@@ -6,7 +6,6 @@ import { useRef, useState } from "react";
 
 export default function RgbatoHexConverter() {
   const [color, setColor] = useState();
-  const [error,setError]=useState(false);
   const rgbaRef = useRef();
   const errorNotification = () => {
     toast.error("Invalid RGBA Value !", {

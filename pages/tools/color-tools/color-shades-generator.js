@@ -1,5 +1,4 @@
 import chroma from "chroma-js";
-
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import styles from "styles/style.module.css";
@@ -7,7 +6,6 @@ import styles from "styles/style.module.css";
 export default function ColorTools() {
   const [shades, setShades] = useState([]);
   const [lrgbShades,setLrgbShades]=useState([])
-  const [clShades,setClShades]=useState([])
   const [colors, setColors] = useState({
     startColor: "#000000",
     endColor: "#ffffff",
@@ -18,9 +16,6 @@ export default function ColorTools() {
     );
     setLrgbShades(
         chroma.scale([colors.startColor, colors.endColor]).mode("lrgb").colors(10)
-    );
-    setClShades(
-        chroma.scale([colors.startColor, colors.endColor]).classes(10)
     );
   };
   useEffect(() => {

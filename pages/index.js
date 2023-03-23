@@ -9,6 +9,9 @@ import { BsCardImage } from "react-icons/bs";
 import { AiOutlineBgColors } from "react-icons/ai";
 import { IoIosColorWand } from "react-icons/io";
 import { IoColorPaletteSharp } from "react-icons/io5";
+
+
+
 export default function Home() {
   return (
     <>

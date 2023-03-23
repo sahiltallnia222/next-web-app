@@ -1,5 +1,4 @@
 import chroma from "chroma-js";
-
 import Head from "next/head";
 import {useState } from "react";
 import styles from "styles/style.module.css";
@@ -8,6 +7,8 @@ const [color,setColor]=useState('#00ffaa')
 const [dark,setDark]=useState(0)
 const [bright,setBright]=useState(0)
 const [saturate,setSaturate]=useState(0)
+
+
   return (
     <>
       <Head>
