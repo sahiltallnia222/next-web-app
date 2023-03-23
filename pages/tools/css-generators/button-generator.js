@@ -3,8 +3,6 @@ import styles from "styles/style.module.css";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import CopyToClipboard from "react-copy-to-clipboard";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { FaRegCopy } from "react-icons/fa";
 import {RxReset} from 'react-icons/rx'
 import {BsCursorFill } from "react-icons/bs";
@@ -12,6 +10,13 @@ import {BsFillLightningFill} from 'react-icons/bs'
 import { CgScrollV } from "react-icons/cg";
 import { MdGradient} from "react-icons/md";
 import Link from "next/link";
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
+import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
+import nightOwl from 'react-syntax-highlighter/dist/cjs/styles/prism/night-owl';
+SyntaxHighlighter.registerLanguage('jsx', jsx);
+SyntaxHighlighter.registerLanguage('css', css);
+
 
 export default function ButtonGenerator() {
   const [showShadow,setShowShadow]=useState(true);
@@ -106,7 +111,7 @@ export default function ButtonGenerator() {
           Make stunning buttons in css using free css button generator. This css button generator contains all the properties that requires to make a button. People can also add hover effect and shadow effects using this css button generator and see the live preview of changes.
           </p>
           {/* generator starts */}
-          <div className="lg:dark:bg-[#1d2537] lg:bg-gray-100  p-4 dark:text-white mx-2 md:mx-0">
+         {Object.keys(properties).length>0 && <div className="lg:dark:bg-[#1d2537] lg:bg-gray-100  p-4 dark:text-white mx-2 md:mx-0">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <div className="flex flex-col">
                 <div className="flex items-center justify-center h-[12rem] border-b-2 ">
@@ -462,7 +467,7 @@ export default function ButtonGenerator() {
               </div>
               {/* right side */}
             </div>
-          </div>
+          </div>}
           <div>
             {/* generatro ends here */}
 
@@ -484,9 +489,8 @@ export default function ButtonGenerator() {
                   </button>
                 </CopyToClipboard>
               </div>
-              <SyntaxHighlighter language="css" style={docco}>
+              <SyntaxHighlighter language="jsx" style={nightOwl}>
                 {`<button class='btn${showHover?' hvr':''}${showShadow?' actv':''}'> Click Here </button>`}
-
               </SyntaxHighlighter>
             </div>
             <div className="w-full p-4 dark:text-white">
@@ -527,7 +531,7 @@ ${showShadow ?`.actv{
                   </button>
                 </CopyToClipboard>
               </div>
-              <SyntaxHighlighter language="css" style={docco}>
+              <SyntaxHighlighter language="css" style={nightOwl}>
                 {`.btn {
   padding: ${properties.paddingY}px ${properties.paddingX}px;
   border-radius: ${properties.borderRadius}px;

@@ -4,14 +4,22 @@ import { ImPlay2, ImPause } from "react-icons/im";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import CopyToClipboard from "react-copy-to-clipboard";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { FaRegCopy } from "react-icons/fa";
 import {BsFillLightningFill} from 'react-icons/bs'
 import Link from "next/link";
 import {BsCursorFill } from "react-icons/bs";
 import {GiPowerButton} from 'react-icons/gi'
 import { TbBoxMultiple } from "react-icons/tb";
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
+import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
+import nightOwl from 'react-syntax-highlighter/dist/cjs/styles/prism/night-owl';
+SyntaxHighlighter.registerLanguage('jsx', jsx);
+SyntaxHighlighter.registerLanguage('css', css);
+
+
+
+
 
 export default function TextAnimations() {
   const [play, setPlay] = useState("");
@@ -436,7 +444,7 @@ ${play=='animation1'?`.animation1 {
                   </button>
                 </CopyToClipboard>
               </div>
-              <SyntaxHighlighter language="css" style={docco}>
+              <SyntaxHighlighter language="jsx" style={nightOwl}>
               {`<div class='outer-box'><div class='${play=='noAnimation'?'':play}'>Box Animations</div></div>`}
               </SyntaxHighlighter>
             </div>
@@ -455,7 +463,7 @@ ${play=='animation1'?`.animation1 {
                   </button>
                 </CopyToClipboard>
               </div>
-              <SyntaxHighlighter language="css" style={docco}>
+              <SyntaxHighlighter language="css" style={nightOwl}>
                 {cssCode}
               </SyntaxHighlighter>
             </div>

@@ -2,8 +2,6 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import CopyToClipboard from "react-copy-to-clipboard";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
 import { TbBoxMultiple } from "react-icons/tb";
 import { TiDelete } from "react-icons/ti";
@@ -15,6 +13,12 @@ import {BsFillLightningFill} from 'react-icons/bs'
 import {GiCube} from 'react-icons/gi'
 import {MdTransform} from "react-icons/md";
 import { AiOutlineRadiusSetting } from "react-icons/ai";
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
+import nightOwl from 'react-syntax-highlighter/dist/cjs/styles/prism/night-owl';
+SyntaxHighlighter.registerLanguage('css', css);
+
+
 
 export default function Textshadow() {
   const [shadowNo, setShadowNo] = useState(0);
@@ -448,7 +452,7 @@ export default function Textshadow() {
               <button onClick={codeCopyNotification}> <span>Copy</span><span><FaRegCopy/></span></button>
             </CopyToClipboard>
           </div>
-            <SyntaxHighlighter language="css" style={docco}>
+            <SyntaxHighlighter language="css" style={nightOwl}>
               {`text-shadow:${shadow.textShadow}; \ncolor:${shadow.textColor};\nbackground-color:${shadow.bgColor};\nfont-size:${shadow.textSize}rem`}
             </SyntaxHighlighter>
           </div>

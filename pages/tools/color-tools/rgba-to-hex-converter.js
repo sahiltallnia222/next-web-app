@@ -21,9 +21,6 @@ export default function RgbatoHexConverter() {
     let [r, g, b, a] = rgbaColor
     .substring(rgbaColor.indexOf("(") + 1, rgbaColor.lastIndexOf(")"))
     .split(",").map(val=>val.split(' ').join('')).map(val=>parseFloat(val.trim()));
-    console.log(rgbaColor
-      .substring(rgbaColor.indexOf("(") + 1, rgbaColor.lastIndexOf(")"))
-      .split(",").map(val=>val.split(' ').join('')).map(val=>parseFloat(val.trim())));
     if(r>255 || g>255 || b>255 || a>1 || r<0 || g<0|| b<0||a<0 ||r==undefined||r==NaN || g==undefined||g==NaN||b==undefined||b==NaN){
       errorNotification();
       setColor('Invalid RGBA Code')

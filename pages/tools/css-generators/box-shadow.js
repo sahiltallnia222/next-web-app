@@ -3,8 +3,6 @@ import styles from "styles/style.module.css";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import CopyToClipboard from "react-copy-to-clipboard";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
 import { FaRegCopy } from "react-icons/fa";
 import { TiDelete } from "react-icons/ti";
@@ -15,6 +13,11 @@ import {BsCursorFill } from "react-icons/bs";
 import {GiPowerButton} from 'react-icons/gi'
 import { TbBoxMultiple } from "react-icons/tb";
 import { MdGradient} from "react-icons/md";
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
+import nightOwl from 'react-syntax-highlighter/dist/cjs/styles/prism/night-owl';
+SyntaxHighlighter.registerLanguage('css', css);
+
 
 
 export default function Boxshadow() {
@@ -457,7 +460,7 @@ export default function Boxshadow() {
                <button onClick={codeCopyNotification}> <span>Copy</span><span><FaRegCopy/></span></button>
             </CopyToClipboard>
             </div>
-            <SyntaxHighlighter language="css" style={docco}>
+            <SyntaxHighlighter language="css" style={nightOwl}>
               {`box-shadow:${shadow.boxShadow}; \nbackground-color:${shadow.boxColor};  /* background color of inner box */ \nbackground-color:${shadow.bgColor};  /* background color of outer box (Paste this code in style of outer box.) */`}
             </SyntaxHighlighter>
           </div>
@@ -695,7 +698,7 @@ export default function Boxshadow() {
             <p className="text-xl lg:text-2xl font-semibold my-4">
               Syntax of box shadow property
             </p>
-            <SyntaxHighlighter language="css" style={docco}>
+            <SyntaxHighlighter language="css" style={nightOwl}>
               box-shadow: h-offset v-offset blur-radius spread-radius color
               inset;
             </SyntaxHighlighter>
@@ -711,7 +714,7 @@ export default function Boxshadow() {
             <p className="text-lg  space-x-2 tracking-wider py-3">
               Postive value to h-offset
             </p>
-            <SyntaxHighlighter language="css" style={docco}>
+            <SyntaxHighlighter language="css" style={nightOwl}>
               box-shadow:20px 0px 0px 0px black;
             </SyntaxHighlighter>
             <div className="bg-white p-5 mt-2">
@@ -723,7 +726,7 @@ export default function Boxshadow() {
             <p className="text-lg  space-x-2 tracking-wider py-3">
               Negative value to h-offset
             </p>
-            <SyntaxHighlighter language="css" style={docco}>
+            <SyntaxHighlighter language="css" style={nightOwl}>
               box-shadow:-20px 0px 0px 0px black;
             </SyntaxHighlighter>
             <div className="bg-white p-5 mt-2">
@@ -744,7 +747,7 @@ export default function Boxshadow() {
             <p className="text-lg  space-x-2 tracking-wider py-3">
               Postive value to v-offset
             </p>
-            <SyntaxHighlighter language="css" style={docco}>
+            <SyntaxHighlighter language="css" style={nightOwl}>
               box-shadow:0px 20px 0px 0px black;
             </SyntaxHighlighter>
             <div className="bg-white p-5 mt-2">
@@ -756,7 +759,7 @@ export default function Boxshadow() {
             <p className="text-lg  space-x-2 tracking-wider py-3">
               Negative value to v-offset
             </p>
-            <SyntaxHighlighter language="css" style={docco}>
+            <SyntaxHighlighter language="css" style={nightOwl}>
               box-shadow:0px -20px 0px 0px black;
             </SyntaxHighlighter>
 
@@ -778,7 +781,7 @@ export default function Boxshadow() {
             <p className="text-lg  space-x-2 tracking-wider py-3">
               Blur value (3rd property) along with x-offset and y-offset values.
             </p>
-            <SyntaxHighlighter language="css" style={docco}>
+            <SyntaxHighlighter language="css" style={nightOwl}>
               box-shadow:7px 10px 10px 0px black;
             </SyntaxHighlighter>
             <div className="bg-white p-5 mt-2">
@@ -799,7 +802,7 @@ export default function Boxshadow() {
             <p className="text-lg  space-x-2 tracking-wider py-3">
               Positive value to Spread Radius (4rd property)
             </p>
-            <SyntaxHighlighter language="css" style={docco}>
+            <SyntaxHighlighter language="css" style={nightOwl}>
               box-shadow:7px 10px 10px 20px black;
             </SyntaxHighlighter>
             <div className="bg-white p-5 mt-2">
@@ -811,7 +814,7 @@ export default function Boxshadow() {
             <p className="text-lg  space-x-2 tracking-wider py-3">
               Negative value to Spread Radius (4rd property)
             </p>
-            <SyntaxHighlighter language="css" style={docco}>
+            <SyntaxHighlighter language="css" style={nightOwl}>
               box-shadow:7px 10px 10px -4px black;
             </SyntaxHighlighter>
 
@@ -832,7 +835,7 @@ export default function Boxshadow() {
             <p className="text-lg  space-x-2 tracking-wider py-3">
               Color value to box shadow
             </p>
-            <SyntaxHighlighter language="css" style={docco}>
+            <SyntaxHighlighter language="css" style={nightOwl}>
               box-shadow:7px 7px 11px 0px rgba(62, 177, 193, 1);
             </SyntaxHighlighter>
             <div className="bg-white p-5 mt-2">
@@ -850,7 +853,7 @@ export default function Boxshadow() {
               provided inner side of the box.
             </p>
             <p className="text-xl font-semibold my-3">Example</p>
-            <SyntaxHighlighter language="css" style={docco}>
+            <SyntaxHighlighter language="css" style={nightOwl}>
               box-shadow:7px 7px 11px 0px rgba(62, 177, 193, 1) inset;
             </SyntaxHighlighter>
             <div className="bg-white p-5 mt-2">
@@ -869,7 +872,7 @@ export default function Boxshadow() {
               of multiple box shadow property.
             </p>
             <p className="text-xl font-semibold my-3">Example</p>
-            <SyntaxHighlighter language="css" style={docco}>
+            <SyntaxHighlighter language="css" style={nightOwl}>
               box-shadow:-41px 41px 0px -30px rgba(255, 255, 255, 1) , 41px
               -41px 0px -30px rgba(255, 255, 255, 1) , 10px 10px 0px 0px
               rgba(56, 104, 214, 1) , -10px -10px 0px 0px rgba(56, 104, 214, 1)
@@ -894,7 +897,7 @@ export default function Boxshadow() {
             </p>
 
             <p className="text-xl font-semibold my-3">Example</p>
-            <SyntaxHighlighter language="css" style={docco}>
+            <SyntaxHighlighter language="css" style={nightOwl}>
               box-shadow:0px 0px 0px 17px #1F1E62 , 0px 0px 0px 33px #ec060f;
             </SyntaxHighlighter>
             <div className="bg-white p-5 mt-2 text-black">

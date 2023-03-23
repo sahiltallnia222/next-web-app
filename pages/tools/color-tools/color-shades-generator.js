@@ -26,7 +26,6 @@ export default function ColorTools() {
   useEffect(() => {
     shadesGenerator();
 }, [colors]);
-console.log(clShades);
   return (
     <>
       <Head>

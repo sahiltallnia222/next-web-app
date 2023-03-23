@@ -52,9 +52,9 @@ export default function CursorOptions() {
           {/* cursor div starts */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 p-4 lg:p-0 lg:py-4">
            {
-            cursors.map((cursor)=>{
+            cursors.map((cursor,index)=>{
                 return (
-                    <div className="dark:bg-[#1d2537] border h-40 flex items-center justify-center flex-col rounded-sm dark:text-white  text-md">
+                    <div key={index} className="dark:bg-[#1d2537] border h-40 flex items-center justify-center flex-col rounded-sm dark:text-white  text-md">
                     <div className="w-full h-full flex items-center justify-center flex-col" style={{cursor:`${cursor}`}}>
                       <p className="p-3 text-center">Hover me  !</p>
                       <p className="text-center">cursor: {cursor};</p>

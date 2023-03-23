@@ -3,14 +3,20 @@ import styles from "styles/style.module.css";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import CopyToClipboard from "react-copy-to-clipboard";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { FaRegCopy } from "react-icons/fa";
 import {RxReset} from 'react-icons/rx'
 import Link from "next/link";
 import { GoTextSize } from "react-icons/go";
 import {MdFormatColorText,MdOutlineTextRotateVertical} from "react-icons/md";
 import {BsFillLightningFill} from 'react-icons/bs'
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
+import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
+import nightOwl from 'react-syntax-highlighter/dist/cjs/styles/prism/night-owl';
+SyntaxHighlighter.registerLanguage('jsx', jsx);
+SyntaxHighlighter.registerLanguage('css', css);
+
+
 
 export default function ScrollbarGenerator() {
   const [scrollbarProperties, setScrollbarProperties] = useState({});
@@ -141,7 +147,7 @@ export default function ScrollbarGenerator() {
           </p>
 
           {/* generator starts */}
-          <div className="md:dark:bg-[#1d2537] md:bg-gray-100  p-4 dark:text-white">
+         {Object.keys(scrollbarProperties).length>0 && <div className="md:dark:bg-[#1d2537] md:bg-gray-100  p-4 dark:text-white">
             <div className="grid grid-cols-1">
               <div className="scrollbarClass overflow-x-scroll overflow-y-hidden mb-2  h-48 bg-blue-500">
                 <p className="w-[200vw] text-3xl">Scrollbar CSS Generator</p>
@@ -364,7 +370,7 @@ export default function ScrollbarGenerator() {
               </div>
               <div></div>
             </div>
-          </div>
+          </div>}
           {/* generator ends here */}
 
           {/* Css code starts */}
@@ -384,7 +390,7 @@ export default function ScrollbarGenerator() {
                 </button>
               </CopyToClipboard>
             </div>
-            <SyntaxHighlighter language="css" style={docco}>
+            <SyntaxHighlighter language="jsx" style={nightOwl}>
               {`<div class='scrollbarClass'></div>`}
             </SyntaxHighlighter>
           </div>
@@ -436,7 +442,7 @@ export default function ScrollbarGenerator() {
                 </button>
               </CopyToClipboard>
             </div>
-            <SyntaxHighlighter language="css" style={docco}>
+            <SyntaxHighlighter language="css" style={nightOwl}>
               {`.scrollbarClass{
   scrollbar-width: auto;
   scrollbar-color: #dfe9eb;

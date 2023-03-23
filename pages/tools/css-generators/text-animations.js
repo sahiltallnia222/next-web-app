@@ -5,13 +5,18 @@ import { ImPlay2, ImPause } from "react-icons/im";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import CopyToClipboard from "react-copy-to-clipboard";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { FaRegCopy } from "react-icons/fa";
 import Link from "next/link";
 import { GoTextSize } from "react-icons/go";
 import {BsFillLightningFill} from 'react-icons/bs'
 import {MdTransform,MdFormatColorText} from 'react-icons/md'
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
+import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
+import nightOwl from 'react-syntax-highlighter/dist/cjs/styles/prism/night-owl';
+SyntaxHighlighter.registerLanguage('jsx', jsx);
+SyntaxHighlighter.registerLanguage('css', css);
+
 
 export default function TextAnimations() {
   const textRef = useRef();
@@ -434,7 +439,7 @@ ${play=='animation1'?`.animation1 {
                   </button>
                 </CopyToClipboard>
               </div>
-              <SyntaxHighlighter language="css" style={docco}>
+              <SyntaxHighlighter language="jsx" style={nightOwl}>
                 {`<div class='box'><p class='textGrad ${play=='noAnimation'?'':play}'>Text Animations</p></div>`}
               </SyntaxHighlighter>
             </div>
@@ -453,7 +458,7 @@ ${play=='animation1'?`.animation1 {
                   </button>
                 </CopyToClipboard>
               </div>
-              <SyntaxHighlighter language="css" style={docco}>
+              <SyntaxHighlighter language="css" style={nightOwl}>
                 {cssCode}
               </SyntaxHighlighter>
             </div>

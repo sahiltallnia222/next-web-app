@@ -4,8 +4,6 @@ import Draggable from "react-draggable";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { toast } from "react-toastify";
 import styles from "styles/style.module.css";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { FaRegCopy } from "react-icons/fa";
 import { VscDebugBreakpointLogUnverified } from "react-icons/vsc";
 import {GrFacebookOption} from 'react-icons/gr'
@@ -15,6 +13,12 @@ import Link from "next/link";
 import { MdAnimation} from "react-icons/md";
 import {GiPowerButton} from 'react-icons/gi'
 import { TbBoxMultiple } from "react-icons/tb";
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
+import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
+import nightOwl from 'react-syntax-highlighter/dist/cjs/styles/prism/night-owl';
+SyntaxHighlighter.registerLanguage('jsx', jsx);
+SyntaxHighlighter.registerLanguage('css', css);
 
 
 export default function BorderRadiusGenerator() {
@@ -429,7 +433,7 @@ background-color:${borderProps.bgColor};`}
                       </button>
                     </CopyToClipboard>
                   </div>
-                  <SyntaxHighlighter language="css" style={docco}>
+                  <SyntaxHighlighter language="css" style={nightOwl}>
                     {`border-radius:${borderRadius};\nborder-style:${borderProps.borderStyle};\nborder-width:${borderProps.borderWidth}px;\nborder-color:${borderProps.borderColor};\nbackground-color:${borderProps.bgColor};`}
                   </SyntaxHighlighter>
                 </div>
@@ -526,7 +530,7 @@ background-color:${borderProps.bgColor};`}
                         </button>
                       </CopyToClipboard>
                     </div>
-                    <SyntaxHighlighter language="css" style={docco}>
+                    <SyntaxHighlighter language="jsx" style={nightOwl}>
                       {`<div class="example1"><p>Animated Border Radius</p></div>`}
                     </SyntaxHighlighter>
                   </div>
@@ -564,7 +568,7 @@ background-color:${borderProps.bgColor};`}
                         </button>
                       </CopyToClipboard>
                     </div>
-                    <SyntaxHighlighter language="css" style={docco}>
+                    <SyntaxHighlighter language="css" style={nightOwl}>
                       {`.example1 {
   animation: animation1 4s ease-in-out infinite;
   background-color:#3b82f6;
@@ -633,7 +637,7 @@ background-color:${borderProps.bgColor};`}
                         </button>
                       </CopyToClipboard>
                     </div>
-                    <SyntaxHighlighter language="css" style={docco}>
+                    <SyntaxHighlighter language="jsx" style={nightOwl}>
                       {`<div class="example2"><p>Animated Border Radius</p></div>`}
                     </SyntaxHighlighter>
                   </div>
@@ -671,7 +675,7 @@ background-color:${borderProps.bgColor};`}
                         </button>
                       </CopyToClipboard>
                     </div>
-                    <SyntaxHighlighter language="css" style={docco}>
+                    <SyntaxHighlighter language="css" style={nightOwl}>
                       {`.example2 {
   animation: animation2 4s ease-in-out infinite;
   background-color:#3a80f2;
@@ -752,7 +756,7 @@ background-color:${borderProps.bgColor};`}
                         </button>
                       </CopyToClipboard>
                     </div>
-                    <SyntaxHighlighter language="css" style={docco}>
+                    <SyntaxHighlighter language="jsx" style={nightOwl}>
                       {`<div class="exampleB3"><span class="example3"><i class="fa-brands fa-facebook-f"></i></span><span>Facebook</span></div> <!-- (font awesome icon) -->`}
                     </SyntaxHighlighter>
                   </div>
@@ -798,7 +802,7 @@ background-color:${borderProps.bgColor};`}
                         </button>
                       </CopyToClipboard>
                     </div>
-                    <SyntaxHighlighter language="css" style={docco}>
+                    <SyntaxHighlighter language="css" style={nightOwl}>
                       {`.exampleB3{
   background-color:white;
   border: 1px solid black;

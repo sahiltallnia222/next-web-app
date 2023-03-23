@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import styles from "styles/style.module.css";
 import { toast } from "react-toastify";
 import CopyToClipboard from "react-copy-to-clipboard";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import {FaRegCopy} from 'react-icons/fa'
 import Head from "next/head";
 import {RxReset} from 'react-icons/rx'
@@ -12,6 +10,12 @@ import { AiOutlineRadiusSetting } from "react-icons/ai";
 import Link from "next/link";
 import {BsFillLightningFill} from 'react-icons/bs'
 import {GiCube} from 'react-icons/gi'
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
+import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
+import nightOwl from 'react-syntax-highlighter/dist/cjs/styles/prism/night-owl';
+SyntaxHighlighter.registerLanguage('jsx', jsx);
+SyntaxHighlighter.registerLanguage('css', css);
 
 
 
@@ -112,8 +116,8 @@ export default function TransformGenerator() {
           Make your website stunning using free CSS transform generator tool. This tool allows you to set the various parameters of transform property and generate CSS code for you. Just copy and paste the code in your website and see the effects.
           </p>
 
-
-          <div className="grid grid-cols-1 md:grid-cols-6 lg:dark:bg-[#1d2537] lg:bg-gray-100  md:h-[32rem]">
+          {/* Genrator starts  */}
+          { Object.keys(transform).length>0 && <div className="grid grid-cols-1 md:grid-cols-6 lg:dark:bg-[#1d2537] lg:bg-gray-100  md:h-[32rem]">
             <div className="flex items-center justify-center md:col-span-4 p-6 pt-12 text-white" style={{
                   perspective: `${transform.perspective}px`,
                   perspectiveOrigin: `${transform.perspectiveOriginX}% ${transform.perspectiveOriginY}%`,
@@ -428,8 +432,8 @@ export default function TransformGenerator() {
               </div>
             </div>
             {/* end right box */}
-          </div>
-
+          </div>}
+            {/* Genrator ends here  */}              
 
           {/* CSS CODE starts  */}
           <div className="lg:dark:bg-[#1d2537] lg:bg-gray-100  mt-4">
@@ -453,7 +457,7 @@ export default function TransformGenerator() {
                   </button>
                 </CopyToClipboard>
               </div>
-              <SyntaxHighlighter language="javascript" style={docco}>
+              <SyntaxHighlighter language="jsx" style={nightOwl}>
               {`<div class='outer-box'>
   <div class='inner-box'>
     <div class="flip-box">
@@ -528,7 +532,7 @@ export default function TransformGenerator() {
                   </button>
                 </CopyToClipboard>
               </div>
-              <SyntaxHighlighter language="css" style={docco}>
+              <SyntaxHighlighter language="css" style={nightOwl}>
                 {`.outer-box{
   perspective:${transform.perspective}px;
   perspective-origin: ${transform.perspectiveOriginX}% ${transform.perspectiveOriginY}%;

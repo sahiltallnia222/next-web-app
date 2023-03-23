@@ -3,8 +3,6 @@ import styles from "styles/style.module.css";
 import { useState } from "react";
 import { TiDelete } from "react-icons/ti";
 import CopyToClipboard from "react-copy-to-clipboard";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 import {MdAddToPhotos} from 'react-icons/md'
@@ -14,6 +12,13 @@ import {MdFormatColorText,MdOutlineTextRotateVertical} from "react-icons/md";
 import {BsFillLightningFill} from 'react-icons/bs'
 import { CgScrollV } from "react-icons/cg";
 import Link from "next/link";
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
+import nightOwl from 'react-syntax-highlighter/dist/cjs/styles/prism/night-owl';
+SyntaxHighlighter.registerLanguage('css', css);
+
+
+
 
 export default function GradientGenerator() {
   const gradients = [
@@ -318,7 +323,7 @@ const handleGenReset=()=>{
                   <button onClick={codeCopyNotification}> <span>Copy</span><span><FaRegCopy/></span></button>
                 </CopyToClipboard>
               </div>
-              <SyntaxHighlighter language="css" style={docco}>
+              <SyntaxHighlighter language="css" style={nightOwl}>
                 {`background: ${
                   gradients[gradient.gradientType]
                 }(${
