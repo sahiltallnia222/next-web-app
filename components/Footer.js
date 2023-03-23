@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="flex items-center gap-5">
             <Link href='/' className="dark:text-white text-sm hover:underline">Feedback</Link>
             <Link href='/' className="dark:text-white text-sm hover:underline">Privacy Policy</Link>
-            <Link href='/' className="dark:text-white text-sm hover:underline">Contact us</Link>
+            <Link href='/tools' className="dark:text-white text-sm hover:underline">Contact us</Link>
           </div>
         </div>
       </div>
