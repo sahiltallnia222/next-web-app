@@ -3,8 +3,6 @@ const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
 
 /** @type {import('next').NextConfig} */
 
-const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
-
 module.exports = (phase) => {
   // devlopment mode variables
   if (phase === PHASE_DEVELOPMENT_SERVER) {
@@ -12,14 +10,27 @@ module.exports = (phase) => {
       reactStrictMode: true,
       env:{
         NEXT_PUBLIC_HOST:'http://localhost:3000'
-      }
+      },
+      async rewrites() {
+        return [
+          {
+            source: '/sitemap.xml',
+            destination: '/api/sitemap',
+          },
+        ]
+      },
     }
   }
 // production mode variables
   return {
     reactStrictMode: true,
-    env:{
-      NEXT_PUBLIC_HOST:'http://localhost:3000'
-    }
+    async rewrites() {
+      return [
+        {
+          source: '/sitemap.xml',
+          destination: '/api/sitemap',
+        },
+      ]
+    },
   }
 }
