@@ -19,7 +19,7 @@ export default function Home() {
         <title>WebVerse | Free tools to make website</title>
         <meta
         name="description"
-        content="WebVerse is a all in one plateform to provide free website tools like css generators, image tools and color tools. In WebVerse, you can learn css with css generators without any experience with live preview of css changes.You are direct copy paste css from css generator and paste in your website. Free image tools to make image best fit in your website. Free color tools to see preview of different colors and color shades that best fit in your website."
+        content="WebVerse is a one plateform to provide free website tools like css generators, image tools and color tools. In webverse , we provides you tools like css generator, image tools and color tools to make your development easy..."
       />
       <meta name="keywords" content="Webverse, web tools, free css generators, free image tools, free color tools"></meta>
       <meta property="og:title" content="WebVerse | Universe of web tools" />
