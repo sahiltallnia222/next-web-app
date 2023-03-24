@@ -143,8 +143,7 @@ export default function BorderRadiusGenerator() {
   }, []);
 
 
-  let borderRadius = `${radiusValues.XTL}% ${radiusValues.XTR}% ${radiusValues.XBR}% ${radiusValues.XBL}% / ${radiusValues.YLT}% ${radiusValues.YRT}% ${radiusValues.YRB}% ${radiusValues.YLB}%`;
-
+  
   useEffect(()=>{
     if(localStorage.getItem('border-color-width')){
       let data = JSON.parse(localStorage.getItem('border-color-width'))
@@ -172,6 +171,8 @@ useEffect(()=>{
   }
 
 },[borderProps])
+
+let borderRadius = `${radiusValues.XTL}% ${radiusValues.XTR}% ${radiusValues.XBR}% ${radiusValues.XBL}% / ${radiusValues.YLT}% ${radiusValues.YRT}% ${radiusValues.YRB}% ${radiusValues.YLB}%`;
 
 
   return (
@@ -213,7 +214,7 @@ useEffect(()=>{
                 <div 
                   style={{ touchAction: 'none' }}
                   ref={borderBoxParentRef}
-                  className="border  dark:border-white border-black w-[88vw] md:w-[30rem] h-[88vw] md:h-[30rem] mx-auto flex justify-center items-center relative"
+                  className="border dark:border-white border-black w-[88vw] md:w-[30rem] h-[88vw] md:h-[30rem] mx-auto flex justify-center items-center relative"
                 >
                   <div
                     className="w-[90%] h-[90%] flex items-center justify-center"
