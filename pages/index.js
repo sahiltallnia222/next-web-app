@@ -33,7 +33,7 @@ export default function Home() {
         />
         <meta name="google-site-verification" content="dKK5luyv-BmFFXqam1yL_92nsv-f3GQlNybdpQnJTF0" />
       </Head>
-      <main>
+      <div>
         {/* center div starts here*/}
         <div className="dark:text-white">
           {/* heading starts */}
@@ -178,7 +178,7 @@ export default function Home() {
 
         </div>
         {/* center div ends here */}
-      </main>
+      </div>
     </>
   );
 }
