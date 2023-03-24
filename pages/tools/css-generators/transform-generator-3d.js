@@ -859,7 +859,7 @@ export default function TransformGenerator() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/border-radius-generator`} passHref>
-              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  lg:dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300 dark:bg-[#1d2537] py-14 border-2 dark:border-transparent ">
                 <AiOutlineRadiusSetting size={"2.3rem"} />
                 <p className="text-xl font-medium text-center">
                   Border Radius Generator
@@ -867,7 +867,7 @@ export default function TransformGenerator() {
               </div>
             </Link>
             <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/box-animations`} passHref>
-              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  lg:dark:bg-[#1d2537] py-14 border-2 dark:border-transparent">
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent">
                 <MdAnimation size={"2.3em"} />
                 <p className="text-xl font-medium text-center">
                   Box Animations
@@ -875,7 +875,7 @@ export default function TransformGenerator() {
               </div>
             </Link>
             <Link href={`${process.env.NEXT_PUBLIC_HOST}/tools/css-generators/box-shadow`} passHref>
-              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  lg:dark:bg-[#1d2537] py-14 border-2 dark:border-transparent">
+              <div className=" flex items-center justify-center flex-col gap-4 hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300  dark:bg-[#1d2537] py-14 border-2 dark:border-transparent">
                 <TbBoxMultiple size={"2.3em"} />
                 <p className="text-xl font-medium text-center">
                   Box Shadow Generator
