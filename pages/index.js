@@ -31,6 +31,7 @@ export default function Home() {
           property="og:image"
           content="/images/og-images/home-page-og.png"
         />
+        <meta name="google-site-verification" content="dKK5luyv-BmFFXqam1yL_92nsv-f3GQlNybdpQnJTF0" />
       </Head>
       <main>
         {/* center div starts here*/}
