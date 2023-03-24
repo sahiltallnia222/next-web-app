@@ -210,9 +210,10 @@ useEffect(()=>{
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 p-4 lg:dark:bg-[#1d2537] lg:bg-gray-100 ">
               {/* left box */}
               <div className="w-full">
-                <div
+                <div 
+                  style={{ touchAction: 'none' }}
                   ref={borderBoxParentRef}
-                  className="border dark:border-white border-black w-[88vw] md:w-[30rem] h-[88vw] md:h-[30rem] mx-auto flex justify-center items-center relative"
+                  className="border  dark:border-white border-black w-[88vw] md:w-[30rem] h-[88vw] md:h-[30rem] mx-auto flex justify-center items-center relative"
                 >
                   <div
                     className="w-[90%] h-[90%] flex items-center justify-center"
