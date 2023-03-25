@@ -3,6 +3,9 @@ import "@/styles/globals.css";
 import Head from "next/head";
 import { ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Analytics } from '@vercel/analytics/react';
+
+
 
 export default function App({ Component, pageProps }) {
   return (
@@ -14,6 +17,7 @@ export default function App({ Component, pageProps }) {
       <div className="overflow-x-hidden">
         <Layout>
           <Component {...pageProps} />
+          <Analytics />
         </Layout>
         <ToastContainer
           position="top-center"
