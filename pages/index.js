@@ -19,17 +19,17 @@ export default function Home() {
         <title>WebVerse | Free tools to make website</title>
         <meta
         name="description"
-        content="WebVerse is a one plateform to provide free website tools like css generators, image tools and color tools. In webverse , we provides you tools like css generator, image tools and color tools to make your development easy..."
+        content="WebVerse is a plateform to provide free website tools like css generators, image tools and color tools. In webverse , we provides you tools like css generator, image tools and color tools to make your development easy..."
       />
       <meta name="keywords" content="Webverse, web tools, free css generators, free image tools, free color tools"></meta>
       <meta property="og:title" content="WebVerse | Universe of web tools" />
         <meta
           property="og:description"
-          content="WebVerse is a one plateform to provide free website tools like css generators, image tools and color tools. In webverse , we provides you tools like css generator, image tools and color tools to make your development easy..."
+          content="WebVerse is a plateform to provide free website tools like css generators, image tools and color tools. In webverse , we provides you tools like css generator, image tools and color tools to make your development easy..."
         />
         <meta
           property="og:image"
-          content="/images/og-images/home-page-og.png"
+          content="https://raw.githubusercontent.com/sahiltallnia222/other-files/4a26b90db34451dcaaa5c17f50194ed37b3b1bbf/home-page-og.png"
         />
         <meta name="google-site-verification" content="dKK5luyv-BmFFXqam1yL_92nsv-f3GQlNybdpQnJTF0" />
       </Head>
