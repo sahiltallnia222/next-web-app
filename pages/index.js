@@ -32,8 +32,6 @@ export default function Home() {
           content="https://raw.githubusercontent.com/sahiltallnia222/other-files/4a26b90db34451dcaaa5c17f50194ed37b3b1bbf/home-page-og.png"
         />
         <meta name="google-site-verification" content="dKK5luyv-BmFFXqam1yL_92nsv-f3GQlNybdpQnJTF0" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8854753001498971"
-        crossorigin="anonymous"></script>
       </Head>
       <div>
         {/* center div starts here*/}
