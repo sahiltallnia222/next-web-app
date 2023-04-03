@@ -77,57 +77,57 @@ export default function handler(req, res) {
       <url>
         <loc>https://www.webverse.tech/tools/css-generators/button-generator</loc>
         <lastmod>2023-03-23T19:52:14+00:00</lastmod>
-        <priority>0.64</priority>
+        <priority>0.80</priority>
       </url>
       <url>
         <loc>https://www.webverse.tech/tools/css-generators/cursor-options</loc>
         <lastmod>2023-03-23T19:52:14+00:00</lastmod>
-        <priority>0.64</priority>
+        <priority>0.80</priority>
       </url>
       <url>
         <loc>https://www.webverse.tech/tools/css-generators/gradient-generator</loc>
         <lastmod>2023-03-23T19:52:14+00:00</lastmod>
-        <priority>0.64</priority>
+        <priority>0.80</priority>
       </url>
       <url>
         <loc>https://www.webverse.tech/tools/css-generators/scrollbar-css-generator</loc>
         <lastmod>2023-03-23T19:52:14+00:00</lastmod>
-        <priority>0.64</priority>
+        <priority>0.80</priority>
       </url>
       <url>
         <loc>https://www.webverse.tech/tools/css-generators/text-animations</loc>
         <lastmod>2023-03-23T19:52:14+00:00</lastmod>
-        <priority>0.64</priority>
+        <priority>0.80</priority>
       </url>
       <url>
         <loc>https://www.webverse.tech/tools/css-generators/text-gradient</loc>
         <lastmod>2023-03-23T19:52:14+00:00</lastmod>
-        <priority>0.64</priority>
+        <priority>0.80</priority>
       </url>
       <url>
         <loc>https://www.webverse.tech/tools/css-generators/text-shadow</loc>
         <lastmod>2023-03-23T19:52:14+00:00</lastmod>
-        <priority>0.64</priority>
+        <priority>0.80</priority>
       </url>
       <url>
         <loc>https://www.webverse.tech/tools/css-generators/transform-generator-2d</loc>
         <lastmod>2023-03-23T19:52:14+00:00</lastmod>
-        <priority>0.64</priority>
+        <priority>0.80</priority>
       </url>
       <url>
         <loc>https://www.webverse.tech/tools/css-generators/transform-generator-3d</loc>
         <lastmod>2023-03-23T19:52:14+00:00</lastmod>
-        <priority>0.64</priority>
+        <priority>0.80</priority>
       </url>
       <url>
         <loc>https://www.webverse.tech/tools/color-tools/hex-to-rgba-converter</loc>
         <lastmod>2023-03-23T19:52:14+00:00</lastmod>
-        <priority>0.64</priority>
+        <priority>0.80</priority>
       </url>
       <url>
         <loc>https://www.webverse.tech/tools/color-tools/rgba-to-hex-converter</loc>
         <lastmod>2023-03-23T19:52:14+00:00</lastmod>
-        <priority>0.64</priority>
+        <priority>0.80</priority>
       </url>
       </urlset>`
   
