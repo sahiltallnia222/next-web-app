@@ -12,16 +12,16 @@ export default function CSSGENS() {
   return (
     <>
       <Head>
-        <title>CSS Generators | WebVerse</title>
+        <title>CSS Generators - WebVerse</title>
         <meta
         name="description"
-        content="CSS Generator tools are very useful to quickly and easily create stunning design for website without dive deep into the code. CSS generator provides you a interface to see live preview of changes made in css. CSS code generated from CSS generator can be directly copy and paste in your website. CSS generator tools save your time to create design for your website."
+        content="Free most flexible CSS Generators to generate CSS styles for any website. See live preview of result on changing in CSS properties and direct copy-paste the generated code. Very easy to use CSS Generators..."
       />
-      <meta name="keywords" content="Webverse, web tools, free css generators, css tools, css tools online, css generator online, css effects generator"></meta>
-      <meta property="og:title" content="CSS Tools | WebVerse" />
+      <meta name="keywords" content="css generators, free css generators, css tools, css tools online, css generator online, css effects generator"></meta>
+      <meta property="og:title" content="CSS Generators - WebVerse" />
         <meta
           property="og:description"
-          content="CSS Generator tools are very useful to quickly and easily create stunning design for website without dive deep into the code. CSS generator provides you a interface to see live preview of changes made in css. CSS code generated from CSS generator can be directly copy and paste in your website. CSS generator tools save your time to create design for your website."
+          content="Free most flexible CSS Generators to generate CSS code for any website. See live preview of result on changing in CSS properties and direct copy-paste the generated code. Very easy to use CSS Generators..."
         />
         <meta
           property="og:image"
