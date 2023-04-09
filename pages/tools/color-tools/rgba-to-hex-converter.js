@@ -47,7 +47,7 @@ export default function RgbatoHexConverter() {
         content="Most advanced RGBA to Hex convertor tool 2023. Get hex value of code along with preview of color. RGBA to Hex convertor tool converts rgba values of color codes into hex value."
       />
       <meta name="keywords" content="Webverse, web tools, RGBA to Hex, RGBA to Hex convertor, color code convertor"></meta>
-      <meta property="og:title" content="Color Mixture Tool | WebVerse" />
+      <meta property="og:title" content="RGBA to Hex Converter | WebVerse" />
         <meta
           property="og:description"
           content="Most advanced RGBA to Hex convertor tool 2023.Get hex value of code along with preview of color. RGBA to Hex convertor tool converts rgba values of color codes into hex value."
