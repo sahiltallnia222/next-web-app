@@ -54,7 +54,7 @@ export default function RgbatoHexConverter() {
         />
         <meta
           property="og:image"
-          content="https://raw.githubusercontent.com/sahiltallnia222/other-files/1f45d312623a8ae8e0d25a74d5d2c68260d65da4/rgba-to-hex.png"
+          content="https://raw.githubusercontent.com/sahiltallnia222/other-files/main/rgba%20-%20to-%20hex.png"
         />
       </Head>
       <div>
